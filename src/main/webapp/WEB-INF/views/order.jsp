@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>회원관리 Page</title>
+        <title>주문관리 Page</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" >
@@ -37,7 +37,7 @@
             <div id="layoutSidenav_content" class="mt-2">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">회원관리 📝</h1>
+                        <h1 class="mt-4">주문 관리 🧚‍♀️ </h1>
                         
                         <div class="card mb-4">
                
@@ -50,54 +50,42 @@
                                 <table id="datatablesSimple" class="table-borderless">
                                     <thead>
                                         <tr class="table-secondary">
-                                        	<th><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></th>
-                                            <th>사번(아이디)</th>
-                                            <th>이름</th>
-                                            <th>직책</th>
-                                            <th>부서</th>
-                                            <th>회원유형</th>
-                                  
-                                    
+                                        	<th>주문 순번</th>
+                                            <th>주문 날짜</th>
+                                            <th>주문 아이디</th>
+                                            <th>결제 금액</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        	<th><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></th>
-                                            <th>사번(아이디)</th>
-                                            <th>이름</th>
-                                            <th>직책</th>
-                                            <th>부서</th>
-                                            <th>회원유형</th>
+                                        	<th>주문 순번</th>
+                                            <th>주문 날짜</th>
+                                            <th>주문 아이디</th>
+                                            <th>결제 금액</th>
                                        
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                        	<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
+                                        <tr onclick="location.href='order_view.do'" style="cursor:pointer">
+                                            <td>1</td>
+                                            <td>2022-11-22</td>
                                             <td>dandy123</td>
-                                            <td>👦이철원</td>
-                                            <td>사원</td>
-                                            <td>생산</td>
-                                            <td>A</td>
+                                            <td>30,000</td>
                                    
                                  
                                         </tr>
-                                        <tr>
-                                        	<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
-                                            <td>cute11</td>
-                                            <td>👦박성진</td>
-                                            <td>사원</td>
-                                            <td>생산</td>
-                                            <td>A</td>
+                                        <tr onclick="location.href='order_view.do'" style="cursor:pointer">
+											<td>2</td>
+                                            <td>2022-11-22</td>
+                                            <td>dandy123</td>
+                                            <td>30,000</td>
                                 
                                         </tr>
-                                        <tr>
-                                        	<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
-                                            <td>pp123</td>
-                                            <td>👦윤예지</td>
-                                            <td>사원</td>
-                                            <td>생산</td>
-                                            <td>A</td>
+                                        <tr onclick="location.href='order_view.do'" style="cursor:pointer">
+											<td>3</td>
+                                            <td>2022-11-22</td>
+                                            <td>dandy123</td>
+                                            <td>30,000</td>
                               
                                         </tr>
                                       
@@ -109,7 +97,7 @@
                         </div>
                     </div>
                     
-
+                     	 						
 
 
                 </main>

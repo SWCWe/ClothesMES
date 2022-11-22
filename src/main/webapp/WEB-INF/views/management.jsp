@@ -53,22 +53,22 @@
                                     <thead>
                                         <tr class="">
                                         	<th>날짜</th>
-                                            <th>분류코드</th>
-                                            <th>상품이름</th>
-                                            <th>생산수량</th>
-                                            <th>출고수량</th>
-                                            <th>재고량</th>
+                                            <th>제품 코드</th>
+                                            <th>제품 명</th>
+                                            <th>재고 수량</th>
+                                            <th>기업코드</th>
+                                            <th>제품 보관 장소</th>
                                     
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        	<td>날짜</td>
-                                         	<th>분류코드</th>
-                                            <th>상품이름</th>
-                                            <th>생산수량</th>
-                                            <th>출고수량</th>
-                                            <th>재고량</th>
+                                        	<th>날짜</th>
+                                            <th>제품 코드</th>
+                                            <th>제품 명</th>
+                                            <th>재고 수량</th>
+                                            <th>기업코드</th>
+                                            <th>제품 보관 장소</th>
                                        
                                         </tr>
                                     </tfoot>
@@ -78,8 +78,8 @@
                                             <td>A0132</td>
                                             <td>둥실둥실 기모 상하복 세트</td>
                                             <td>100</td>
-                                            <td>50</td>
-                                            <td>50</td>
+                                            <td>GG123</td>
+                                            <td>D-1</td>
                                             
                                  
                                         </tr>
@@ -88,8 +88,8 @@
                                             <td>A0132</td>
                                             <td>루루티셔츠</td>
                                             <td>100</td>
-                                            <td>50</td>
-                                            <td>50</td>
+                                            <td>GG124</td>
+                                            <td>D-2</td>
                                 
                                         </tr>
                                         <tr>
@@ -97,8 +97,8 @@
                                             <td>A0132</td>
                                             <td>오늘은 즐거워 기모 치마 레깅스</td>
                                             <td>100</td>
-                                            <td>50</td>
-                                            <td>50</td>
+                                            <td>GG125</td>
+                                            <td>R-1</td>
                               
                                         </tr>
                                         <tr>
@@ -106,8 +106,8 @@
                                             <td>A0132</td>
                                             <td>보들 컬러 밪</td>
                                             <td>100</td>
-                                            <td>50</td>
-                                            <td>50</td>
+                                            <td>GG126</td>
+                                            <td>R-3</td>
                            
                                         </tr>
                                  
@@ -151,7 +151,7 @@
         	<div class="list-group-item" style="line-height:41px;">
         		<div class="row">
         			<div class="col-sm-4">
-        				<label for = "item_code">분류코드</label>
+        				<label for = "item_code">제품 코드</label>
         			</div>
         			<div class = "col-sm-8">
         				<input type = "text" class="form-control" name="item_code" />
@@ -161,7 +161,7 @@
         		<div class="list-group-item"style="line-height:41px;">
         		<div class="row">
         			<div class="col-sm-4">
-        				<label for = "item_name">상품이름</label>
+        				<label for = "item_name">제품 명</label>
         			</div>
         			<div class = "col-sm-8">
         				<input type = "text" class="form-control" name = "item_name"/>
@@ -172,7 +172,7 @@
         	<div class="list-group-item"style="line-height:41px;">
         		<div class="row">
         			<div class="col-sm-4">
-        				<label for = "item_stock">재고수량</label>
+        				<label for = "item_stock">재고 수량</label>
         			</div>
         			<div class = "col-sm-8">
         				<input type="text" class="form-control" name="item_stock"/>
@@ -184,7 +184,7 @@
         	       	<div class="list-group-item"style="line-height:41px;">
         		<div class="row">
         			<div class="col-sm-4">
-        				<label for = "item_manager" class="form-label">관계자</label>
+        				<label for = "item_manager" class="form-label">기업코드</label>
         			</div>
         			<div class = "col-sm-8">
         				<select class="form-select" id = "item_manager" name="item_manager">
@@ -192,6 +192,22 @@
         					<option> 예지곤듀 </option>
         					<option> 이철원  </option>
         					<option> 박성진 </option>
+        				</select>
+        			</div>
+        		</div>
+        	</div>
+        	
+        	        	       	<div class="list-group-item"style="line-height:41px;">
+        		<div class="row">
+        			<div class="col-sm-4">
+        				<label for = "item_manager" class="form-label">제품 보관 장소</label>
+        			</div>
+        			<div class = "col-sm-8">
+        				<select class="form-select" id = "item_manager" name="item_manager">
+        			
+        					<option> D1 </option>
+        					<option> D2  </option>
+        					<option> R1 </option>
         				</select>
         			</div>
         		</div>
