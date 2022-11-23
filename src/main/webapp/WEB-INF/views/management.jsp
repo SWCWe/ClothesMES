@@ -189,7 +189,7 @@
         			<div class = "col-sm-8">
         				<select class="form-select" id = "item_manager" name="item_manager">
         			
-        					<option> 예지곤듀 </option>
+        					<option> 윤예지 </option>
         					<option> 이철원  </option>
         					<option> 박성진 </option>
         				</select>

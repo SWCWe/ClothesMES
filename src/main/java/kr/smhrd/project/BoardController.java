@@ -68,4 +68,9 @@ public class BoardController {
 		return "join";
 	}
 	
+	@RequestMapping("/production.do")
+	public String production() {
+		return "Production";
+	}
+	
 }
