@@ -27,7 +27,7 @@
                     </form>
                 </div>
                 <div class = "login-container-box-bottom d-flex mt-2">
-                    <p class="login-container-box-bottom-left"> 아직 가입을 안하셨나요? </p> <span class = "login-container-box-bottom-right"> 지금 가입하기 </span>
+                    <p class="login-container-box-bottom-left"> 아직 가입을 안하셨나요? </p> <span class = "login-container-box-bottom-right" onclick="location.href='join.do'"> 지금 가입하기 </span>
                 </div>
             </div>
         </div>

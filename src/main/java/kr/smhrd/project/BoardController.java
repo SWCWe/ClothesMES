@@ -63,4 +63,9 @@ public class BoardController {
 		return "order_view";
 	}
 	
+	@RequestMapping("/join.do")
+	public String join() {
+		return "join";
+	}
+	
 }
