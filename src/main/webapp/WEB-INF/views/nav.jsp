@@ -20,6 +20,7 @@
                                     <a class="nav-link" href="notice.do">공지사항✔</a>
                                     <a class="nav-link" href="user.do">회원관리📝</a>
                                     <a class="nav-link" href="schedule.do">일정관리🗓</a>
+                                    <a class="nav-link" href="order.do">주문관리🧚‍♀️</a>️
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -35,7 +36,7 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="login.do">Login</a>
                                             <a class="nav-link" href="register.html">Register</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
                                         </nav>

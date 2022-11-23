@@ -48,5 +48,24 @@ public class BoardController {
 		return "notice_view";
 	}
 	
+	@RequestMapping("/login.do")
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping("/order.do")
+	public String order() {
+		return "order";
+	}
+	
+	@RequestMapping("/order_view.do")
+	public String order_view() {
+		return "order_view";
+	}
+	
+	@RequestMapping("/join.do")
+	public String join() {
+		return "join";
+	}
 	
 }
