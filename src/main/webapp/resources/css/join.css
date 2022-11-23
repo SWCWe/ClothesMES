@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+*{
+    padding : 0;
+    margin : 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    width : 100%;
+    font-size : 16px;
+    font-family : 'Nanum Gothic', sans-serif;
+    background-color: #d9d9d9;
+}
+
+
+.join-container {
+    width:100%;
+    height : 100vh;
+    display: flex;
+    justify-content:center;
+}
+
+
+.join-container-box {
+    width: 100%;
+}
+
+.join-container-box-top {
+    width:40%;
+    background-color:rgba(255, 255, 255, 0.375);
+    border-radius : 2rem;
+    padding: 2% 3%;
+    box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.list-group-item {
+    background-color: transparent;
+}
+
+.list-group-item {
+    border : none;
+    padding:5 30px;
+}
+
+.list-group-item h1{
+    letter-spacing: 4px;
+    font-weight: 650;
+}
+
+.joinbutton{
+    display:flex;
+    justify-content: center;
+}
+
+select{
+    height: 50px;
+    text-align: center;
+    font-size:26px;
+}
+
+select option{
+    font-size: 26px;
+  
+}
+
+.form-select {
+    font-size: 26px;
+    
+}
+.form-group input[type = "text"],
+.form-group input[type = "password"]{
+
+
+    text-align:center;
+    height : 50px;
+    font-size:26px;
+ 
+}
+
+
+.form-control {
+    box-shadow : none;
+
+}
+
+.join-container-box-bottom-right {
+    margin-left:10px;
+    font-weight:600;
+    cursor:pointer;
+    height:25px;
+    transition: all 5s;
+}
+
+.join-container-box-bottom-right:hover{
+    border-bottom:1px solid;
+
+}
+
+@media(max-width:1200px){
+    .join-container-box-top {
+        width:60%;
+    }
+}
+
+
+@media(max-width:576px) {
+    .join-container-box-top {
+        width:80%;
+    }
+}
