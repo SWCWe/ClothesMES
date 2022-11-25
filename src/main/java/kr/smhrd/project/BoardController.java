@@ -12,26 +12,17 @@ import lombok.Data;
 @Controller
 public class BoardController {
 	
-	@RequestMapping("/index.do")
-	public String boardList() {
-		return "index";
-	} 
+
+
+
 	
-	@RequestMapping("/management.do")
-	public String management() {
-		return "management";
-	}
+	
 	
 	@RequestMapping("/notice.do")
 	public String notice() {
 		return "notice";
 	}
 	
-	
-	@RequestMapping("/user.do")
-	public String user() {
-		return "user";
-	}
 	
 	@RequestMapping("/schedule.do")
 	public String schedule() {
@@ -48,24 +39,8 @@ public class BoardController {
 		return "notice_view";
 	}
 	
-	@RequestMapping("/login.do")
-	public String login() {
-		return "login";
-	}
+
 	
-	@RequestMapping("/order.do")
-	public String order() {
-		return "order";
-	}
 	
-	@RequestMapping("/order_view.do")
-	public String order_view() {
-		return "order_view";
-	}
-	
-	@RequestMapping("/join.do")
-	public String join() {
-		return "join";
-	}
 	
 }
