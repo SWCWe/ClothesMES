@@ -15,7 +15,7 @@ public class BoardController {
 	@RequestMapping("/index.do")
 	public String boardList() {
 		return "index";
-	}
+	} 
 	
 	@RequestMapping("/management.do")
 	public String management() {
