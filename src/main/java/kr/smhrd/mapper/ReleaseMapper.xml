@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.ReleaseMapper">
+    
+    <!-- 출고 목록 가져오기 위한 정보 -->
+    <select id="releaseList" resultType="kr.smhrd.entity.ReleaseVO">
+        select r.r_seq, r.prod_code, r.r_date, r.r_cnt, r.order_seq, r.prod_rack, m.name
+        from t_release r, t_member m
+        where r.emp_no = m.emp_no
+    </select>
+    
+    <!-- 출고 담당자 이름 중복없이 가져오기 -->
+    <select id="releaseNameList" resultType="String">
+        select distinct m.name
+        from t_release r, t_member m
+        where r.emp_no = m.emp_no
+    </select>
+    
+    <!-- 출고 제품 코드 중복없이 가져오기 -->
+    <select id="releaseProd_codeList" resultType="String">
+        select distinct prod_code
+        from t_release
+    </select>
+    
+    <!-- 주문 순번 중복없이 가져오기 -->
+    <select id="releaseOrder_seqList" resultType="String">
+        select distinct order_seq
+        from t_release
+    </select>
+    
+    <!-- 검색 내용 가져오기 -->
+    <select id="searchRelease" resultType="kr.smhrd.entity.ReleaseVO">
+        #{releaseQuery}
+    </select>
+    
+    
+</mapper>
