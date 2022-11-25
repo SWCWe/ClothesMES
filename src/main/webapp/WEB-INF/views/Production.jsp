@@ -81,7 +81,7 @@
                             </div>
                             <div class="card-body">
                             
-                            
+                            	<!-- 검색 폼  -->
                             	<div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
                             		<form action = "" method = "get" style="display:grid; grid-template-columns : 30% 30% 30% 10%; grid-gap:10px; ">
                             			<div class="date-search-form">
@@ -115,6 +115,8 @@
                             			
                             		</form>
                             	</div>
+                                
+                                
                                 <table id="" class="table table-borderless table-striped table-hover" >
                                     <thead class="table-secondary" >
                                         <tr>

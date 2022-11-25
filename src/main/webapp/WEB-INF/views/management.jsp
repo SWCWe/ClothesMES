@@ -224,7 +224,6 @@
     
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">물건등록</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
        
       </div>
