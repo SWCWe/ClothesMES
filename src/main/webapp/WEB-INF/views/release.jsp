@@ -17,6 +17,9 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- jquery 정의 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        
         <style>
         tr{
        
@@ -54,12 +57,9 @@
        	line-height:40px;
        }
        
-
-
-       
-
         </style>
     </head>
+    
     <body class="sb-nav-fixed">
     
     <%
@@ -98,14 +98,14 @@
                             
                             	<!-- 검색 폼 -->
 	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
-	                            		<form action = "" method = "get" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+	                            		<form id="releaseSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
 	                            			<div class="date-search-form">
-	                            				<input id="r_date" type = "date" class =" form-control" name = "date"/>
+	                            				<input id="r_date" type = "date" class =" form-control" name = "r_date">
 	                            			</div>
 	                            	
 	                            			<!-- 담당자 검색 부분 -->
 	                            			<div class="emp_search_form">
-	                            			<select id="name" class="form-select" name="emp_no">
+	                            			<select id="name" class="form-select" name="name">
 	                            				<option selected disabled> 담당자 </option>
 	                            				<!-- 담당자 목록 출력 -->
 	                            				<%for (int i = 0; i < nameList.size(); i++) { %>
@@ -116,7 +116,7 @@
 	                            			
 	                            			<!-- 제품 코드 검색 부분 -->
 	                            			<div class="prod_code_search-form">
-		                            			<select id="prod_code" class="form-select" name="prod_code_search">
+		                            			<select id="prod_code" class="form-select" name="prod_code">
 		                            				<option selected disabled> 제품별 </option>
 	                            				<%for (int i = 0; i < prod_codeList.size(); i++) { %>
 	                            					<option><%=prod_codeList.get(i) %></option>
@@ -126,7 +126,7 @@
 	                            			
 	                            			<!-- 주문 순번 검색 부분 -->
 	                            			<div class="order_seq_search-form">
-		                            			<select id="order_seq" class="form-select" name="order_code_search">
+		                            			<select id="order_seq" class="form-select" name="order_seq">
 		                            				<option selected disabled> 주문 순번별 </option>
 	                            				<%for (int i = 0; i < order_seqList.size(); i++) { %>
 	                            					<option><%=order_seqList.get(i) %></option>
@@ -135,7 +135,8 @@
 	                            			</div>
 	                            			
 	                            			<div class="pruduction_form_button">
-	                            				<button id="release_search" type="submit" class="btn btn-light"> 🔍 </button>
+	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
+	                            				
 	                            			</div>
 	                            			
 	                            		</form>
@@ -213,43 +214,30 @@
 
 		
 			/* 출고 정보 검색 기능 */
-			$('#release_search').on("click", function() {
-				var r_date = $("#r_date").val();
-				var name = $("#name").val();
-				var prod_code = $("#prod_code").val();
-				var order_seq = $("#order_seq").val();
-				
+			
+			// form에서 전송한 데이터를 받아 검색 내용을 조회하는 함수
+			function releaseSearch () {
+				// form에서 전송한 데이터를 json 형태로 저장
+				var frmData = $("#releaseSearch").serialize();
+
 				// ajax를 통해 searchRelease.do라는 곳으로 입력한 데이터를 보내 select하고
 				// 검색 결과 보여주기
 				$.ajax({
 					url : "searchRelease.do",
 					type : "POST",
-					data : {"r_date" : r_date, 
-							"name" : name, 
-							"prod_code" : prod_code, 
-							"order_seq" : order_seq},
+					data : frmData,
 					dataType : "JSON",
-					success : SearchReleaseList,
+					success : searchReleaseList,
 					error : function(e){
 						console.log(e);
 					}
 				});
-			});
+			};
 			
-			function SearchReleaseList() {
-				$.ajax({
-					url: "searchReleaseList.do",
-					method : "POST",
-					dataType : "JSON",
-					success : searchReleaseListResult,
-					error : function(e) {
-						console.log(e)
-					}
-				});
-			}
-			
-			function releaseListResult(data) {
-				
+			// 조회 결과를 받아 화면에 보여주는 함수?
+			function searchReleaseList(data) {
+				console.log("data: " + data[0].order_seq);
+				// 여기까지는 데이터가 잘 들어옴
 			}
 		
 		</script>
@@ -276,7 +264,7 @@
         
  	
 		<!-- release.js와 연결 -->
-		<script src="${path}/resources/js/release.js"></script>
+		<!-- <script src="${path}/resources/js/release.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${path}/resources/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

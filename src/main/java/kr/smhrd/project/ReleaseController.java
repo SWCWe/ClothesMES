@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.entity.ReleaseVO;
 import kr.smhrd.mapper.ReleaseMapper;
@@ -21,7 +19,7 @@ public class ReleaseController {
 
 	// 페이지 로드할 때 DB에서 데이터 가져오기
 	@RequestMapping("/release.do")
-	public String release(Model model) {
+	public void release(Model model) {
 		// 출고정보 가져오기
 		List<ReleaseVO> list = mapper.releaseList();
 		model.addAttribute("list", list);
@@ -37,8 +35,6 @@ public class ReleaseController {
 		// 주문 순번 중복없이 가져오기
 		List<String> order_seqList = mapper.releaseOrder_seqList();
 		model.addAttribute("order_seqList", order_seqList);
-		
-		return "release";
 	}
 
 	

@@ -1,5 +1,5 @@
 /** 출고 정보 검색 기능 **/
-$('#release_search').on("click", function() {
+/** $('#release_search').on("click", function() {
 	var r_date = $("#r_date").val();
 	var name = $("#name").val();
 	var prod_code = $("#prod_code").val();
@@ -30,7 +30,7 @@ $('#release_search').on("click", function() {
 			console.log(e);
 		}
 	});
-}
+} **/
 
 /** 검색한 내용 보여주는 기능 **/
 function searchReleaseResult(data) {

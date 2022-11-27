@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,29 +24,31 @@ public class RestReleaseController {
 		String prod_code = releaseVO.getProd_code();
 		int order_seq = releaseVO.getOrder_seq();
 		
+		System.out.println("r_date" + r_date);
+		System.out.println("name" + name);
+		System.out.println("prod_code" + prod_code);
+		System.out.println("order_seq" + order_seq);
+		System.out.println(r_date.isEmpty());
+		
+		// 입력된 값들만 조건식 써주기
 		String releaseQuery = "";
-		if (r_date != null) {
-			releaseQuery += "and r.r_date = " + r_date;
+		if (r_date.isEmpty() == false) { // 날짜가 비어있지 않다면
+			releaseQuery += "and date(r.r_date) = '" + r_date + "'";
 		}
 		if (name != null) {
-			releaseQuery += "and m.name = " + name;
+			releaseQuery += "and m.name = '" + name + "'";
 		}
 		if (prod_code != null) {
-			releaseQuery += "and r.prod_code = " + prod_code;
+			releaseQuery += "and r.prod_code = '" + prod_code + "'";
 		}
 		if (order_seq > 0) {
 			releaseQuery += "and r.order_seq = " + order_seq;
 		}
 		
-		List<ReleaseVO> searchReleaseList = mapper.searchReleaseList(releaseQuery);
-		return searchReleaseList;	
+		System.out.println("쿼리" + releaseQuery);
+		
+		List<ReleaseVO> searchRelease = mapper.searchReleaseList(releaseQuery);
+		return searchRelease;	
 	}
-	
-	@RequestMapping("/searchReleaseList.do")
-	public List<ReleaseVO> searchReleaseList() {
-		List<ReleaseVO> searchReleaseList = mapper.releaseList();
-		return searchReleaseList;
-	}
-
 	
 }
