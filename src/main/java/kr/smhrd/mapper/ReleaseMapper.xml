@@ -28,8 +28,11 @@
         from t_release
     </select>
     
-    <!-- 검색 내용 가져오기 -->
-    <select id="searchRelease" resultType="kr.smhrd.entity.ReleaseVO">
+    <!-- 검색 내용 가져오기(조건 부분 쿼리 통째로 삽입) -->
+    <select id="searchRelease" parameterType="String" resultType="kr.smhrd.entity.ReleaseVO">
+        select r.r_seq, r.prod_code, r.r_date, r.r_cnt, r.order_seq, r.prod_rack, m.name
+        from t_release r, t_member m
+        where r.emp_no = m.emp_no
         #{releaseQuery}
     </select>
     

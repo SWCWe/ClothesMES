@@ -74,8 +74,6 @@
     	
     	// 주문 순번(중복X)
     	List<String> order_seqList = (List<String>) request.getAttribute("order_seqList");
-    
-    
     %>
     
  <%@ include file="nav-top.jsp" %>
@@ -100,7 +98,7 @@
                             
                             	<!-- 검색 폼 -->
 	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
-	                            		<form id="release_search" action = "" method = "get" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+	                            		<form action = "" method = "get" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
 	                            			<div class="date-search-form">
 	                            				<input id="r_date" type = "date" class =" form-control" name = "date"/>
 	                            			</div>
@@ -137,7 +135,7 @@
 	                            			</div>
 	                            			
 	                            			<div class="pruduction_form_button">
-	                            				<button type="submit" class="btn btn-light"> 🔍 </button>
+	                            				<button id="release_search" type="submit" class="btn btn-light"> 🔍 </button>
 	                            			</div>
 	                            			
 	                            		</form>
@@ -155,7 +153,6 @@
                                             <th scope="col">주문 순번</th>
                                             <th scope="col">담당자</th>
                                             <th scope="col">보관 장소</th>
-                                    
                                         </tr>
                                     </thead>
            
@@ -211,18 +208,53 @@
                                     </tbody>
                                 </table>
 
-		<script>
+		<script type="text/javascript">
 		
-			
+
 		
 			/* 출고 정보 검색 기능 */
+			$('#release_search').on("click", function() {
+				var r_date = $("#r_date").val();
+				var name = $("#name").val();
+				var prod_code = $("#prod_code").val();
+				var order_seq = $("#order_seq").val();
+				
+				// ajax를 통해 searchRelease.do라는 곳으로 입력한 데이터를 보내 select하고
+				// 검색 결과 보여주기
+				$.ajax({
+					url : "searchRelease.do",
+					type : "POST",
+					data : {"r_date" : r_date, 
+							"name" : name, 
+							"prod_code" : prod_code, 
+							"order_seq" : order_seq},
+					dataType : "JSON",
+					success : SearchReleaseList,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			});
 			
+			function SearchReleaseList() {
+				$.ajax({
+					url: "searchReleaseList.do",
+					method : "POST",
+					dataType : "JSON",
+					success : searchReleaseListResult,
+					error : function(e) {
+						console.log(e)
+					}
+				});
+			}
+			
+			function releaseListResult(data) {
+				
+			}
 		
 		</script>
 										
-
-								
-								
+	
                             </div>
                         </div>
                     </div>

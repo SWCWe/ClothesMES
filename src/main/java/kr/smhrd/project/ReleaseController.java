@@ -2,6 +2,8 @@ package kr.smhrd.project;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,7 @@ import kr.smhrd.mapper.ReleaseMapper;
 @Controller
 public class ReleaseController {
 	
-	@Autowired
+	@Inject // Autowired 대신 호환이 잘 되는 Inject를 쓰는 추세
 	private ReleaseMapper mapper;
 
 	// 페이지 로드할 때 DB에서 데이터 가져오기
@@ -38,14 +40,7 @@ public class ReleaseController {
 		
 		return "release";
 	}
-	
-	// 출고 정보 검색 기능(비동기)
-	@RequestMapping("/searchRelease.do")
-	public @ResponseBody String searchRelease(Model model) {
-	
-		List<ReleaseVO> searchReleaseList = mapper.searchReleaseList(releaseQuery);
-		return "searchRelease";
-	}
+
 	
 	
 	
