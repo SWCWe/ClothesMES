@@ -147,33 +147,38 @@
                                 <table class="table table-borderless table-striped table-hover" >
                                     <thead class="table-secondary" >
                                         <tr>
-                                        	<th scope="col"><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></th>
-                                            <th scope="col">출고 순번</th>
-                                            <th scope="col">제품 코드</th>
-                                            <th scope="col">출고 일자</th>
-                                            <th scope="col">출고 수량</th>
-                                            <th scope="col">주문 순번</th>
-                                            <th scope="col">담당자</th>
-                                            <th scope="col">보관 장소</th>
+                                        	<th style="width:5%;" scope="col"><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></th>
+                                            <th style="width:10%;" scope="col">출고 순번</th>
+                                            <th style="width:12.5%;" scope="col">제품 코드</th>
+                                            <th style="width:12.5%;" scope="col">출고 일자</th>
+                                            <th style="width:10%;" scope="col">출고 수량</th>
+                                            <th style="width:10%;" scope="col">주문 순번</th>
+                                            <th style="width:12.5%;" scope="col">담당자</th>
+                                            <th style="width:12.5%;" scope="col">보관 장소</th>
+                                            <th style="width:1%;" scope="col"></th>
                                         </tr>
                                     </thead>
-           
-                                   	<!-- 출고 목록 보기 기능 -->
-                                    <tbody id="releaseList">
-                                    	<c:forEach items="${list}" var="release" varStatus="i">
-                                    	<tr>
-                                    		<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
-                                    		<td>${release.r_seq}</td>
-                                    		<td>${release.prod_code}</td>
-                                    		<td>${release.r_date}</td>
-                                    		<td>${release.r_cnt}</td>
-                                    		<td>${release.order_seq}</td>
-                                    		<td>${release.name}</td>
-                                    		<td>${release.prod_rack}</td>
-                                    	</tr>
-                                    	</c:forEach>
-                                   	</tbody>
-                               	</table>
+                                 </table>
+                                 
+                                 <div style="overflow-y:scroll; width:100%; height:300px; text-align:center;">
+	           						<table class="table table-borderless table-striped table-hover" >
+	                                   	<!-- 출고 목록 보기 기능 -->
+	                                    <tbody id="releaseList">
+	                                    	<c:forEach items="${list}" var="release" varStatus="i">
+	                                    	<tr>
+	                                    		<td style="width:5%;"><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
+	                                    		<td style="width:10%;">${release.r_seq}</td>
+	                                    		<td style="width:12.5%;">${release.prod_code}</td>
+	                                    		<td style="width:12.5%;">${release.r_date}</td>
+	                                    		<td style="width:10%;">${release.r_cnt}</td>
+	                                    		<td style="width:10%;">${release.order_seq}</td>
+	                                    		<td style="width:12.5%;">${release.name}</td>
+	                                    		<td style="width:12.5%;">${release.prod_rack}</td>
+	                                    	</tr>
+	                                    	</c:forEach>
+	                                   	</tbody>
+	                               	</table>
+                               	</div>
                                	
                                	<!-- 출고 정보 추가 폼 -->
                                	<form id="releaseInsert" method="post">
@@ -219,6 +224,8 @@
                                         			</select>
                                         		</td>
                                         		
+                                        		<td style="width:1%;" scope="col"></td>
+                                        		
 	                                        </tr>
 	                                    </tbody>
 	                                </table>
@@ -253,13 +260,13 @@
 				for (var i = 0; i < data.length; i++) {
 					html += "<tr>";
 					html += "<td><input class='form-check-input' type = 'checkbox' value id = 'flex-CheckChecked'></td>";
-					html += "<td>" + data[i].r_seq + "</td>";	
-					html += "<td>" + data[i].prod_code + "</td>";	
-					html += "<td>" + data[i].r_date + "</td>";	
-					html += "<td>" + data[i].r_cnt + "</td>";	
-					html += "<td>" + data[i].order_seq + "</td>";	
-					html += "<td>" + data[i].name + "</td>";	
-					html += "<td>" + data[i].prod_rack + "</td>";
+					html += "<td style='width:5%;'>" + data[i].r_seq + "</td>";	
+					html += "<td style='width:10%;'>" + data[i].prod_code + "</td>";	
+					html += "<td style='width:12.5%;'>" + data[i].r_date + "</td>";	
+					html += "<td style='width:12.5%;'>" + data[i].r_cnt + "</td>";	
+					html += "<td style='width:10%;'>" + data[i].order_seq + "</td>";	
+					html += "<td style='width:10%;'>" + data[i].name + "</td>";	
+					html += "<td style='width:12.5%;'>" + data[i].prod_rack + "</td>";
 					html += "</tr>";
 				}
 				// id가 "releaseList"인 <tbody>안의 html 교체
