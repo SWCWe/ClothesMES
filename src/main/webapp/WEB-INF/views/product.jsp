@@ -114,7 +114,7 @@
             <div id="layoutSidenav_content" class="mt-2">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">제품 목록 🎁</h1>
+                        <h1 class="mt-4">제품 목록 👕</h1>
                         
                         <div class="card mb-4">
                
