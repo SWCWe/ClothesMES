@@ -11,6 +11,7 @@
                                     <a class="nav-link" href="production.do">💫 생산관리</a>
                                     <a class="nav-link" href="user.do">📝 회원관리</a>
                                     <a class="nav-link" href="order.do">🧚‍♀️ 주문관리</a>
+                                    <a class="nav-link" href="product.do">🎁 제품관리</a>
                                     <a class="nav-link" href="notice.do">✔ 공지사항</a>
                                     <a class="nav-link" href="schedule.do">🗓 일정관리</a>
                                 </nav>

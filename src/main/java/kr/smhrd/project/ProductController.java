@@ -27,4 +27,11 @@ public class ProductController {
 		model.addAttribute("list",list);
 		return "product";
 	}
+	
+	@RequestMapping("/prod_insert.do")
+	public String prod_insert(ProductDAO proddao) {
+		System.out.println(proddao.toString());
+		mapper.prod_insert(proddao);
+		return "redirect:/product.do";
+	}
 }
