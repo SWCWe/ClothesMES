@@ -4,7 +4,7 @@
 <%@ page import="java.util.*"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="UTF-8">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -53,7 +53,7 @@
                                         	<th>주문 순번</th>
                                             <th>주문 날짜</th>
                                             <th>주문 아이디</th>
-                                            <th>결제 금액</th>
+                                          
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -61,35 +61,27 @@
                                         	<th>주문 순번</th>
                                             <th>주문 날짜</th>
                                             <th>주문 아이디</th>
-                                            <th>결제 금액</th>
                                        
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr onclick="location.href='order_view.do'" style="cursor:pointer">
-                                            <td>1</td>
-                                            <td>2022-11-22</td>
-                                            <td>dandy123</td>
-                                            <td>30,000</td>
-                                   
-                                 
-                                        </tr>
-                                        <tr onclick="location.href='order_view.do'" style="cursor:pointer">
-											<td>2</td>
-                                            <td>2022-11-22</td>
-                                            <td>dandy123</td>
-                                            <td>30,000</td>
-                                
-                                        </tr>
-                                        <tr onclick="location.href='order_view.do'" style="cursor:pointer">
-											<td>3</td>
-                                            <td>2022-11-22</td>
-                                            <td>dandy123</td>
-                                            <td>30,000</td>
-                              
-                                        </tr>
-                                      
-                                 
+                                        <!-- 여기 부터 바꿨음. -->
+                                        <c:forEach items = "${list}" var="OrderVO" varStatus="i">
+                                        	<tr>
+                                        	<!--
+                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_seq}</a></td>
+                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_date}</a></td>
+                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.cus_id}</a></td>
+                                        	-->
+                                        	
+                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_seq}</a></td>
+                                        		<td>${OrderVO.order_date}</td>
+                                        		<td>${OrderVO.cus_id}</td>
+                                        	
+                                        	</tr>
+                                        </c:forEach>
+                                      	
+                                 		<!-- 여기까지 바꿨음. -->
                                     </tbody>
                                 </table>
       
