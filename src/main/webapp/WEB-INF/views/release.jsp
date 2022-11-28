@@ -99,8 +99,29 @@
                             	<!-- 검색 폼 -->
 	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
 	                            		<form id="releaseSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+	                            			
+	                            			<!-- 제품 코드 검색 부분 -->
+	                            			<div class="prod_code_search-form">
+		                            			<select id="prod_code" class="form-select" name="prod_code">
+		                            				<option selected disabled> 제품별 </option>
+	                            				<%for (int i = 0; i < prod_codeList.size(); i++) { %>
+	                            					<option><%=prod_codeList.get(i) %></option>
+	                            				<%} %>
+		                            			</select>
+	                            			</div>
+	                            			
 	                            			<div class="date-search-form">
 	                            				<input id="r_date" type = "date" class =" form-control" name = "r_date">
+	                            			</div>
+	                            			
+	                            			<!-- 주문 순번 검색 부분 -->
+	                            			<div class="order_seq_search-form">
+		                            			<select id="order_seq" class="form-select" name="order_seq">
+		                            				<option selected disabled> 주문 순번별 </option>
+	                            				<%for (int i = 0; i < order_seqList.size(); i++) { %>
+	                            					<option><%=order_seqList.get(i) %></option>
+	                            				<%} %>
+		                            			</select>
 	                            			</div>
 	                            	
 	                            			<!-- 담당자 검색 부분 -->
@@ -114,36 +135,16 @@
 	                            			</select>
 	                            			</div>
 	                            			
-	                            			<!-- 제품 코드 검색 부분 -->
-	                            			<div class="prod_code_search-form">
-		                            			<select id="prod_code" class="form-select" name="prod_code">
-		                            				<option selected disabled> 제품별 </option>
-	                            				<%for (int i = 0; i < prod_codeList.size(); i++) { %>
-	                            					<option><%=prod_codeList.get(i) %></option>
-	                            				<%} %>
-		                            			</select>
-	                            			</div>
-	                            			
-	                            			<!-- 주문 순번 검색 부분 -->
-	                            			<div class="order_seq_search-form">
-		                            			<select id="order_seq" class="form-select" name="order_seq">
-		                            				<option selected disabled> 주문 순번별 </option>
-	                            				<%for (int i = 0; i < order_seqList.size(); i++) { %>
-	                            					<option><%=order_seqList.get(i) %></option>
-	                            				<%} %>
-		                            			</select>
-	                            			</div>
-	                            			
+	                            			<!-- 검색 버튼 -->
 	                            			<div class="pruduction_form_button">
 	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
-	                            				
 	                            			</div>
 	                            			
 	                            		</form>
 	                            	</div>
                             
                             
-                                <table id="" class="table table-borderless table-striped table-hover" >
+                                <table class="table table-borderless table-striped table-hover" >
                                     <thead class="table-secondary" >
                                         <tr>
                                         	<th scope="col"><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></th>
@@ -157,9 +158,8 @@
                                         </tr>
                                     </thead>
            
-                                    <tbody>
-                                    
-                                    	<!-- 출고 목록 보기 기능 -->
+                                   	<!-- 출고 목록 보기 기능 -->
+                                    <tbody id="releaseList">
                                     	<c:forEach items="${list}" var="release" varStatus="i">
                                     	<tr>
                                     		<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
@@ -172,72 +172,132 @@
                                     		<td>${release.prod_rack}</td>
                                     	</tr>
                                     	</c:forEach>
-<!--                                                     
-                                        
-                                       <!-- 추가 폼  -->
-                                        <tr class="table-warning">
-                                        	<form action ="" method = "get">
-                                        		<td style="width:12.5%;"></td>
-                                        		<td style="width:12.5%;"><input type="submit" class="btn btn-primary btn-sm" value="추가"> </td>
+                                   	</tbody>
+                               	</table>
+                               	
+                               	<!-- 출고 정보 추가 폼 -->
+                               	<form id="releaseInsert" method="post">
+	                               	<table class="table table-borderless table-striped table-hover">
+	                                   	<tbody>
+                                        	<tr class="table-warning">
+                                        	
+                                        		<td style="width:5%;"></td>
                                         		
-                                        		<td style="width:12.5%%">
+                                        		<td style="width:10%;">
+                                        			<input onclick="releaseInsert()" type="submit" class="btn btn-primary btn-sm" value="추가">
+                                        		</td>
+                                        		
+                                        		<td style="width:12.5%">
                                         			<select class="custom_select" name = "prod_code">
                                         				<option selected disabled> 코드 선택 </option>
                                         				<option value=""> AD1234 </option>
                                         				<option value=""> AD1235 </option>
                                         			</select>
                                         		</td>
-                                        		<td style="width:12.5%%;">
+                                        		
+                                        		<td style="width:12.5%;">
                      									<input type="date"/>
-                                        				
-                                       
-                                        			
                                         		</td>
-                                        		<td style="width:12.5%%;">
-                                        		<input type="text" class="custom_select" placeholder = "수량입력" name="m_cnt"/>
+                                        		
+                                        		<td style="width:10%;">
+                                        			<input type="text" class="custom_select" placeholder = "출고 수량" name="m_cnt"/>
                                         		</td>
-                                        		<td style="width:12.5%%;" >
+                                        		
+                                        		<td style="width:10%;">
+                                        			<input type="text" class="custom_select" placeholder = "주문 순번" name="m_cnt"/>
+                                        		</td>
+                                        		
+                                        		<td style="width:12.5%;" >
+                                        			<input type="text" class="custom_select" placeholder = "담당자" name="m_cnt"/>
+                                        		</td>
+                                        		
+                                        		<td style="width:12.5%;" >
                                         			<select class="custom_select" name="emp_no">
-                                        				<option selected disabled> 담당자 </option>
+                                        				<option selected disabled> 보관 장소 </option>
                                         				<option value=""> 이철원 </option>
                                         				<option value="emp_no"> 윤예지 </option>
                                         			</select>
                                         		</td>
-                                        
-                                        	</form>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                        		
+	                                        </tr>
+	                                    </tbody>
+	                                </table>
+                                </form>
 
 		<script type="text/javascript">
-		
-
 		
 			/* 출고 정보 검색 기능 */
 			
 			// form에서 전송한 데이터를 받아 검색 내용을 조회하는 함수
-			function releaseSearch () {
+			function releaseSearch() {
 				// form에서 전송한 데이터를 json 형태로 저장
 				var frmData = $("#releaseSearch").serialize();
 
 				// ajax를 통해 searchRelease.do라는 곳으로 입력한 데이터를 보내 select하고
-				// 검색 결과 보여주기
+				// releaseList로 data 보냄
 				$.ajax({
 					url : "searchRelease.do",
 					type : "POST",
 					data : frmData,
 					dataType : "JSON",
-					success : searchReleaseList,
+					success : releaseList,
 					error : function(e){
 						console.log(e);
 					}
 				});
 			};
 			
-			// 조회 결과를 받아 화면에 보여주는 함수?
-			function searchReleaseList(data) {
-				console.log("data: " + data[0].order_seq);
-				// 여기까지는 데이터가 잘 들어옴
+			// 조회 결과를 받아 화면에 보여주는 함수
+			function releaseList(data) {
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<tr>";
+					html += "<td><input class='form-check-input' type = 'checkbox' value id = 'flex-CheckChecked'></td>";
+					html += "<td>" + data[i].r_seq + "</td>";	
+					html += "<td>" + data[i].prod_code + "</td>";	
+					html += "<td>" + data[i].r_date + "</td>";	
+					html += "<td>" + data[i].r_cnt + "</td>";	
+					html += "<td>" + data[i].order_seq + "</td>";	
+					html += "<td>" + data[i].name + "</td>";	
+					html += "<td>" + data[i].prod_rack + "</td>";
+					html += "</tr>";
+				}
+				// id가 "releaseList"인 <tbody>안의 html 교체
+				$('#releaseList').html(html);
+			}
+			
+			/* 출고 정보 추가 기능 */
+			
+			// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
+			function releaseInsert() {
+				// form에서 전송한 데이터를 json 형태로 저장
+				var frmData = $("releaseInsert").serialize();
+				
+				// ajax를 통해 insertRelease.do라는 곳으로 입력한 데이터를 보내 insert하고
+				// ReleaseList로 data 보냄
+				$.ajax({
+					url : "insertRelease.do",
+					type : "POST",
+					data : frmData,
+					dataType : "JSON",
+					success : releaseLoad,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+			
+			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
+			function releaseLoad() {
+				$a.jac({
+					url : "loadRelease.do",
+					method : "POST",
+					dataType : "JSON",
+					success : releaseList,
+					error : function(e){
+						console.log(e);
+					}
+				});
 			}
 		
 		</script>

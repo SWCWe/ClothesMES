@@ -36,5 +36,15 @@
         ${releaseQuery}
     </select>
     
+    <!-- 출고 정보 추가하기 -->
+    <insert id="insertReleaseList" parameterType="kr.smhrd.entity.ReleaseVO">
+        insert into t_release(prod_code, r_cnt, order_seq, prod_rack, emp_no)
+        values (#{prod_code}, #{r_cnt}, #{order_seq}, #{prod_rack}, 
+        		<!-- 담당자 이름을 사번으로 바꾸어 저장해야 하므로 서브쿼리 사용 -->
+        		(select distinct r.emp_no
+        		from t_release r, t_member m
+        		where r.emp_no = m.emp_no
+        		and m.name = #{name}))
+    </insert>
     
 </mapper>

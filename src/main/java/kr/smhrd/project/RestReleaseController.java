@@ -24,12 +24,6 @@ public class RestReleaseController {
 		String prod_code = releaseVO.getProd_code();
 		int order_seq = releaseVO.getOrder_seq();
 		
-		System.out.println("r_date" + r_date);
-		System.out.println("name" + name);
-		System.out.println("prod_code" + prod_code);
-		System.out.println("order_seq" + order_seq);
-		System.out.println(r_date.isEmpty());
-		
 		// 입력된 값들만 조건식 써주기
 		String releaseQuery = "";
 		if (r_date.isEmpty() == false) { // 날짜가 비어있지 않다면
@@ -49,6 +43,21 @@ public class RestReleaseController {
 		
 		List<ReleaseVO> searchRelease = mapper.searchReleaseList(releaseQuery);
 		return searchRelease;	
+	}
+	
+	// 출고 정보 추가 기능
+	@RequestMapping("/insertRelease.do")
+	public List<ReleaseVO> insertRelease(ReleaseVO releaseVO) {
+		
+		List<ReleaseVO> insertRelease = mapper.insertReleaseList(releaseVO);
+		return insertRelease;
+	}
+	
+	// 출고 정보 불러오기 기능(비동기)
+	@RequestMapping("/loadRelease.do")
+	public List<ReleaseVO> loadRelease() {
+		List<ReleaseVO> loadRelease = mapper.releaseList();
+		return loadRelease;
 	}
 	
 }

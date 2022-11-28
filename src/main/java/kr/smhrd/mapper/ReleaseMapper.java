@@ -16,4 +16,6 @@ public interface ReleaseMapper {
 
 	List<ReleaseVO> searchReleaseList(String releaseQuery);
 
+	List<ReleaseVO> insertReleaseList(ReleaseVO releaseVO);
+
 }
