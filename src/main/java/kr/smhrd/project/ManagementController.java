@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-
-
-
-
-
 @Controller
 public class ManagementController {
 
@@ -29,15 +24,18 @@ public class ManagementController {
 		return "management";
 	}
 	
-	@RequestMapping("/order.do")
-	public String order() {
-		return "order";
-	}
+// 주석처리(철원)
+//	@RequestMapping("/order.do")
+//	public String order() {
+//		System.out.println("완료");
+//		return "order";
+//	}
 	
-	@RequestMapping("/order_view.do")
-	public String order_view() {
-		return "order_view";
-	}
+// 주석처리(철원)
+//	@RequestMapping("/order_view.do")
+//	public String order_view() {
+//		return "order_view";
+//	}
 	
 	
 	
