@@ -51,14 +51,19 @@
                                     <thead>
                                         <tr class="table-secondary">
                                         	<th>주문 순번</th>
+                                        	<th>주문 상세</th>
+                                        
                                             <th>주문 날짜</th>
+                                            
                                             <th>주문 아이디</th>
+                                            
                                           
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                         	<th>주문 순번</th>
+                                        	<th>주문 상세</th>
                                             <th>주문 날짜</th>
                                             <th>주문 아이디</th>
                                        
@@ -75,6 +80,7 @@
                                         	-->
                                         	
                                         		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_seq}</a></td>
+                                        		<td>click</td>
                                         		<td>${OrderVO.order_date}</td>
                                         		<td>${OrderVO.cus_id}</td>
                                         	
@@ -84,6 +90,100 @@
                                  		<!-- 여기까지 바꿨음. -->
                                     </tbody>
                                 </table>
+      
+      <!--  검색기능 추가하기  -->
+      
+      		<script type="text/javascript">
+		
+			/* 출고 정보 검색 기능 */
+			
+			// form에서 전송한 데이터를 받아 검색 내용을 조회하는 함수
+			function releaseSearch() {
+				// form에서 전송한 데이터를 json 형태로 저장
+				var frmData = $("#releaseSearch").serialize();
+
+				// ajax를 통해 searchRelease.do라는 곳으로 입력한 데이터를 보내 select하고
+				// releaseList로 data 보냄
+				$.ajax({
+					url : "searchRelease.do",
+					type : "POST",
+					data : frmData,
+					dataType : "JSON",
+					success : releaseList,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			};
+			
+			// 조회 결과를 받아 화면에 보여주는 함수
+			function releaseList(data) {
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<tr>";
+					html += "<td><input class='form-check-input' type = 'checkbox' value id = 'flex-CheckChecked'></td>";
+					html += "<td>" + data[i].r_seq + "</td>";	
+					html += "<td>" + data[i].prod_code + "</td>";	
+					html += "<td>" + data[i].r_date + "</td>";	
+					html += "<td>" + data[i].r_cnt + "</td>";	
+					html += "<td>" + data[i].order_seq + "</td>";	
+					html += "<td>" + data[i].name + "</td>";	
+					html += "<td>" + data[i].prod_rack + "</td>";
+					html += "</tr>";
+				}
+				// id가 "releaseList"인 <tbody>안의 html 교체
+				$('#releaseList').html(html);
+			}
+			
+			/* 출고 정보 추가 기능 */
+			
+			// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
+			function releaseInsert() {
+				// form에서 전송한 데이터를 json 형태로 저장
+				var frmData = $("releaseInsert").serialize();
+				
+				// ajax를 통해 insertRelease.do라는 곳으로 입력한 데이터를 보내 insert하고
+				// ReleaseList로 data 보냄
+				$.ajax({
+					url : "insertRelease.do",
+					type : "POST",
+					data : frmData,
+					dataType : "JSON",
+					success : releaseLoad,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+			
+			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
+			function releaseLoad() {
+				$a.jac({
+					url : "loadRelease.do",
+					method : "POST",
+					dataType : "JSON",
+					success : releaseList,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+		
+		</script>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
                             </div>
                         </div>
