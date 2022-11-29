@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
-@RequiredArgsConstructor
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

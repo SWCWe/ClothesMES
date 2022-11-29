@@ -6,8 +6,5 @@
         select * from t_product
     </select>
     
-    <insert id ="" parameterTyper = "kr.smhrd.entity.productionVO">
-        insert into t_product(prod_code, prod_name, prod_cnt, prod_m_date, prod_rack)
-        values(#{prod_code} ,#{prod_name},#{prod_cnt},#{prod_m_date},#{prod_rack})
-    </insert>
+ 
 </mapper>
