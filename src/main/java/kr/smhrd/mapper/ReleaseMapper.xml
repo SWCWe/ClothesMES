@@ -38,13 +38,57 @@
     
     <!-- 출고 정보 추가하기 -->
     <insert id="insertReleaseList" parameterType="kr.smhrd.entity.ReleaseVO">
-        insert into t_release(prod_code, r_cnt, order_seq, prod_rack, emp_no)
-        values (#{prod_code}, #{r_cnt}, #{order_seq}, #{prod_rack}, 
+        insert into t_release(prod_code, r_cnt, order_seq, r_date, emp_no, prod_rack)
+        values (#{prod_code}, #{r_cnt}, #{order_seq}, ${r_date},
         		<!-- 담당자 이름을 사번으로 바꾸어 저장해야 하므로 서브쿼리 사용 -->
         		(select distinct r.emp_no
         		from t_release r, t_member m
         		where r.emp_no = m.emp_no
-        		and m.name = #{name}))
+        		and m.name = #{name}),
+        		<!-- 제품 코드에 따른 제품 보관 장소를 저장해야 하므로 -->
+        		(select distinct p.prod_rack
+        		from t_product p, t_order_detail d
+        		where p.prod_code = d.prod_code
+        		and d.prod_code = #{prod_code}))
     </insert>
+    
+    <!-- 출고 정보 삭제하기 -->
+    <delete id="deleteReleaseList" parameterType="kr.smhrd.entity.ReleaseVO">
+        delete from t_release
+        where r_seq = #{r_seq}
+    </delete>
+    
+    <!-- 주문, 주문 상세 테이블에서 제품 코드 중복없이 가져오기 -->
+    <select id="releaseProd_codePlusList" resultType="String">
+        select distinct prod_code
+        from t_order_detail
+    </select>
+    
+    <!-- 주문, 주문 상세 테이블에서 주문 순번 중복없이 가져오기 -->
+    <select id="releasePlusOrder_seqList" resultType="String">
+        select distinct order_seq
+        from t_order
+    </select>
+    
+    <!-- 주문, 주문 상세 테이블에서 제품 보관 장소 중복없이 가져오기 -->
+    <select id="releasePlusProd_rackList" resultType="String">
+        select distinct p.prod_rack
+        from t_order_detail d, t_product p
+        where d.prod_code = p.prod_code
+    </select>
+    
+    <!-- 주문 순번에 따른 제품 코드 검색 -->
+    <select id="prod_codeChangeList" resultType="String">
+        select distinct prod_code
+        from t_order_detail
+        where order_seq = #{order_seq}
+    </select>
+    
+    <!-- 제품 코드에 따른 주문 순번 검색 -->
+    <select id="order_seqChangeList" resultType="String">
+        select distinct order_seq
+        from t_order_detail
+        where prod_code = #{prod_code}
+    </select>
     
 </mapper>
