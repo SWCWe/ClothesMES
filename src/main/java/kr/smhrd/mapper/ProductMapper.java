@@ -9,12 +9,10 @@ import kr.smhrd.entity.ProductVO;
 public interface ProductMapper {
 
 
-<<<<<<< HEAD
 
-	public void prodInsert(ProductDAO proddao);
-=======
+
+	
 	public List<ProductVO> productList();
->>>>>>> refs/remotes/origin/jin
 
 //	List<String> productNameList();
 //

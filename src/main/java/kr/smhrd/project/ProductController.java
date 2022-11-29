@@ -28,34 +28,6 @@ public class ProductController {
 		List<ProductVO> Plist = mapper.productList();
 		model.addAttribute("list", Plist);
 	}
-<<<<<<< HEAD
-	
-	@RequestMapping("/prodInsert.do")
-	public String prodInsert(ProductDAO proddao) {
-		System.out.println(proddao.toString());
-		mapper.prodInsert(proddao);
-		return "redirect:/product.do";
-=======
-		@RequestMapping("/PsearchList.do")
-		public @ResponseBody List<ProductVO> PsearchList(String search){
-			
-			System.out.println(search);
-			List<ProductVO> list = mapper.PsearchList(search);
-			
-			return list;
-		// 제품이름 이름 중복없이 가져오기
-//		List<String> PnameList = mapper.productNameList();
-//		model.addAttribute("PnameList", PnameList);
-//		
-//		// 출고 제품 코드 중복없이 가져오기
-//		List<String> PcodeList = mapper.product_codeList();
-//		model.addAttribute("PcodeList", PcodeList);
-//		
-//		// 주문 순번 중복없이 가져오기
-//		List<String> LseqList = mapper.lack_seqList();
-//		model.addAttribute("LseqList", LseqList);
->>>>>>> refs/remotes/origin/jin
-	}
 	
 	@RequestMapping("/prodDel.do")
 	public String prodDel(String prod_code) {
