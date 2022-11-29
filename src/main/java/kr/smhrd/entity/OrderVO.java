@@ -19,4 +19,11 @@ public class OrderVO {
 	// 고객 아이디
 	@NonNull private String cus_id;
 	
+	private int od_seq;
+	// 주문 번호
+
+	private String prod_code;
+	// 주문 수량
+	private int od_cnt;
+	
 }
