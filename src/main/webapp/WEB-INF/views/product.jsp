@@ -63,7 +63,7 @@
        	justify-content:center;
        }
        
-       form {
+        .production-search form {
        display:grid; grid-template-columns : 20% 20% 20% 20% 20%; grid-gap:10px;
        }
        
@@ -110,6 +110,7 @@
             table tr {
         	font-size:12px;
         }
+<<<<<<< HEAD
         	div.add table tr input::placeholder{
         		font-size:10px;
         	}
@@ -124,6 +125,9 @@
         
         
     
+=======
+      
+>>>>>>> refs/remotes/origin/jin
         </style>
     </head>
     <body class="sb-nav-fixed">
@@ -150,16 +154,20 @@
                                	<!-- 검색 폼  -->
                                	
                                	<div class="production-search mt-2 mb-4">
-                               	<form id="productSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+                               	<form id="ProductSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
                                	
                             
                             		
-                            			<div class="date-search-form">
-                            				<input type = "date" class =" form-control" name = "date"/>
-                            			</div>
+                            				<div class="date-search-form">
+	                            				<input id="start_r_date" type = "date" class =" form-control" name = "start_r_date">
+	                            			</div>
+	                            			
+	                            			<div class="date-search-form">
+	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
+	                            			</div>
                             	
                             			<div class="emp_search_form">
-                            			<select class="form-select" name="emp_no">
+                            			<select class="form-select" name="prod_code" >
                             				<option selected disabled> 제품코드 </option>
                             				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
                             					<option>${prod.prod_code}</option>
@@ -172,7 +180,7 @@
                             			</div>
                             			
                             			<div class="prod_code_search-form">
-	                            			<select class="form-select" name="emp_no">
+	                            			<select class="form-select" name="prod_rack" id="rack" style="width: 117px;">
                             				<option selected disabled> 보관장소 </option>
                             				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
                             					<option>${prod.prod_rack}</option>
@@ -181,8 +189,8 @@
                             			</div>
                             			
                             			<div class="pruduction_form_button">
-                            				<button type="submit" class="btn btn-light"> 🔍 </button>
-                            				<button type="reset" class="btn btn-light">
+                            				<button type="button" onclick="ProductSearch()" class="btn btn-light"> 🔍 </button>
+                            				<button type="reset" onclick="productLoad()" class="btn btn-light">
                             				<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  </button>
                             			</div>
@@ -213,7 +221,12 @@
                                         </tr>
                                     </thead>
            						</table>
-           						<div style = "overflow-y : scroll; width:100%; height:300px;">
+           						
+           						
+           						
+           						<form id="deleteProduct" method="post">
+           						
+           					     <div style="overflow-y:scroll; width:100%; height:300px; text-align:center;">
            						
            						<!--  table body  -->
            						<table class="table table-borderless table-striped table-hover">
@@ -230,20 +243,43 @@
 	                                            <td style="width:20%;">${prod.prod_cnt}</td>
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
+<<<<<<< HEAD
 	                                            <td style="width:10%;"><button type="button" class="btn btn-secondary btn-sm" onclick="location.href='prodDel.do'">X</button></td>
 	                                 			<td style="width:1%"></td>
+=======
+	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-danger btn-sm">X</button></td>
+	                                 
+>>>>>>> refs/remotes/origin/jin
 	                                        </tr>
                                     	</c:forEach>
                         				
                         			</tbody>
                         			</table>
                         			  </div>
+<<<<<<< HEAD
                         			<div class="add">
+=======
+                        			
+                        				  </form> 
+                        			
+                        			  
+                        		
+                        			  
+                        			  
+                        			  <form id ="ProductInsert" method = "post">
+>>>>>>> refs/remotes/origin/jin
                         			<table  class="table table-borderless table-striped table-hover" >
+                        			
                         				<!--  추가 FORM  -->
                                         
+                                     
+                                        
                                         <tr class="table-warning">
+<<<<<<< HEAD
                                         	<form action ="prodInsert.do" method = "get">
+=======
+                                        	
+>>>>>>> refs/remotes/origin/jin
                                         		
                                         		<td style="width:20%;">
                      
@@ -277,24 +313,74 @@
                                         			
                                         		</td>
                                         		
-                                        		<td style="width:10%;"><input type="submit" class="btn btn-success btn-sm" value="추가"> </td>
+                                        		<td style="width:10%;"><input onclick="ProductInsert()" type="button" class="btn btn-success btn-sm" value="추가"> </td>
                                         
                                         		<td style="width:1%"> </td>
                                         
                                         	
-                                        	</form>
+                                        	
                                         </tr>
                                  
                                 </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
                               </div>
 =======
                               
+=======
+                              </form>
+>>>>>>> refs/remotes/origin/jin
                              
                               
                               <script type="text/javascript">
+                              var html = $("#list").html();
+                              
+                           // form에서 전송한 데이터를 받아 검색 내용을 조회하는 함수
+                  			function ProductSearch() {
+                  				// form에서 전송한 데이터를 json 형태로 저장
+                  				var frmData = $("#ProductSearch").serialize();
+
+                  				// ajax를 통해 searchRelease.do라는 곳으로 입력한 데이터를 보내 select하고
+                  				// releaseList로 data 보냄
+                  				$.ajax({
+                  					url : "ProductRelease.do",
+                  					type : "POST",
+                  					data : frmData,
+                  					dataType : "JSON",
+                  					success : ProductList,
+                  					error : function(e){
+                  						console.log(e);
+                  					}
+                  				});
+                  			};
+                              
+                  		// 조회 결과를 받아 화면에 보여주는 함수
+                			function ProductList(data) {
+                				var html = "";
+                				for (var i = 0; i < data.length; i++) {
+                					html += "<tr>";
+                					html += "";
+                					html += "<td>" + data[i].prod_code + "</td>";	
+                					html += "<td>" + data[i].prod_name + "</td>";	
+                					html += "<td>" + data[i].prod_cnt + "</td>";	
+                					html += "<td>" + data[i].prod_m_date + "</td>";	
+                					html += "<td>" + data[i].prod_rack + "</td>";	
+                					html += "<td><button type='button' class='btn btn-danger btn-sm'>X</button></td>";
+                					
+                					html += "</tr>";
+                				}
+                				// id가 "releaseList"인 <tbody>안의 html 교체
+                				$('#list').html(html);
+                			}
+                  			
+                  			
+                  			
+                              
+                              
+                              
+                  // 제품이름에서 자동완성기능 구현  시작점
 				
-                    var html = $("#list").html();
+                
 				$('#search').on("keyup", function(key){
 					var search = $("#search").val();
 					
@@ -304,7 +390,7 @@
 							type : "POST",
 							data : {"search" : search} ,
 							datatype: "JSON" ,
-							success : resultJSON ,
+							success : ProductList ,
 							error : function(e){
 								console.log(e);
 							}
@@ -317,45 +403,56 @@
 					
 					});
 			
-				
-				
-				$("#show").on("click", function(){
+				/* 제품 정보 추가 기능 */
+				// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
+				function ProductInsert() {
+					// form에서 전송한 데이터를 json 형태로 저장
+					var frmData = $("#ProductInsert").serialize();
 					
+					// ajax를 통해 insertRelease.do라는 곳으로 입력한 데이터를 보내 insert하고
+					// ReleaseList로 data 보냄
 					$.ajax({
-						url : "productList.do",	// 클릭했을때 이동
-						type : "POST",				// POST방식
-						dataType : "JSON",			// JSON 형태로 받아옴
-						success : resultJSON,		// 성공시  resultJSON 함수 실행
-						error : function(e){		// 실패시 오류 표시
+						url : "insertProduct.do",
+						type : "POST",
+						data : frmData,
+						success : productLoad,
+						error : function(e){
 							console.log(e);
 						}
-						
-						
 					});
+				
+				}
+				
+			
+			// 자동완성 기능 종료시점
+			
+			// 삭제 기능
+			function deleteProduct(prod_code) {
+				
+				$.ajax({
+					url : "deleteProduct.do",
+					type : "POST",
+					data : {"prod_code" : prod_code},
+					success : productLoad,
+					error : function(e){
+						console.log(e);
+					}
+				});
+				
+			}
+			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
+			function productLoad() {
+				$.ajax({
+					url : "restProduct.do",
+					success : ProductList,
+					error : function(e){
+						console.log(e);
+					}
 				});
 			
-				
-			function resultJSON(data){   // 회원정보를 data로 받아옴
-				console.log(data);
-			
-				var html = "";
-				
-				for(var i =0; i<data.length; i++){
-					html += "<tr>";
-					html += "";
-					html += "<td>" + data[i].prod_code + "</td>";	
-					html += "<td>" + data[i].prod_name + "</td>";	
-					html += "<td>" + data[i].prod_cnt + "</td>";	
-					html += "<td>" + data[i].prod_m_date + "</td>";	
-					html += "<td>" + data[i].prod_rack + "</td>";	
-					html += "<button type='button' class='btn btn-danger btn-sm'>X</button></td>";
-					
-					html += "</tr>";
-					
-				}
-				html += "</table>";
-				$("#list").html(html);
 			}
+			
+			
 			</script>
 >>>>>>> refs/remotes/origin/jin
 

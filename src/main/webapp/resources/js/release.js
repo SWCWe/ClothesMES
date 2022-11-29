@@ -32,11 +32,11 @@
 	});
 } **/
 
+
+
 /** 검색한 내용 보여주는 기능 **/
 function searchReleaseResult(data) {
 	console.log(data);
-
-
 
 
 
