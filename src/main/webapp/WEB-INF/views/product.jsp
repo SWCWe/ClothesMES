@@ -148,7 +148,7 @@
                             			
                             			<div class="prod_code_search-form">
 	                            			<select class="form-select" name="emp_no">
-                            				<option selected disabled> 제품코드 </option>
+                            				<option selected disabled> 보관장소 </option>
                             				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
                             					<option>${prod.prod_rack}</option>
                             				</c:forEach>
