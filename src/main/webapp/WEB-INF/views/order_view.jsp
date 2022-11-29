@@ -60,7 +60,7 @@
        							<label for = "info_title"> 주문 순번 </label>
        						</div>
        						<div class="col-sm-10">
-       							<input type= "text" class="form-control" value = "1.">
+       							<input type= "text" class="form-control" name="order_seq" value = "${odvo.order_seq}">
        						</div>
        							
        						
@@ -73,7 +73,7 @@
        							<label for = "제품 코드" > 제품코드 </label>
        						</div>
        						<div class="col-sm-10">
-       							<input type= "text" class="form-control" value = "ADD1">
+       							<input type= "text" class="form-control" name="cus_id" value = "${odvo.prod_code}">
        						</div>
        							
        						
@@ -99,7 +99,7 @@
        							<label for = "info_des"> 주문수량 </label>
        						</div>
        						<div class="col-sm-10">
-       							<input type= "text" class="form-control" value = "100">
+       							<input type= "text" class="form-control" value = "${odvo.od_cnt}">
        						</div>
        							
        						
