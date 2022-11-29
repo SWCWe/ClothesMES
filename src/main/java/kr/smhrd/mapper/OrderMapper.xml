@@ -6,8 +6,6 @@
         select * from t_order
     </select>
     
-    <select id="orderSelect" parameterType="int" resultType="kr.smhrd.entity.OrderDetailVO">
-        select * from t_order where order_seq = #{order_seq}
-    </select>
+
     
 </mapper>
