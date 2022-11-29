@@ -7,31 +7,44 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.smhrd.entity.ProductDAO;
+
+
+import kr.smhrd.entity.ProductVO;
 import kr.smhrd.mapper.ProductMapper;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
+
+
 @Controller
-@AllArgsConstructor
 public class ProductController {
 	@Inject
 	private ProductMapper mapper;
 	
 	
 	@RequestMapping("/product.do")
-	public String product(Model model) {
-		List<ProductDAO> list = mapper.product_list();
-		model.addAttribute("list",list);
-		return "product";
+	public void release(Model model) {
+		// 출고정보 가져오기
+		List<ProductVO> Plist = mapper.productList();
+		model.addAttribute("list", Plist);
 	}
-	
-	@RequestMapping("/prod_insert.do")
-	public String prod_insert(ProductDAO proddao) {
-		System.out.println(proddao.toString());
-		mapper.prod_insert(proddao);
-		return "redirect:/product.do";
+		@RequestMapping("/PsearchList.do")
+		public @ResponseBody List<ProductVO> PsearchList(String search){
+			
+			System.out.println(search);
+			List<ProductVO> list = mapper.PsearchList(search);
+			
+			return list;
+		// 제품이름 이름 중복없이 가져오기
+//		List<String> PnameList = mapper.productNameList();
+//		model.addAttribute("PnameList", PnameList);
+//		
+//		// 출고 제품 코드 중복없이 가져오기
+//		List<String> PcodeList = mapper.product_codeList();
+//		model.addAttribute("PcodeList", PcodeList);
+//		
+//		// 주문 순번 중복없이 가져오기
+//		List<String> LseqList = mapper.lack_seqList();
+//		model.addAttribute("LseqList", LseqList);
 	}
 }

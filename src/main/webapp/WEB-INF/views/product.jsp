@@ -16,6 +16,8 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+         <!-- jquery 정의 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <style>
         tr{
        
@@ -127,8 +129,12 @@
                             <div class="card-body">
                                	
                                	<!-- 검색 폼  -->
-                            	<div class="production-search mt-2 mb-4">
-                            		<form action = "" method = "get" class="what">
+                               	
+                               	<div class="production-search mt-2 mb-4">
+                               	<form id="productSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+                               	
+                            
+                            		
                             			<div class="date-search-form">
                             				<input type = "date" class =" form-control" name = "date"/>
                             			</div>
@@ -143,12 +149,12 @@
                             			</div>
                             			
                             			<div class="prod_code_search-form">
-	                            			<input type ="text" class="form-control" placeholder = "제품이름"/>
+	                            			<input type ="text" id ="search"class="form-control" placeholder = "제품이름"/>
                             			</div>
                             			
                             			<div class="prod_code_search-form">
 	                            			<select class="form-select" name="emp_no">
-                            				<option selected disabled> 제품코드 </option>
+                            				<option selected disabled> 보관장소 </option>
                             				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
                             					<option>${prod.prod_rack}</option>
                             				</c:forEach>
@@ -193,7 +199,7 @@
            						<!--  table body  -->
            						<table class="table table-borderless table-striped table-hover">
            						
-                                    <tbody>
+                                    <tbody id="list">
                 		
                         
                         				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
@@ -259,15 +265,77 @@
                                         	
                                         	</form>
                                         </tr>
-                                        
-                                        
                                  
-                                    
                                 </table>
                               
+                             
+                              
+                              <script type="text/javascript">
+				
+                    var html = $("#list").html();
+				$('#search').on("keyup", function(key){
+					var search = $("#search").val();
+					
+					if(search.length >0){
+						$.ajax({
+							url : "PsearchList.do",
+							type : "POST",
+							data : {"search" : search} ,
+							datatype: "JSON" ,
+							success : resultJSON ,
+							error : function(e){
+								console.log(e);
+							}
+							
+						});
+					}else{
+						
+						 $("#list").html(html);
+					}
+					
+					});
+			
+				
+				
+				$("#show").on("click", function(){
+					
+					$.ajax({
+						url : "productList.do",	// 클릭했을때 이동
+						type : "POST",				// POST방식
+						dataType : "JSON",			// JSON 형태로 받아옴
+						success : resultJSON,		// 성공시  resultJSON 함수 실행
+						error : function(e){		// 실패시 오류 표시
+							console.log(e);
+						}
+						
+						
+					});
+				});
+			
+				
+			function resultJSON(data){   // 회원정보를 data로 받아옴
+				console.log(data);
+			
+				var html = "";
+				
+				for(var i =0; i<data.length; i++){
+					html += "<tr>";
+					html += "";
+					html += "<td>" + data[i].prod_code + "</td>";	
+					html += "<td>" + data[i].prod_name + "</td>";	
+					html += "<td>" + data[i].prod_cnt + "</td>";	
+					html += "<td>" + data[i].prod_m_date + "</td>";	
+					html += "<td>" + data[i].prod_rack + "</td>";	
+					html += "<button type='button' class='btn btn-danger btn-sm'>X</button></td>";
+					
+					html += "</tr>";
+					
+				}
+				html += "</table>";
+				$("#list").html(html);
+			}
+			</script>
 
-
-										
 
 								
 								

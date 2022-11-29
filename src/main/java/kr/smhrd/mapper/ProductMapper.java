@@ -2,13 +2,20 @@ package kr.smhrd.mapper;
 
 import java.util.List;
 
-import kr.smhrd.entity.ProductDAO;
+
+import kr.smhrd.entity.ProductVO;
+
 
 public interface ProductMapper {
 
-	public List<ProductDAO> product_list();
 
-	public void prod_insert(ProductDAO proddao);
+	public List<ProductVO> productList();
 
+//	List<String> productNameList();
+//
+//	List<String> product_codeList();
+//
+//	List<String> lack_seqList();
+	public List<ProductVO> PsearchList(String search);
 	
 }
