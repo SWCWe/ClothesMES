@@ -42,7 +42,7 @@
          .custom_select
         {
         
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
+       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:17px; text-align:center;
        }
        
        table input[type=text]:focus,
@@ -208,11 +208,9 @@
 	                            			<div class="pruduction_form_button">
 	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
 	                            			    <button type="reset" onclick="releaseLoad()" class="btn btn-light">
-                            				<i class="fa-solid fa-arrow-rotate-left"></i>
-                            				  </button>
+                            						<i class="fa-solid fa-arrow-rotate-left"></i>
+                            				  	</button>
 	                            			</div>
-	                            			
-	                            		
 	                            			
 	                            		</form>
 	                            	</div>
@@ -223,12 +221,12 @@
                                         <tr>
                                             <th style="width:10%;" scope="col">출고 순번</th>
                                             <th style="width:10%;" scope="col">주문 순번</th>
-                                            <th style="width:15%;" scope="col">제품 코드</th>
-                                            <th style="width:15%;" scope="col">출고 일자</th>
+                                            <th style="width:12.5%;" scope="col">제품 코드</th>
+                                            <th style="width:12.5%;" scope="col">출고 일자</th>
                                             <th style="width:10%;" scope="col">출고 수량</th>
-                                            <th style="width:15%;" scope="col">담당자</th>
-                                            <th style="width:15%;" scope="col">보관 장소</th>
-                                        	<th style="width:6%;" scope="col">삭제</th>
+                                            <th style="width:12.5%;" scope="col">담당자</th>
+                                            <th style="width:12.5%;" scope="col">보관 장소</th>
+                                        	<th style="width:5%;" scope="col">삭제</th>
                                             <th style="width:1%;" scope="col"></th>
                                         </tr>
                                     </thead>
@@ -240,17 +238,16 @@
 		                                   	<!-- 출고 목록 보기 기능 -->
 		                                    <tbody id="releaseList">
 		                                    	<c:forEach items="${list}" var="release" varStatus="i">
-		                                    	<tr>
-		                                    		<td style="width:10%;">${release.r_seq}</td>
-		                                    		<td style="width:10%;">${release.order_seq}</td>
-		                                    		<td style="width:12.5%;">${release.prod_code}</td>
-		                                    		<td style="width:12.5%;">${release.r_date}</td>
-		                                    		<td style="width:10%;">${release.r_cnt}</td>
-		                                    		<td style="width:12.5%;">${release.name}</td>
-		                                    		<td style="width:12.5%;">${release.prod_rack}</td>
-		                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
-		                                    		<td style="width:1%"></td>
-		                                    	</tr>
+			                                    	<tr>
+			                                    		<td style="width:10%;">${release.r_seq}</td>
+			                                    		<td style="width:10%;">${release.order_seq}</td>
+			                                    		<td style="width:12.5%;">${release.prod_code}</td>
+			                                    		<td style="width:12.5%;">${release.r_date}</td>
+			                                    		<td style="width:10%;">${release.r_cnt}</td>
+			                                    		<td style="width:12.5%;">${release.name}</td>
+			                                    		<td style="width:12.5%;">${release.prod_rack}</td>
+			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
+			                                    	</tr>
 		                                    	</c:forEach>
 		                                   	</tbody>
 		                               	</table>
@@ -263,9 +260,7 @@
 	                                   	<tbody>
                                         	<tr class="table-warning">
                                         	
-                                        		<td style="width:10%;">
-                                        		
-                                        		</td>
+                                        		<td style="width:10%;"></td>
                                         		
                                         		<td style="width:10%;">
                                         			<select id="order_seqCategory" onChange="prod_codeChange(this.value)" class="custom_select" name="order_seq">
@@ -294,11 +289,11 @@
                                         			<input type="text" class="custom_select" placeholder = "담당자" name="name"/>
                                         		</td>
                                         		
-                                        		<td style="width:16.5%;">
+                                        		<td style="width:12.5%;">
                                         			<button type="button" onclick="releaseInsert()" class="btn btn-primary btn-sm"> 추가 </button>
                                         		</td>
                                         		
-                                        		<td style="width:1%;" scope="col"></td>
+                                        		<td style="width:6%;" scope="col"></td>
                                         		
 	                                        </tr>
 	                                    </tbody>
