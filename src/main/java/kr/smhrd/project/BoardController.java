@@ -13,11 +13,6 @@ import lombok.Data;
 public class BoardController {
 	
 
-
-
-	
-	
-	
 	@RequestMapping("/notice.do")
 	public String notice() {
 		return "notice";

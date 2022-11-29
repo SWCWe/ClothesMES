@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.ProductionMapper">
+    
+    <select id="productionList" resultType="kr.smhrd.entity.productionVO">
+        select * from t_product
+    </select>
+    
+    <insert id ="" parameterTyper = "kr.smhrd.entity.productionVO">
+        insert into t_product(prod_code, prod_name, prod_cnt, prod_m_date, prod_rack)
+        values(#{prod_code} ,#{prod_name},#{prod_cnt},#{prod_m_date},#{prod_rack})
+    </insert>
+</mapper>

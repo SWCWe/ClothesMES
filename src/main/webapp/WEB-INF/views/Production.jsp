@@ -57,7 +57,7 @@
 
        
 
-        </style>
+    </style>
     </head>
     <body class="sb-nav-fixed">
  <%@ include file="nav-top.jsp" %>
@@ -76,107 +76,67 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                                                           철원이의 생산관리
                             </div>
                             <div class="card-body">
                             
                                 <table id="" class="table table-borderless table-striped table-hover" >
                                     <thead class="table-secondary" >
                                         <tr>
-                                        	<th scope="col"><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></th>
-                                            <th scope="col">생산 순번</th>
                                             <th scope="col">제품 코드</th>
+                                            <th scope="col">제품명</th>
                                             <th scope="col">생산 수량</th>
                                             <th scope="col">생산 일자</th>
-                                            <th scope="col">제품 담당자</th>
-                                    
+                                            <th scope="col">제품 보관 장소</th>
+                                    		<th scope="col">삭제</th>
                                         </tr>
                                     </thead>
            
                                     <tbody>
-                                        <tr>
-                                        	<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
-                                            <td>1</td>
-                                            <td>AD234</td>
-                                            <td>100</td>
-                                            <td>2022-11-23</td>
-                                            <td>이철원</td>
-                                            
-                                 
-                                        </tr>
-                                        <tr>
-                                        	<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
-                                            <td>2</td>
-                                            <td>AD343</td>
-                                            <td>200</td>
-                                            <td>2022-11-24</td>
-                                            <td>이철원</td>
-                                
-                                        </tr>
-                                        <tr>
-                                            <td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
-                                            <td>3</td>
-                                            <td>AD231</td>
-                                            <td>100</td>
-                                            <td>2022-11-26</td>
-                                            <td>이철원</td>
-                              
-                                        </tr>
-                                        <tr>
-                                         	<td><input class="form-check-input" type = "checkbox" value id = "flex-CheckChecked"></td>
-                                            <td>4</td>
-                                            <td>AD2346</td>
-                                            <td>300</td>
-                                            <td>2022-11-28</td>
-                                            <td>이철원</td>
-                           
-                                        </tr>
+         								<!-- list에서 하나씩 꺼내서 변수 product에 담아라 라는 뜻  -->
+                                        <c:forEach items = "${list}" var="product" varStatus="i">
+											<tr>
+												<td>${product.prod_code}</td>
+												<td>${product.prod_name}</td>
+												<td>${product.prod_cnt}</td>
+												<td>${product.prod_m_date}</td>
+												<td>${product.prod_rack}</td>
+												<td><button type = "button" class ="btn btn-danger">x</button></td>
+											</tr>	
+										</c:forEach>
+                                      
                                         
                                         <tr class="table-warning">
                                         	<form action ="" method = "get">
-                                        		<td style="width:10%;"></td>
-                                        		<td style="width:10%;"><input type="submit" class="btn btn-primary btn-sm" value="추가"> </td>
-                                        		
-                                        		<td style="width:20%">
-                                        			<select class="custom_select" name = "prod_code">
-                                        				<option selected disabled> 코드 선택 </option>
-                                        				<option value=""> AD1234 </option>
-                                        				<option value=""> AD1235 </option>
-                                        			</select>
-                                        		</td>
-                                        		<td style="width:20%;">
-                     
-                                        				<input type="text" class="custom_select" placeholder = "수량입력" name="m_cnt"/>
-                                       
-                                        			
-                                        		</td>
-                                        		<td style="width:20%;">
-                                        		<input type="date"/>
-                                        		</td>
-                                        		<td style="width:20%;" >
-                                        			<select class="custom_select" name="emp_no">
-                                        				<option selected disabled> 담당자 </option>
-                                        				<option value=""> 이철원 </option>
-                                        				<option value="emp_no"> 윤예지 </option>
-                                        			</select>
-                                        		</td>
-                                        
-                                        
                                         	
+                                        		<td style="width:20%;">             
+                                        			<input type="text" class="custom_code" placeholder = "제품 코드" name="prod_code"/>
+                                        		</td>
+                                        		
+                                        		<td style="width:20%;">             
+                                        			<input type="text" class="custom_name" placeholder = "제품명" name="prod_name"/>
+                                        		</td>
+            		
+                                        		<td style="width:20%;">             
+                                        			<input type="text" class="custom_cnt" placeholder = "생산수량" name="prod_cnt"/>
+                                        		</td>
+                                        		
+                                        		<td style="width:20%;">
+                                        			<input type="date" calss ="custom_m_date" name ="prod_m_date"/>
+                                        		</td>
+                                        		
+                                        		<td style="width:20%;" >	
+                                        			<input type="text" class="custom_rack" placeholder = "제품 보관 장소" name="prod_rack"/>   
+                                        		</td>
+               
+                                        		<td style="width:10%;"><input type="submit" class="btn btn-primary btn-sm" value="추가"> </td>
+                                        
                                         	</form>
                                         </tr>
                                         
-                                        
-                                 
                                     </tbody>
                                 </table>
 
-
-
-										
-
-								
-								
                             </div>
                         </div>
                     </div>

@@ -6,12 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-
-
-
-
-
-
 @Controller
 public class ManagementController {
 
@@ -38,14 +32,6 @@ public class ManagementController {
 	public String order_view() {
 		return "order_view";
 	}
-	
-	
-	
-	@RequestMapping("/production.do")
-	public String production() {
-		return "Production";
-	}
-	
-	
+		
 	
 }
