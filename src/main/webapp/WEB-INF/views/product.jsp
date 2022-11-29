@@ -205,7 +205,7 @@
 	                                            <td style="width:20%;">${prod.prod_cnt}</td>
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
-	                                            <td style="width:10%;"><button type="button" class="btn btn-danger btn-sm">X</button></td>
+	                                            <td style="width:10%;"><button type="button" class="btn btn-secondary btn-sm" onclick="location.href='prodDel.do'">X</button></td>
 	                                 
 	                                        </tr>
                                     	</c:forEach>
@@ -218,7 +218,7 @@
                         				<!--  추가 FORM  -->
                                         
                                         <tr class="table-warning">
-                                        	<form action ="prod_insert.do" method = "get">
+                                        	<form action ="prodInsert.do" method = "get">
                                         		
                                         		<td style="width:20%;">
                      

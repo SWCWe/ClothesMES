@@ -28,10 +28,15 @@ public class ProductController {
 		return "product";
 	}
 	
-	@RequestMapping("/prod_insert.do")
-	public String prod_insert(ProductDAO proddao) {
+	@RequestMapping("/prodInsert.do")
+	public String prodInsert(ProductDAO proddao) {
 		System.out.println(proddao.toString());
-		mapper.prod_insert(proddao);
+		mapper.prodInsert(proddao);
 		return "redirect:/product.do";
+	}
+	
+	@RequestMapping("/prodDel.do")
+	public String prodDel(String prod_code) {
+		return "";
 	}
 }

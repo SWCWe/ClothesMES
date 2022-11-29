@@ -170,7 +170,7 @@
                                         </tr>
                                         
                                         <tr class="table-warning">
-                                        	<form action ="" method = "get">
+                                        	<form action ="prod_insert.do" method = "get">
                                         		<td style="width:10%;"></td>
                                         		<td style="width:10%;"><input type="submit" class="btn btn-primary btn-sm" value="추가"> </td>
                                         		
