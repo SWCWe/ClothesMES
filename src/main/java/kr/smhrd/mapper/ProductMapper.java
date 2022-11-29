@@ -17,5 +17,13 @@ public interface ProductMapper {
 //
 //	List<String> lack_seqList();
 	public List<ProductVO> PsearchList(String search);
+
+	public List<String> rackList(String rack_seq);
+
+	public List<ProductVO> searchProductList(String productQuery);
+
+	public void deleteProduct(String prod_code);
+
+	public void insertProduct(ProductVO productVO);
 	
 }

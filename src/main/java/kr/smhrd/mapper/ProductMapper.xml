@@ -17,14 +17,43 @@
     	id를 통해 mapper.java랑 연결
     	id = 메서드의 이름
      -->
-     
+     <!-- 제품정보 전부 가져오기 -->
      <select id = "productList" resultType = "kr.smhrd.entity.ProductVO">
          select * from t_product order by prod_code
          
      </select>
-      
+      <!-- 제품이름에서 자동완성 -->
     <select id="PsearchList" resultType="kr.smhrd.entity.ProductVO">
         select * from t_product where prod_name like concat('%',#{search},'%')
         
     </select>
+    
+     <!-- 주문 순번에 따른 제품 코드 검색 -->
+    <select id="rackList" resultType="String">
+        select distinct prod_rack
+        from t_product
+        where prod_rack = #{prod_seq}
+    </select>
+    
+      <!-- 검색 내용 가져오기(조건 부분 쿼리 통째로 삽입) -->
+    <select id="searchProductList" parameterType="String" resultType="kr.smhrd.entity.ProductVO">
+        select *
+        from t_product
+        where prod_cnt>0
+        ${productQuery}  
+    </select>
+    
+    <!-- 제품 정보 삭제하기 -->
+    <delete id="deleteProduct" parameterType="kr.smhrd.entity.ProductVO">
+        delete from t_product
+        where prod_code = #{prod_code}
+    </delete>
+    
+    
+    <!-- 제품 정보 추가하기 -->
+    <insert id="insertProduct" parameterType="kr.smhrd.entity.ProductVO">
+        INSERT INTO t_product (prod_code, prod_name, prod_cnt, prod_m_date, prod_rack)
+		VALUES (#{prod_code}, #{prod_name}, #{prod_cnt}, ${prod_m_date}, #{prod_rack});
+    </insert>
 </mapper>
+
