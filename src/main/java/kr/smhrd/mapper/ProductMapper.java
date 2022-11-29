@@ -8,7 +8,8 @@ public interface ProductMapper {
 
 	public List<ProductDAO> product_list();
 
-	public void prod_insert(ProductDAO proddao);
+
+	public void prodInsert(ProductDAO proddao);
 
 	
 }

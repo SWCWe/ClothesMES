@@ -31,11 +31,11 @@
         	text-align:center;
         }
         
-        @media (max-width:576px) {
-        	.add_production {
-        		margin-left:-50px;
-        	}
+        .pruduction_form_button .btn:nth-child(1){
+        	margin-right:10px;
         }
+        
+      
         
         table input[type=text],
          table input[type=date],
@@ -57,6 +57,66 @@
        	line-height:40px;
        }
        
+       .production-search{
+       	display:flex;
+       	justify-content:center;
+       }
+       .production-search form{
+        display:grid; grid-template-columns : 16% 16% 16% 16% 16% 16%; grid-gap:10px; 
+       }
+       
+       
+       
+ 
+
+       
+          @media (max-width:1200px) {
+		.production-search {
+			display:block;
+		}
+ 		.production-search form {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+        .pruduction_form_button{
+        	display:flex;
+        	justify-content:end;
+
+        }	
+        
+        .pruduction_form_button .btn{
+        	width:100%;
+        }
+        
+            table tr {
+        	font-size:12px;
+        }
+        	div.add table tr input::placeholder{
+        		font-size:10px;
+        	}
+       
+        	
+        	 table input[type=text], table input[type=date], .custom_select{
+     	font-size:10px;
+     }
+        	
+  
+        }
+        
+        
+       @media (max-width:576px) {
+		.production-search {
+			display:block;
+		}
+ 		.production-searchform {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+
+        .pruduction_form_button .btn{
+        	width:100%;
+        }
+        
+    
+        }
         </style>
     </head>
     
@@ -90,21 +150,20 @@
             <div id="layoutSidenav_content" class="mt-2">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">출고관리 💫</h1>
+                        <h1 class="mt-4">출고관리 <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
                         
                         <div class="card mb-4">
                
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                               
                             </div>
                             <div class="card-body">
                             
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
-	                            		<form id="releaseSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+	                            <div class="production-search mt-2 mb-4">
+	                            		<form id="releaseSearch" method = "post">
 	                            			
 	                            			<!-- 제품 코드 검색 부분 -->
 	                            			<div class="prod_code_search-form">
@@ -148,12 +207,12 @@
 	                            			<!-- 검색 버튼 -->
 	                            			<div class="pruduction_form_button">
 	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
+	                            			    <button type="reset" onclick="releaseLoad()" class="btn btn-light">
+                            				<i class="fa-solid fa-arrow-rotate-left"></i>
+                            				  </button>
 	                            			</div>
 	                            			
-	                            			<!-- 새로고침 버튼 -->
-	                            			<div class="pruduction_form_button">
-	                            				<button type="reset"> 🔍 </button>
-	                            			</div>
+	                            		
 	                            			
 	                            		</form>
 	                            	</div>
@@ -164,12 +223,12 @@
                                         <tr>
                                             <th style="width:10%;" scope="col">출고 순번</th>
                                             <th style="width:10%;" scope="col">주문 순번</th>
-                                            <th style="width:12.5%;" scope="col">제품 코드</th>
-                                            <th style="width:12.5%;" scope="col">출고 일자</th>
+                                            <th style="width:15%;" scope="col">제품 코드</th>
+                                            <th style="width:15%;" scope="col">출고 일자</th>
                                             <th style="width:10%;" scope="col">출고 수량</th>
-                                            <th style="width:12.5%;" scope="col">담당자</th>
-                                            <th style="width:12.5%;" scope="col">보관 장소</th>
-                                        	<th style="width:5%;" scope="col">삭제</th>
+                                            <th style="width:15%;" scope="col">담당자</th>
+                                            <th style="width:15%;" scope="col">보관 장소</th>
+                                        	<th style="width:6%;" scope="col">삭제</th>
                                             <th style="width:1%;" scope="col"></th>
                                         </tr>
                                     </thead>
@@ -189,7 +248,8 @@
 		                                    		<td style="width:10%;">${release.r_cnt}</td>
 		                                    		<td style="width:12.5%;">${release.name}</td>
 		                                    		<td style="width:12.5%;">${release.prod_rack}</td>
-		                                    		<td style="width:5%;"><button type="button" onclick="deleteRelease(${release.r_seq})" class="btn btn-danger btn-sm">X</button></td>
+		                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
+		                                    		<td style="width:1%"></td>
 		                                    	</tr>
 		                                    	</c:forEach>
 		                                   	</tbody>
@@ -204,7 +264,7 @@
                                         	<tr class="table-warning">
                                         	
                                         		<td style="width:10%;">
-                                        			<button type="button" onclick="releaseInsert()" class="btn btn-primary btn-sm"> 추가 </button>
+                                        		
                                         		</td>
                                         		
                                         		<td style="width:10%;">
@@ -234,7 +294,9 @@
                                         			<input type="text" class="custom_select" placeholder = "담당자" name="name"/>
                                         		</td>
                                         		
-                                        		<td style="width:17.5%;"></td>
+                                        		<td style="width:16.5%;">
+                                        			<button type="button" onclick="releaseInsert()" class="btn btn-primary btn-sm"> 추가 </button>
+                                        		</td>
                                         		
                                         		<td style="width:1%;" scope="col"></td>
                                         		

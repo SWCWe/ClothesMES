@@ -23,7 +23,10 @@
          
      </select>
      
-     <insert id = "prod_insert" parameterType = "kr.smhrd.entity.ProductDAO">
-         insert into t_product (prod_code, prod_name, prod_cnt, prod_m_date)
+     <insert id = "prodInsert" parameterType = "kr.smhrd.entity.ProductDAO">
+         insert into t_product(prod_code, prod_name, prod_cnt, prod_m_date, prod_rack)
+         value(#{prod_code},#{prod_name},#{prod_cnt},#{prod_m_date},#{prod_rack})
      </insert>
+     
+     
 </mapper>

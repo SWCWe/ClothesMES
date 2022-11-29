@@ -64,12 +64,14 @@
        form {
        display:grid; grid-template-columns : 20% 20% 20% 20% 20%; grid-gap:10px;
        }
+       
+     
 
 	@media (max-width:576px) {
 		.production-search {
 			display:block;
 		}
- 		form {
+ 		.production-searchform {
        display:grid; grid-template-columns : 100%; grid-gap:10px;
        }
         .pruduction_form_button{
@@ -81,6 +83,8 @@
         .pruduction_form_button .btn{
         	width:100%;
         }
+        
+    
         }
         
         
@@ -88,7 +92,7 @@
 		.production-search {
 			display:block;
 		}
- 		form {
+ 		.production-search form {
        display:grid; grid-template-columns : 100%; grid-gap:10px;
        }
         .pruduction_form_button{
@@ -100,9 +104,24 @@
         .pruduction_form_button .btn{
         	width:100%;
         }
+        
+            table tr {
+        	font-size:12px;
         }
+        	div.add table tr input::placeholder{
+        		font-size:10px;
+        	}
        
-
+        	
+        	 table input[type=text], table input[type=date], .custom_select{
+     	font-size:10px;
+     }
+        	
+  
+        }
+        
+        
+    
         </style>
     </head>
     <body class="sb-nav-fixed">
@@ -205,20 +224,20 @@
 	                                            <td style="width:20%;">${prod.prod_cnt}</td>
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
-	                                            <td style="width:10%;"><button type="button" class="btn btn-danger btn-sm">X</button></td>
-	                                 
+	                                            <td style="width:10%;"><button type="button" class="btn btn-secondary btn-sm" onclick="location.href='prodDel.do'">X</button></td>
+	                                 			<td style="width:1%"></td>
 	                                        </tr>
                                     	</c:forEach>
                         				
                         			</tbody>
                         			</table>
                         			  </div>
-                        			
+                        			<div class="add">
                         			<table  class="table table-borderless table-striped table-hover" >
                         				<!--  추가 FORM  -->
                                         
                                         <tr class="table-warning">
-                                        	<form action ="prod_insert.do" method = "get">
+                                        	<form action ="prodInsert.do" method = "get">
                                         		
                                         		<td style="width:20%;">
                      
@@ -264,7 +283,7 @@
                                  
                                     
                                 </table>
-                              
+                              </div>
 
 
 										
