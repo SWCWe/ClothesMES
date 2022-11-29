@@ -20,7 +20,7 @@
     <!-- 출고 제품 코드 중복없이 가져오기 -->
     <select id="releaseProd_codeList" resultType="String">
         select distinct prod_code
-        from t_release
+        from t_release 
     </select>
     
     <!-- 주문 순번 중복없이 가져오기 -->

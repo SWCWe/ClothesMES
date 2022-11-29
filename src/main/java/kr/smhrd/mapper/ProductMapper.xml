@@ -18,10 +18,11 @@
     	id = 메서드의 이름
      -->
      
-     <select id = "product_list" resultType = "kr.smhrd.entity.ProductDAO">
+     <select id = "productList" resultType = "kr.smhrd.entity.ProductVO">
          select * from t_product order by prod_code
          
      </select>
+<<<<<<< HEAD
      
      <insert id = "prodInsert" parameterType = "kr.smhrd.entity.ProductDAO">
          insert into t_product(prod_code, prod_name, prod_cnt, prod_m_date, prod_rack)
@@ -29,4 +30,11 @@
      </insert>
      
      
+=======
+      
+    <select id="PsearchList" resultType="kr.smhrd.entity.ProductVO">
+        select * from t_product where prod_name like concat('%',#{search},'%')
+        
+    </select>
+>>>>>>> refs/remotes/origin/jin
 </mapper>
