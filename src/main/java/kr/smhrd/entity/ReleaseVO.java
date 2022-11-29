@@ -18,4 +18,8 @@ public class ReleaseVO {
 	private String emp_no;     // 출고 담당자  
 	private String prod_rack;  // 제품 보관 장소
 	private String name;       // 직원 이름
+
+	// 기간 검색 기능
+	private String start_r_date;     // 시작 일자
+	private String end_r_date;     // 끝 일자
 }
