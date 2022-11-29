@@ -302,10 +302,9 @@
 						console.log(e);
 					}
 				});
-			
 			}
 			
-			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
+			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수
 			function releaseLoad() {
 				$.ajax({
 					url : "loadRelease.do",
@@ -328,7 +327,6 @@
 						console.log(e);
 					}
 				});
-				
 			}
 			
 			// 추가 폼에서 주문 순번에 따라 제품 코드를 다르게 보여주는 함수
