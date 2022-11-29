@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.smhrd.entity.OrderDetailVO;
 import kr.smhrd.entity.ReleaseVO;
 import kr.smhrd.mapper.ReleaseMapper;
 
@@ -35,6 +36,7 @@ public class ReleaseController {
 		// 주문 순번 중복없이 가져오기
 		List<String> order_seqList = mapper.releaseOrder_seqList();
 		model.addAttribute("order_seqList", order_seqList);
+		
 	}
 
 	
