@@ -42,7 +42,7 @@
          .custom_select
         {
         
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
+       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:17px; text-align:center;
        }
        
        table input[type=text]:focus,
@@ -66,14 +66,12 @@
         .production-search form {
        display:grid; grid-template-columns : 20% 20% 20% 20% 20%; grid-gap:10px;
        }
-       
-     
 
 	@media (max-width:576px) {
 		.production-search {
 			display:block;
 		}
- 		.production-searchform {
+ 		form {
        display:grid; grid-template-columns : 100%; grid-gap:10px;
        }
         .pruduction_form_button{
@@ -85,8 +83,6 @@
         .pruduction_form_button .btn{
         	width:100%;
         }
-        
-    
         }
         
         
@@ -94,7 +90,7 @@
 		.production-search {
 			display:block;
 		}
- 		.production-search form {
+ 		form {
        display:grid; grid-template-columns : 100%; grid-gap:10px;
        }
         .pruduction_form_button{
@@ -106,28 +102,8 @@
         .pruduction_form_button .btn{
         	width:100%;
         }
-        
-            table tr {
-        	font-size:12px;
         }
-<<<<<<< HEAD
-        	div.add table tr input::placeholder{
-        		font-size:10px;
-        	}
-       
-        	
-        	 table input[type=text], table input[type=date], .custom_select{
-     	font-size:10px;
-     }
-        	
-  
-        }
-        
-        
-    
-=======
       
->>>>>>> refs/remotes/origin/jin
         </style>
     </head>
     <body class="sb-nav-fixed">
@@ -232,33 +208,20 @@
            						<table class="table table-borderless table-striped table-hover">
            						
                                     <tbody id="list">
-                		
-                        
                         				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
-                                    	
 	                                        <tr>
-	                                        	
 	                                            <td style="width:20%;">${prod.prod_code}</td>
 	                                            <td style="width:20%;">${prod.prod_name}</td>
 	                                            <td style="width:20%;">${prod.prod_cnt}</td>
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
-<<<<<<< HEAD
-	                                            <td style="width:10%;"><button type="button" class="btn btn-secondary btn-sm" onclick="location.href='prodDel.do'">X</button></td>
-	                                 			<td style="width:1%"></td>
-=======
 	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-danger btn-sm">X</button></td>
-	                                 
->>>>>>> refs/remotes/origin/jin
 	                                        </tr>
                                     	</c:forEach>
-                        				
                         			</tbody>
-                        			</table>
-                        			  </div>
-<<<<<<< HEAD
-                        			<div class="add">
-=======
+                        			
+                       			</table>
+                    			  </div>
                         			
                         				  </form> 
                         			
@@ -267,7 +230,6 @@
                         			  
                         			  
                         			  <form id ="ProductInsert" method = "post">
->>>>>>> refs/remotes/origin/jin
                         			<table  class="table table-borderless table-striped table-hover" >
                         			
                         				<!--  추가 FORM  -->
@@ -275,29 +237,21 @@
                                      
                                         
                                         <tr class="table-warning">
-<<<<<<< HEAD
-                                        	<form action ="prodInsert.do" method = "get">
-=======
                                         	
->>>>>>> refs/remotes/origin/jin
                                         		
                                         		<td style="width:20%;">
                      
                                         				<input type="text" class="custom_select" placeholder = "제품코드" name="prod_code"/>
-                                       
-                                        			
                                         		</td>
+                                        		
                                         			<td style="width:20%;">
-                     
                                         				<input type="text" class="custom_select" placeholder = "제품명" name="prod_name"/>
-                                       
-                                        			
                                         		</td>
                                         		
                                         		
                                         		<td style="width:20%;">
                      
-                                        				<input type="text" class="custom_select" placeholder = "수량입력" name="prod_cnt"/>
+                                        				<input type="text" class="custom_select" placeholder = "수량" name="prod_cnt"/>
                                        
                                         			
                                         		</td>
@@ -322,14 +276,7 @@
                                         </tr>
                                  
                                 </table>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                              </div>
-=======
-                              
-=======
                               </form>
->>>>>>> refs/remotes/origin/jin
                              
                               
                               <script type="text/javascript">
@@ -454,7 +401,6 @@
 			
 			
 			</script>
->>>>>>> refs/remotes/origin/jin
 
 
 								

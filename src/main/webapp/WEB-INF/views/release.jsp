@@ -150,7 +150,7 @@
             <div id="layoutSidenav_content" class="mt-2">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">출고관리 <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
+                        <h1 class="mt-4">출고 관리 <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
                         
                         <div class="card mb-4">
                
