@@ -94,24 +94,15 @@
         from t_release
         group by prod_code
         order by r_cnt desc
+        limit 10
     </select>
     
-    <!-- 상위 n개 차트 정보 가져오기 -->
-    <select id="releaseTopData" resultType="kr.smhrd.entity.ReleaseVO">
+    <!-- 상위/하위 n개 차트 정보 가져오기 -->
+    <select id="releaseTB" parameterType="String" resultType="kr.smhrd.entity.ReleaseVO">
         select prod_code, sum(r_cnt) r_cnt
         from t_release
         group by prod_code
-        order by r_cnt desc
-        limit 5
-    </select>
-    
-    <!-- 하위 n개 차트 정보 가져오기 -->
-    <select id="releaseBottomData" resultType="kr.smhrd.entity.ReleaseVO">
-        select prod_code, sum(r_cnt) r_cnt
-        from t_release
-        group by prod_code
-        order by r_cnt
-        limit 5
+        order by r_cnt ${releaseChartQuery}
     </select>
     
 </mapper>

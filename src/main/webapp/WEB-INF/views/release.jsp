@@ -168,13 +168,15 @@
                             </div>
                             <!-- 차트 들어올 부분 -->
                             <div id="releaseChartArea" class="card-body" style="display:none;">
-                            	<form id="releaseChartTopBottom">
-                            		<!-- <input type="text" name="cnt"> -->
-                            		<button type="button" onclick="releaseTop()">상위</button>
-	                            	<button type="button" onclick="releaseBottom()">하위</button>
-	                            	<button type="button" onclick="loadChartData()">되돌리기</button>
-                            	</form>
-                            	<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
+                            
+                            		<input type="text" name="cnt" id="cnt">
+                            		<button type="button" onclick="releaseTB('top')" class="btn btn-light" name="top" value="top">상위</button>
+	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-light" name="bottom" value="bottom">하위</button>
+	                            	<button type="button" onclick="loadChartData()" class="btn btn-light" name="return" value="return">되돌리기</button>
+                            	
+                            	<div style="padding:1%;">
+                            		<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
+                            	</div>
                             </div>
                         </div>
                         
@@ -255,7 +257,7 @@
                                     </thead>
                                  </table>
                                  
-                                 <form id="deleteRelease" method="post">
+                                <form id="deleteRelease" method="post">
 	                                 <div style="overflow-y:scroll; width:100%; height:300px; text-align:center;">
 		           						<table class="table table-borderless table-striped table-hover" >
 		                                   	<!-- 출고 목록 보기 기능 -->
@@ -277,7 +279,7 @@
 	                               	</div>
                                	</form>
                                	
-                               	<!-- 출고 정보 추가 폼 -->
+                               	<!-- 출고 정보 s추가 폼 -->
                                	<form id="releaseInsertFrm" method="post">
 	                               	<table class="table table-borderless table-striped table-hover">
 	                                   	<tbody>
@@ -375,7 +377,24 @@
 				
 				new Chart(ctx1, {
 					type : 'bar',
-					data : datas
+					data : datas,
+					options : {
+						legend : {
+							display : false
+						},
+						scales : {
+							yAxes : [
+								
+							],
+							xAxes : [
+								{
+									ticks : {
+										fontSize : 20 // x축 폰트 크기 설정(제품 코드)
+									}
+								}
+							]
+						}
+					}
 				});
 			}
 			
@@ -387,33 +406,16 @@
 				return color;
 			}
 			
-			// 상위 n개 데이터 차트 보이기
-			function releaseTop() {
+			// 상위/하위 n개 데이터 차트 보이기
+			function releaseTB(data) {
 				
-				//var cnt = document.getElementById("releaseChartTopBottom").value;
-				//console.log(cnt)
-				
-				$.ajax({
-					url : "releaseTop.do",
-					method : "POST",
-					//data : cnt,
-					dataType : "JSON", 
-					success : releaseChart,
-					error : function(e){
-						console.log(e);
-					}
-				});
-			}
-			
-			// 하위 n개 데이터 차트 보이기
-			function releaseBottom() {
-				
-				//var cnt = $('#releaseChartTopBottom').val();
+				var cnt = document.getElementById('cnt').value;
 				
 				$.ajax({
-					url : "releaseBottom.do",
+					url : "releaseTB.do",
 					method : "POST",
-					//data : cnt,
+					data : {"cnt" : cnt,
+							"data": data},
 					dataType : "JSON", 
 					success : releaseChart,
 					error : function(e){
