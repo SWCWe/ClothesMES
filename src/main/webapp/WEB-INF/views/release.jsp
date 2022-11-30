@@ -20,104 +20,8 @@
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         
-        <style>
-        tr{
-       
-        	text-align : center;
-        	font-size:16px;
-        }
-        
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        
-        .pruduction_form_button .btn:nth-child(1){
-        	margin-right:10px;
-        }
-        
+   
       
-        
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-        
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
-       }
-       
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-       
-       .production-search{
-       	display:flex;
-       	justify-content:center;
-       }
-       .production-search form{
-        display:grid; grid-template-columns : 16% 16% 16% 16% 16% 16%; grid-gap:10px; 
-       }
-       
-       
-       
- 
-
-       
-          @media (max-width:1200px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        
-            table tr {
-        	font-size:12px;
-        }
-        	div.add table tr input::placeholder{
-        		font-size:10px;
-        	}
-       
-        	
-        	 table input[type=text], table input[type=date], .custom_select{
-     	font-size:10px;
-     }
-        	
-  
-        }
-        
-        
-       @media (max-width:576px) {
-		.production-search {
-			display:block;
-		}
- 		.production-searchform {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        
-    
-        }
-        </style>
     </head>
     
     <body class="sb-nav-fixed">
@@ -162,7 +66,7 @@
                             <div class="card-body">
                             
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4">
+	                            <div class="production-search release mt-2 mb-4">
 	                            		<form id="releaseSearch" method = "post">
 	                            			
 	                            			<!-- 제품 코드 검색 부분 -->
@@ -207,7 +111,7 @@
 	                            			<!-- 검색 버튼 -->
 	                            			<div class="pruduction_form_button">
 	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
-	                            			    <button type="reset" onclick="releaseLoad()" class="btn btn-light">
+	                            			    <button type="reset" onclick="releaseSearch()" class="btn btn-light">
                             				<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  </button>
 	                            			</div>
@@ -249,7 +153,7 @@
 		                                    		<td style="width:12.5%;">${release.name}</td>
 		                                    		<td style="width:12.5%;">${release.prod_rack}</td>
 		                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
-		                                    		<td style="width:1%"></td>
+		                                    	
 		                                    	</tr>
 		                                    	</c:forEach>
 		                                   	</tbody>

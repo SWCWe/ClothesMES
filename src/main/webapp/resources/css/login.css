@@ -8,7 +8,8 @@
 }
 
 body {
-    background-color: #d9d9d9;
+  	background-color: #f1faee;
+
     width : 100%;
     font-size : 16px;
     font-family : 'Nanum Gothic', sans-serif;
@@ -30,8 +31,16 @@ body {
 
     }
 
+
+h3{
+	
+	color:#45789D;
+	  margin-bottom:10px;
+	  font-weight:700;
+}
 .login-container-box-top {
     width : 100%;
+  
 }
 
 .form-group input{
@@ -57,6 +66,11 @@ body {
 .login-container-box-bottom-right {
     font-weight: 600;
     color:#137ea7;
+}
+
+.login-container-box-bottom-right:hover {
+	border-bottom: 1px solid;
+	height:28px;
 }
 
 .form-control {
@@ -90,7 +104,6 @@ body {
         height : 350px;
         border-radius : 7px;
         background-color: #fff;
-    
         }
         .login-container-box-top{
             margin-bottom:20px;

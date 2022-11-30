@@ -20,7 +20,9 @@
 </head>
 <body>
     <session class = "login">
-        <div class = "login-container">
+  
+        <div class = "login-container" style="display: flex; flex-direction:column;">
+          <h3>의류 분류 및 재고관리 시스템</h3>
             <div class ="login-container-box d-flex align-items-center justify-content-center flex-column">
                 <div class="login-container-box-top">
                     <form action ="loginInsert.do" method = "post">

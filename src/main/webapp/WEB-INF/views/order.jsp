@@ -16,111 +16,7 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <style>
-        tr{
-       
-        	text-align : center;
-        	font-size:16px;
-        }
-        
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        
-        .pruduction_form_button {
-        	display:flex; 
-        }
-        
-        .pruduction_form_button .btn:nth-child(1){
-        	margin-right:10px;
-        }
-        
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-        
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
-       }
-       
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-       
-       .production-search{
-
-       	display:flex;
-       	justify-content:center;
-       }
-       
-       .production-search form {
-       display:grid; grid-template-columns : 40% 40% 20%; grid-gap:10px;
-       }
-
-
-		.addform-container form{
-		display:grid; grid-template-columns : 10% 25% 25% 30% 10%; grid-gap:10px;
-		}
-		
-		.des {
-			cursor:pointer;
-		}
-		
-		.des:hover{
-			border-bottom:1px solid black;
-		}
-	@media (max-width:576px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-        
-        
-        @media (max-width:1200px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-       
-       
-       .add-btn {
-       	display:flex;
-       	justify-content:end;
-       }
-
-        </style>
+      
     </head>
     <body class="sb-nav-fixed">
  <%@ include file="nav-top.jsp" %>
@@ -145,7 +41,7 @@
                             <div class="card-body">
                                	
                                	<!-- 검색 폼  -->
-                            	<div class="production-search mt-2 mb-4">
+                            	<div class="production-search order mt-2 mb-4">
                             		<form action = "" method = "get" class="what">
                             			<div class="date-search-form">
                             				<input type = "date" class =" form-control" name = "date"/>

@@ -39,4 +39,5 @@ public class ProductController {
 	public String prodDel(String prod_code) {
 		return "";
 	}
+
 }
