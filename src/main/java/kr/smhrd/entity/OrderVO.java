@@ -12,6 +12,8 @@ import lombok.ToString;
 @Data
 @ToString
 public class OrderVO {
+	// 주문 상세 순번
+	private int od_seq;
 	// 주문 번호
 	private int order_seq;
 	// 주문 일자
@@ -19,11 +21,16 @@ public class OrderVO {
 	// 고객 아이디
 	@NonNull private String cus_id;
 	
-	private int od_seq;
-	// 주문 번호
-
 	private String prod_code;
+	
 	// 주문 수량
 	private int od_cnt;
 	
+	
+	// 기간 검색 기능
+	private String start_r_date;  // 시작 일자
+	private String end_r_date;    // 끝 일자
+		
+	
 }
+  

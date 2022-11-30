@@ -3,9 +3,19 @@
 <mapper namespace="kr.smhrd.mapper.OrderMapper">
     
     <select id="orderList" resultType="kr.smhrd.entity.OrderVO">
-        select * from t_order
+        select m.od_seq, r.order_seq , m.prod_code, m.od_cnt, r.order_date, r.cus_id  
+        from t_order r, t_order_detail m
+        where m.order_seq  = r.order_seq
     </select>
     
 
+    <!-- 검색 내용 가져오기(조건 부분 쿼리 통째로 삽입) -->
+    <select id="searchOrderList" parameterType="String" resultType="kr.smhrd.entity.ReleaseVO">
+        select m.od_seq, r.order_seq , m.prod_code, m.od_cnt, r.order_date, r.cus_id  
+        from t_order r, t_order_detail m
+        where m.order_seq  = r.order_seq
+        ${orderQuery}
+    </select>
+    
     
 </mapper>
