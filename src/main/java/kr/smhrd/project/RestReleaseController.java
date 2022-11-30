@@ -100,7 +100,7 @@ public class RestReleaseController {
 	
 	// 비동기로 차트에 필요한 데이터 가져오기
 	@RequestMapping("/loadChartRelease.do")
-	public String loadChartRelease(){
+	public String loadChartRelease() {
 		List<ReleaseVO> loadChart = mapper.releaseChartData();
 
 		Gson gson = new Gson(); // json으로 가공하기 위해 gson 객체 생성
@@ -120,6 +120,54 @@ public class RestReleaseController {
 		
 		String loadChartRelease = gson.toJson(jArray);
 		return loadChartRelease;
+	}
+	
+	// 상위 n개 데이터 가져오기
+	@RequestMapping("/releaseTop.do")
+	public String releaseTop() {
+		List<ReleaseVO> loadChart = mapper.releaseTopData();
+
+		Gson gson = new Gson(); // json으로 가공하기 위해 gson 객체 생성
+		JsonArray jArray = new JsonArray(); // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+		
+		Iterator<ReleaseVO> it = loadChart.iterator(); // list의 반복자를 얻어,,?
+		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
+			ReleaseVO chartVO = it.next();
+			JsonObject object = new JsonObject();
+			String prod_code = chartVO.getProd_code(); // 각각의 변수에 임시로 넣어두었다가
+			int r_cnt = chartVO.getR_cnt();
+			
+			object.addProperty("Code", prod_code);     // jsonobject에 addproperty 메소드를 통해 추가하고
+			object.addProperty("Count", r_cnt);
+			jArray.add(object);                        // 완성된 jsonobject를 jsonarray에 추가
+		}
+		
+		String releaseTop = gson.toJson(jArray);
+		return releaseTop;
+	}
+	
+	// 하위 n개 데이터 가져오기
+	@RequestMapping("/releaseBottom.do")
+	public String releaseBottom() {
+		List<ReleaseVO> loadChart = mapper.releaseBottomData();
+
+		Gson gson = new Gson(); // json으로 가공하기 위해 gson 객체 생성
+		JsonArray jArray = new JsonArray(); // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+		
+		Iterator<ReleaseVO> it = loadChart.iterator(); // list의 반복자를 얻어,,?
+		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
+			ReleaseVO chartVO = it.next();
+			JsonObject object = new JsonObject();
+			String prod_code = chartVO.getProd_code(); // 각각의 변수에 임시로 넣어두었다가
+			int r_cnt = chartVO.getR_cnt();
+			
+			object.addProperty("Code", prod_code);     // jsonobject에 addproperty 메소드를 통해 추가하고
+			object.addProperty("Count", r_cnt);
+			jArray.add(object);                        // 완성된 jsonobject를 jsonarray에 추가
+		}
+		
+		String releaseBottom = gson.toJson(jArray);
+		return releaseBottom;
 	}
 	
 }

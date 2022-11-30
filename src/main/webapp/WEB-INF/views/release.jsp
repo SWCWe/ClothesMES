@@ -162,10 +162,18 @@
                         <!-- 출고 현황 차트 -->
                         <div class="card mb-4">
                             <div class="card-header" onclick="chartShow()" style="height:45px;">
-                                <p><i class="fas fa-chart-area me-1"></i>출고 현황</p>
+                                <p>
+	                                <i class="fas fa-chart-area me-1"></i>출고 현황
+                                </p>
                             </div>
                             <!-- 차트 들어올 부분 -->
                             <div id="releaseChartArea" class="card-body" style="display:none;">
+                            	<form id="releaseChartTopBottom">
+                            		<!-- <input type="text" name="cnt"> -->
+                            		<button type="button" onclick="releaseTop()">상위</button>
+	                            	<button type="button" onclick="releaseBottom()">하위</button>
+	                            	<button type="button" onclick="loadChartData()">되돌리기</button>
+                            	</form>
                             	<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
                             </div>
                         </div>
@@ -341,7 +349,6 @@
 				$('#releaseChart').remove();
 				$('#releaseChartArea').append('<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>');
 				
-				
 				var jsonObject = JSON.stringify(data);       // js에서 문자열 형태로 사용할 수 있도록 변환
 				var jData = JSON.parse(jsonObject);          // 다시, json 객체로 사용할 수 있게 재변환된 데이터를 담음
 				
@@ -378,6 +385,53 @@
 				var b = Math.floor(Math.random()*200);
 				var color = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.7)';
 				return color;
+			}
+			
+			// 상위 n개 데이터 차트 보이기
+			function releaseTop() {
+				
+				//var cnt = document.getElementById("releaseChartTopBottom").value;
+				//console.log(cnt)
+				
+				$.ajax({
+					url : "releaseTop.do",
+					method : "POST",
+					//data : cnt,
+					dataType : "JSON", 
+					success : releaseChart,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+			
+			// 하위 n개 데이터 차트 보이기
+			function releaseBottom() {
+				
+				//var cnt = $('#releaseChartTopBottom').val();
+				
+				$.ajax({
+					url : "releaseBottom.do",
+					method : "POST",
+					//data : cnt,
+					dataType : "JSON", 
+					success : releaseChart,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+			
+			// 차트 데이터 가져오는 함수
+			function loadChartData() {
+				$.ajax({
+					url : "loadChartRelease.do",
+					dataType : "JSON", 
+					success : releaseChart,
+					error : function(e){
+						console.log(e);
+					}
+				});
 			}
 			
 			/* 출고 정보 검색 기능 */
@@ -420,14 +474,7 @@
 				$('#releaseList').html(html);
 				
 				// db가 바뀌었을 때(추가, 삭제) 차트에도 바로 반영되도록
-				$.ajax({
-					url : "loadChartRelease.do",
-					dataType : "JSON", 
-					success : releaseChart,
-					error : function(e){
-						console.log(e);
-					}
-				});
+				loadChartData();
 			}
 			
 			/* 출고 정보 추가 기능 */
