@@ -13,7 +13,8 @@ body {
     width : 100%;
     font-size : 16px;
     font-family : 'Nanum Gothic', sans-serif;
-    background-color: #d9d9d9;
+    background-color: #f1faee;
+
 }
 
 
@@ -88,7 +89,13 @@ select option{
 
 }
 
+.join-container-box-bottom-left {
+	color: gray;
+	opacity:0.5;
+}
+
 .join-container-box-bottom-right {
+	color:#137ea7;
     margin-left:10px;
     font-weight:600;
     cursor:pointer;

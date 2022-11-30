@@ -37,6 +37,7 @@ public class ProductController {
 		
 		return Rlist;
 	}
+<<<<<<< HEAD
     	
     	
 		@RequestMapping("/PsearchList.do")
@@ -107,5 +108,12 @@ public class ProductController {
 		public @ResponseBody void deleteProduct(String prod_code) {
 			mapper.deleteProduct(prod_code);
 		}
+=======
+	
+	@RequestMapping("/prodDel.do")
+	public String prodDel(String prod_code) {
+		return "";
+	}
+>>>>>>> refs/remotes/origin/yujin
 
 }

@@ -12,17 +12,24 @@
     <link rel = "stylesheet" href="https://bootswatch.com/5/lumen/bootstrap.min.css">
     <link href="${path}/resources/css/login.css" rel="stylesheet" />
     <title>Login</title>
+    <style>
+    .login-container-box-bottom-right {
+    	cursor:pointer;
+    }
+    </style>
 </head>
 <body>
     <session class = "login">
-        <div class = "login-container">
+  
+        <div class = "login-container" style="display: flex; flex-direction:column;">
+          <h3>의류 분류 및 재고관리 시스템</h3>
             <div class ="login-container-box d-flex align-items-center justify-content-center flex-column">
                 <div class="login-container-box-top">
-                    <form action ="" method = "post">
+                    <form action ="loginInsert.do" method = "post">
                         <div class = "form-group">
-                            <input type = "text" class="form-control mb-3" name ="" placeholder = "아이디를 입력해 주세요"/>
-                            <input type = "password" class ="form-control mb-3" name ="" placeholder = "비밀번호를 입력해 주세요"/>
-                            <input type = "submit" class ="btn btn-primary form-control" value="로그인" name ="" placeholder = "비밀번호를 입력해 주세요"/>
+                            <input type = "text" class="form-control mb-3" name ="emp_no" placeholder = "아이디를 입력해 주세요"/>
+                            <input type = "password" class ="form-control mb-3" name ="pw" placeholder = "비밀번호를 입력해 주세요"/>
+                            <input type = "submit" class ="btn btn-primary form-control" value="로그인"/>
                         </div>
                     </form>
                 </div>
