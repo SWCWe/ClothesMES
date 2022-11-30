@@ -36,8 +36,16 @@ public class BoardController {
 		return "notice_view";
 	}
 	
-
 	
+	// 여기부터 손댐
+	@RequestMapping("/input_product.do")
+	public String input_product() {
+		return "input_product";
+	}
 	
+	@RequestMapping("/result_product.do")
+	public String result_product() {
+		return "result_product";
+	}
 	
 }
