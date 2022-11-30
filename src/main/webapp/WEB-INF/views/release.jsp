@@ -112,7 +112,7 @@
 		                            				<option selected disabled> 제품 </option>
 	                            				<%for (int i = 0; i < prod_codeList.size(); i++) { %>
 	                            					<option><%=prod_codeList.get(i) %></option>
-	                            				<%} %>
+	                            				<%}%>
 		                            			</select>
 	                            			</div>
 	                            			
@@ -162,7 +162,7 @@
                                 <table class="table table-borderless table-striped table-hover" >
                                     <thead class="table-secondary" >
                                         <tr>
-                                            <th style="width:10%;" scope="col">출고 순번</th>
+                                            <th style="width:10%;">출고 순번</th>
                                             <th style="width:10%;" scope="col">주문 순번</th>
                                             <th style="width:12.5%;" scope="col">제품 코드</th>
                                             <th style="width:12.5%;" scope="col">출고 일자</th>
@@ -198,7 +198,7 @@
                                	</form>
                                	
                                	<!-- 출고 정보 추가 폼 -->
-                               	<form id="releaseInsertFrm" method="post">
+                               	<form id="manufactureInsertFrm" method="post">
 	                               	<table class="table table-borderless table-striped table-hover">
 	                                   	<tbody>
                                         	<tr class="table-warning">

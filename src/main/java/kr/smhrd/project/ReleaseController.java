@@ -49,9 +49,5 @@ public class ReleaseController {
 		model.addAttribute("plusProd_rackList", plusProd_rackList);
 		
 	}
-
-	
-	
-	
 	
 }

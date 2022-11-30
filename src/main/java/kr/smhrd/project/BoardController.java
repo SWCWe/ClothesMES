@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
-@Data
-@AllArgsConstructor
 @Controller
 public class BoardController {
 	
@@ -33,9 +31,4 @@ public class BoardController {
 	public String notice_view() {
 		return "notice_view";
 	}
-	
-
-	
-	
-	
 }
