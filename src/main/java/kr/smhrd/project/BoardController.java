@@ -45,6 +45,9 @@ public class BoardController {
 	
 	@RequestMapping("/result_product.do")
 	public String result_product() {
+		System.out.println("넘어오는거 확인");
+		//vString productCode = request.getParameter("num");
+		//vSystem.out.println(request.getParameter("num"));
 		return "result_product";
 	}
 	
