@@ -28,6 +28,7 @@ public class ProductController {
 		List<ProductVO> Plist = mapper.productList();
 		model.addAttribute("list", Plist);
 	}
+
     // 비동기로 제품정보 가져옴	
     	@RequestMapping("/restProduct.do")
     	public @ResponseBody List<ProductVO> product() {
@@ -106,17 +107,5 @@ public class ProductController {
 		public @ResponseBody void deleteProduct(String prod_code) {
 			mapper.deleteProduct(prod_code);
 		}
-		
-		// 제품이름 이름 중복없이 가져오기
-//		List<String> PnameList = mapper.productNameList();
-//		model.addAttribute("PnameList", PnameList);
-//		
-//		// 출고 제품 코드 중복없이 가져오기
-//		List<String> PcodeList = mapper.product_codeList();
-//		model.addAttribute("PcodeList", PcodeList);
-//		
-//		// 주문 순번 중복없이 가져오기
-//		List<String> LseqList = mapper.lack_seqList();
-//		model.addAttribute("LseqList", LseqList);
 
 }

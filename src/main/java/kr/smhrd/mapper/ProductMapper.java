@@ -9,6 +9,9 @@ import kr.smhrd.entity.ProductVO;
 public interface ProductMapper {
 
 
+
+
+	
 	public List<ProductVO> productList();
 
 //	List<String> productNameList();

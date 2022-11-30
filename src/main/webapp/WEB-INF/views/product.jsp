@@ -42,7 +42,7 @@
          .custom_select
         {
         
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
+       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:17px; text-align:center;
        }
        
        table input[type=text]:focus,
@@ -208,25 +208,20 @@
            						<table class="table table-borderless table-striped table-hover">
            						
                                     <tbody id="list">
-                		
-                        
                         				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
-                                    	
 	                                        <tr>
-	                                        	
 	                                            <td style="width:20%;">${prod.prod_code}</td>
 	                                            <td style="width:20%;">${prod.prod_name}</td>
 	                                            <td style="width:20%;">${prod.prod_cnt}</td>
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
 	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-danger btn-sm">X</button></td>
-	                                 
 	                                        </tr>
                                     	</c:forEach>
-                        				
                         			</tbody>
-                        			</table>
-                        			  </div>
+                        			
+                       			</table>
+                    			  </div>
                         			
                         				  </form> 
                         			
@@ -247,20 +242,16 @@
                                         		<td style="width:20%;">
                      
                                         				<input type="text" class="custom_select" placeholder = "제품코드" name="prod_code"/>
-                                       
-                                        			
                                         		</td>
+                                        		
                                         			<td style="width:20%;">
-                     
                                         				<input type="text" class="custom_select" placeholder = "제품명" name="prod_name"/>
-                                       
-                                        			
                                         		</td>
                                         		
                                         		
                                         		<td style="width:20%;">
                      
-                                        				<input type="text" class="custom_select" placeholder = "수량입력" name="prod_cnt"/>
+                                        				<input type="text" class="custom_select" placeholder = "수량" name="prod_cnt"/>
                                        
                                         			
                                         		</td>

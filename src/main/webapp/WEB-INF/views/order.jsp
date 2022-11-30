@@ -4,17 +4,17 @@
 <%@ page import="java.util.*"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
-<html lang="UTF-8">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>주문관리 Page</title>
+        <title>주문 관리 Page</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
-        <link href="${path}/resources/css/button.css" rel="stylesheet" >
+        <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -31,6 +31,7 @@
         	text-align:center;
         }
         
+<<<<<<< HEAD
         @media (max-width:576px) {
         	.add_production {
         		margin-left:-50px;
@@ -57,6 +58,101 @@
        	line-height:40px;
        }
        
+=======
+        .pruduction_form_button {
+        	display:flex; 
+        }
+        
+        .pruduction_form_button .btn:nth-child(1){
+        	margin-right:10px;
+        }
+        
+        table input[type=text],
+         table input[type=date],
+         .custom_select
+        {
+        
+       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
+       }
+       
+       table input[type=text]:focus,
+       table input[type=date]:focus,
+       .custom_select
+       {
+      outline:none;
+       }
+       
+       table tr{
+       	height:40px;
+       	line-height:40px;
+       }
+       
+       .production-search{
+
+       	display:flex;
+       	justify-content:center;
+       }
+       
+       .production-search form {
+       display:grid; grid-template-columns : 40% 40% 20%; grid-gap:10px;
+       }
+
+
+		.addform-container form{
+		display:grid; grid-template-columns : 10% 25% 25% 30% 10%; grid-gap:10px;
+		}
+		
+		.des {
+			cursor:pointer;
+		}
+		
+		.des:hover{
+			border-bottom:1px solid black;
+		}
+	@media (max-width:576px) {
+		.production-search {
+			display:block;
+		}
+ 		.production-search form {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+        .pruduction_form_button{
+        	display:flex;
+        	justify-content:end;
+
+        }	
+        
+        .pruduction_form_button .btn{
+        	width:100%;
+        }
+        }
+        
+        
+        @media (max-width:1200px) {
+		.production-search {
+			display:block;
+		}
+ 		.production-search form {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+        .pruduction_form_button{
+        	display:flex;
+        	justify-content:end;
+
+        }	
+        
+        .pruduction_form_button .btn{
+        	width:100%;
+        }
+        }
+       
+       
+       .add-btn {
+       	display:flex;
+       	justify-content:end;
+       }
+
+>>>>>>> refs/remotes/origin/yeji
         </style>
         
     </head>
@@ -74,16 +170,50 @@
             <div id="layoutSidenav_content" class="mt-2">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">주문 관리 🧚‍♀️ </h1>
+                        <h1 class="mt-4">주문 관리 📋</h1>
+                        
                         
                         <div class="card mb-4">
                
                         </div>
                         <div class="card mb-4">
-
-                            
+                            <div class="card-header">
+                                
+                               
+                            </div>
                             <div class="card-body">
+                               	
+                               	<!-- 검색 폼  -->
+                            	<div class="production-search mt-2 mb-4">
+                            		<form action = "" method = "get" class="what">
+                            			<div class="date-search-form">
+                            				<input type = "date" class =" form-control" name = "date"/>
+                            			</div>
+                            	
+                            			
+                            			
+                            			<div class="prod_code_search-form">
+	                            			<input type ="text" class="form-control" placeholder = "주문아이디"/>
+                            			</div>
+                            			
+                            			
+                            			
+                            			<div class="pruduction_form_button">
+                            				<button type="submit" class="btn btn-light"> 🔍 </button>
+                            				<button type="reset" class="btn btn-light">
+                            				<i class="fa-solid fa-arrow-rotate-left"></i>
+                            				  </button>
+                            			</div>
+                            			
+                            			
+                            			
+                            			
+                            			
+                            			
+                            		</form>
+                            	</div>
                             
+<<<<<<< HEAD
                             	<!-- 검색 폼  -->
                                	
                                	<div class="production-search mt-2 mb-4">
@@ -154,10 +284,30 @@
                                             <th>주문 아이디</th>
                                             <th>제품 코드</th>	
                                             <th>주문 수량</th>
+=======
+                            
+                            <!-- TABLE HEADER -->
+                                
+                                
+                                <table id="" class="table table-borderless table-striped table-hover" >
+                                  <thead>
+                                        <tr class="table-secondary">
+                                        	<th style="width:10%">주문 순번</th>
+                                        	
+                                        
+                                            <th  style="width:20%">주문 날짜</th>
+                                            
+                                            <th style="width:20%">주문 아이디</th>
+                                            <th style="width:20%">제품 코드</th>
+                                            <th style="width:20%">제품 수량</th>
+                                            <th style="width:10%"> 삭제 </th>
+                                            <th style="width:1%"></th>
+>>>>>>> refs/remotes/origin/yeji
                                             
                                           
                                         </tr>
                                     </thead>
+<<<<<<< HEAD
                                     </table>
                                     
                                     <form id="deleteorder" method="post">
@@ -254,6 +404,153 @@
       <!--  검색기능 추가하기  -->
       
       		<script type="text/javascript">
+=======
+           						</table>
+           						<div style = "overflow-y : scroll; width:100%; height:300px;">
+           						
+           						<!--  table body  -->
+           						<table class="table table-borderless table-striped table-hover">
+           						
+                                    <tbody>
+                		
+                        
+                        				   <!-- 여기 부터 바꿨음. -->
+                                        <c:forEach items = "${list}" var="OrderVO" varStatus="i">
+                                        	<tr>
+                                        	<!--
+                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_seq}</a></td>
+                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_date}</a></td>
+                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.cus_id}</a></td>
+                                        	-->
+                                        	
+                                        		<td style="width:10%">${OrderVO.order_seq}</a></td>
+                                        		<td style="width:20%">${OrderVO.order_date}</td>
+                                        		<td style="width:20%">${OrderVO.cus_id}</td>
+                                        		<td style="width:20%"> d </td>
+                                        		<td style="width:20%"> a</td>
+                                        		<td style="width:10%"> <button type = "button" class="btn btn-danger btn-sm"> 삭제 </button></td>
+             
+                                        	</tr>
+                                        </c:forEach>
+                                      	
+                                 		<!-- 여기까지 바꿨음. -->
+                                 		
+                        				
+                        			</tbody>
+                        			</table>
+                        			  </div>
+                        <div class="add-btn mt-3">
+                        	<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal">주문 등록</button>
+                        </div>
+                              
+
+
+										
+
+								
+								
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+     
+     
+     
+      	 						<!-- Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> 주문 등록하기</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action = "">
+        <div class="list-group">
+        	<div class="list-group-item" style="line-height:41px;">
+        		<div class="row">
+        			<div class="col-sm-4">
+        				<label for = "item_code">주문 날짜</label>
+        			</div>
+        			<div class = "col-sm-8">
+        				<input type = "date" class="form-control" name="order_date" />
+        			</div>
+        		</div>
+        	</div>	
+        		<div class="list-group-item"style="line-height:41px;">
+        		<div class="row">
+        			<div class="col-sm-4">
+        				<label for = "item_name">주문 아이디</label>
+        			</div>
+        			<div class = "col-sm-8">
+        				<input type = "text" class="form-control" name = "cus_id"/>
+        			</div>
+        		</div>
+        	</div>
+        	
+        	<div class="list-group-item"style="line-height:41px;">
+        		<div class="row">
+        			<div class="col-sm-4">
+        				<label for = "prod_code">제품 코드</label>
+        			</div>
+        			<div class = "col-sm-8">
+        				<select class="form-select" id = "item_manager" name="prod_code">
+        			
+        					<option> 윤예지 </option>
+        					<option> 이철원  </option>
+        					<option> 박성진 </option>
+        				</select>
+        			</div>
+        		</div>
+        	</div>
+        	
+        	
+        	       	<div class="list-group-item"style="line-height:41px;">
+        		<div class="row">
+        			<div class="col-sm-4">
+        				<label for = "item_manager" class="form-label">주문 수량</label>
+        			</div>
+        			<div class = "col-sm-8">
+        				<input type="text" class="form-control" name = "od_cnt">
+        			</div>
+        		</div>
+        	</div>
+        	
+  
+        	
+        	
+        </div>
+        
+        
+  
+        
+        
+        </form>
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+     	<script type="text/javascript">
+>>>>>>> refs/remotes/origin/yeji
 		
 			/* 출고 정보 검색 기능 */
 			
@@ -332,42 +629,8 @@
 		
 		</script>
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-                            </div>
-                        </div>
-                    </div>
-                    
-                     	 						
 
 
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${path}/resources/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

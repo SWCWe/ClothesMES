@@ -22,11 +22,12 @@
          select * from t_product order by prod_code
          
      </select>
-      <!-- 제품이름에서 자동완성 -->
+
     <select id="PsearchList" resultType="kr.smhrd.entity.ProductVO">
         select * from t_product where prod_name like concat('%',#{search},'%')
         
     </select>
+
     
      <!-- 주문 순번에 따른 제품 코드 검색 -->
     <select id="rackList" resultType="String">
@@ -55,5 +56,6 @@
         INSERT INTO t_product (prod_code, prod_name, prod_cnt, prod_m_date, prod_rack)
 		VALUES (#{prod_code}, #{prod_name}, #{prod_cnt}, ${prod_m_date}, #{prod_rack});
     </insert>
+
 </mapper>
 
