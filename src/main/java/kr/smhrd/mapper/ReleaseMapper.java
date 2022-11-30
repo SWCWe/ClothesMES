@@ -16,6 +16,18 @@ public interface ReleaseMapper {
 
 	List<ReleaseVO> searchReleaseList(String releaseQuery);
 
-	List<ReleaseVO> insertReleaseList(ReleaseVO releaseVO);
+	void insertReleaseList(ReleaseVO releaseVO);
+
+	void deleteReleaseList(int r_seq);
+
+	List<String> releaseProd_codePlusList();
+
+	List<String> releasePlusOrder_seqList();
+
+	List<String> releasePlusProd_rackList();
+
+	List<String> prod_codeChangeList(int order_seq);
+
+	List<String> order_seqChangeList(String prod_code);
 
 }

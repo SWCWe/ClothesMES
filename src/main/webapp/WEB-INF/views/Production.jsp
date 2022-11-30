@@ -28,8 +28,9 @@
         }
         
         @media (max-width:576px) {
-        	.add_production {
-        		margin-left:-50px;
+        	.production-search{
+        		width:300px;
+        		margin-left:35px;
         	}
         }
         
@@ -80,6 +81,42 @@
                             </div>
                             <div class="card-body">
                             
+                            	<!-- 검색 폼  -->
+                            	<div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
+                            		<form action = "" method = "get" style="display:grid; grid-template-columns : 30% 30% 30% 10%; grid-gap:10px; ">
+                            			<div class="date-search-form">
+                            				<input type = "date" class =" form-control" name = "date"/>
+                            			</div>
+                            	
+                            			<div class="emp_search_form">
+                            			<select class="form-select" name="emp_no">
+                            				<option selected disabled> 담당자 </option>
+                            				<option> 이철원 </option>
+                            				<option> 박성진 </option>
+                            			</select>
+                            			</div>
+                            			
+                            			<div class="prod_code_search-form">
+	                            			<select class="form-select" name="prod_code_search">
+	                            				<option selected disabled> 제품별 </option>
+	                            				<option> AD231 </option>
+	                            				<option> AD2346 </option>
+	                            			</select>
+                            			</div>
+                            			
+                            			<div class="pruduction_form_button">
+                            				<button type="submit" class="btn btn-light"> 🔍 </button>
+                            			</div>
+                            			
+                            			
+                            			
+                            			
+                            			
+                            			
+                            		</form>
+                            	</div>
+                                
+                                
                                 <table id="" class="table table-borderless table-striped table-hover" >
                                     <thead class="table-secondary" >
                                         <tr>
@@ -133,7 +170,7 @@
                                         </tr>
                                         
                                         <tr class="table-warning">
-                                        	<form action ="" method = "get">
+                                        	<form action ="prod_insert.do" method = "get">
                                         		<td style="width:10%;"></td>
                                         		<td style="width:10%;"><input type="submit" class="btn btn-primary btn-sm" value="추가"> </td>
                                         		
