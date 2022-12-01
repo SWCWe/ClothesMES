@@ -12,11 +12,14 @@ public interface ProductionMapper {
 
 	List<ProductionVO> prodList();
 	
+	List<String> Prod_codeList();
+
+	List<String> NameList();
+	
 	void deleteprod(int m_seq);
 
 	void insertmanufactureList(ProductionVO productionVO);
 	
-	List<ProductionVO> searchmanufactureList(String releaseQuery);
-
+	List<ProductionVO> searchmanufactureList(String manufactureQuery);
 
 }

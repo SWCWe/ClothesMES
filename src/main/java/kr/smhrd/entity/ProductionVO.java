@@ -22,7 +22,7 @@ public class ProductionVO {
 	private int m_cnt;
 	// 제품 담당자 사원번호
 	private String emp_no;
-	// 제품 담당자 이름
+	// 제품 담당자 이름 (사원 번호 대신 이름을 활용하기 위해 추가)
 	private String name;
 	
 	// 기간 검색 기능

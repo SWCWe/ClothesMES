@@ -13,3 +13,10 @@ select * from t_manufacture;
         		select distinct f.emp_no
         		from t_manufacture f, t_member m 
         		where f.emp_no = m.emp_no
+        		
+        		select distinct prod_code
+        from t_manufacture 
+        
+        select distinct m.name
+        from t_manufacture f, t_member m
+        where f.emp_no = m.emp_no
