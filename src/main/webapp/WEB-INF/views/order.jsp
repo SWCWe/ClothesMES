@@ -21,121 +21,13 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
          
          
-         <style>
-        tr{
-       
-        	text-align : center;
-        	font-size:16px;
-        }
         
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        
-
-        .pruduction_form_button {
-        	display:flex; 
-        }
-        
-        .pruduction_form_button .btn:nth-child(1){
-        	margin-right:10px;
-        }
-        
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-        
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
-       }
-       
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-       
-       .production-search{
-
-       	display:flex;
-       	justify-content:center;
-       }
-       
-       .production-search form {
-       display:grid; grid-template-columns : 40% 40% 20%; grid-gap:10px;
-       }
-
-
-		.addform-container form{
-		display:grid; grid-template-columns : 10% 25% 25% 30% 10%; grid-gap:10px;
-		}
-		
-		.des {
-			cursor:pointer;
-		}
-		
-		.des:hover{
-			border-bottom:1px solid black;
-		}
-	@media (max-width:576px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-        
-        
-        @media (max-width:1200px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-       
-       
-       .add-btn {
-       	display:flex;
-       	justify-content:end;
-       }
-
-
-        </style>
-        
-    </head>
-    
     
     
     
     
     <body class="sb-nav-fixed">
+    
  <%@ include file="nav-top.jsp" %>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -174,12 +66,7 @@
 	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
 	                            			</div>
 
-                               	<!-- 검색 폼  -->
-                            	<div class="production-search order mt-2 mb-4">
-                            		<form action = "" method = "get" class="what">
-                            			<div class="date-search-form">
-                            				<input type = "date" class =" form-control" name = "date"/>
-                            			</div>
+                           
 
                             	
                             			<div class="emp_search_form">
@@ -523,10 +410,10 @@
 			
 			
 		
-			/* 주문 정보 추가 기능                                                     만들어야됨 아직 안만듬 */
+			/* 주문 정보 추가 기능          만들어야됨 아직 안만듬 */
 			
 			// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
-			function orderInsert() {
+			/* function orderInsert() {
 				// form에서 전송한 데이터를 json 형태로 저장
 				var frmData = $("releaseInsert").serialize();
 				
@@ -542,7 +429,7 @@
 						console.log(e);
 					}
 				});
-			}
+			} */
 			
 			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
 			function orderLoad() {

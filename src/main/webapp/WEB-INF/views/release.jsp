@@ -167,10 +167,7 @@
 		                                   	<!-- 출고 목록 보기 기능 -->
 		                                    <tbody id="releaseList">
 		                                    	<c:forEach items="${list}" var="release" varStatus="i">
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/yujin
 			                                    	<tr>
 			                                    		<td style="width:10%;">${release.r_seq}</td>
 			                                    		<td style="width:10%;">${release.order_seq}</td>

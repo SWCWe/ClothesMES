@@ -16,14 +16,96 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-
-        <!-- jquery 정의 -->
-
+         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <style>
+        tr{
+       
+        	text-align : center;
+        	font-size:16px;
+        }
+        
+        a.dataTable-sorter{
+        	text-align:center;
+        }
+        
+        .pruduction_form_button {
+        	display:flex; 
+        }
+        
+        .pruduction_form_button .btn:nth-child(1){
+        	margin-right:10px;
+        }
+        
+        table input[type=text],
+         table input[type=date],
+         .custom_select
+        {
+        
+       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
+       }
+       
+       table input[type=text]:focus,
+       table input[type=date]:focus,
+       .custom_select
+       {
+      outline:none;
+       }
+       
+       table tr{
+       	height:40px;
+       	line-height:40px;
+       }
+       
+       .production-search{
 
+       	display:flex;
+       	justify-content:center;
+       }
+       
+        .production-search form {
+       display:grid; grid-template-columns : 20% 20% 20% 20% 20%; grid-gap:10px;
+       }
 
+	@media (max-width:576px) {
+		.production-search {
+			display:block;
+		}
+ 		form {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+        .pruduction_form_button{
+        	display:flex;
+        	justify-content:end;
+
+        }	
+        
+        .pruduction_form_button .btn{
+        	width:100%;
+        }
+        }
+        
+        
+        @media (max-width:1200px) {
+		.production-search {
+			display:block;
+		}
+ 		form {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+        .pruduction_form_button{
+        	display:flex;
+        	justify-content:end;
+
+        }	
+        
+        .pruduction_form_button .btn{
+        	width:100%;
+        }
+        }
+      
+        </style>
     </head>
-    
     <body class="sb-nav-fixed">
  <%@ include file="nav-top.jsp" %>
         <div id="layoutSidenav">
@@ -46,10 +128,9 @@
                             <div class="card-body">
                                	
                                	<!-- 검색 폼  -->
-
                                	
-                               	<div class="production-search product mt-2 mb-4">
-                               	<form id="ProductSearch" method = "post">
+                               	<div class="production-search mt-2 mb-4">
+                               	<form id="ProductSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
                                	
                             
                             		
@@ -60,7 +141,7 @@
 	                            			<div class="date-search-form">
 	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
 	                            			</div>
-
+                            	
                             			<div class="emp_search_form">
                             			<select class="form-select" name="prod_code" >
                             				<option selected disabled> 제품코드 </option>
@@ -127,22 +208,25 @@
            						<table class="table table-borderless table-striped table-hover">
            						
                                     <tbody id="list">
+                		
+                        
                         				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
+                                    	
 	                                        <tr>
+	                                        	
 	                                            <td style="width:20%;">${prod.prod_code}</td>
 	                                            <td style="width:20%;">${prod.prod_name}</td>
 	                                            <td style="width:20%;">${prod.prod_cnt}</td>
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
-	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-secondary btn-sm t-button">X</button></td>
-
-
+	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-danger btn-sm">X</button></td>
+	                                 
 	                                        </tr>
                                     	</c:forEach>
+                        				
                         			</tbody>
-                        			
-                       			</table>
-                    			  </div>
+                        			</table>
+                        			  </div>
                         			
                         				  </form> 
                         			
@@ -163,16 +247,20 @@
                                         		<td style="width:20%;">
                      
                                         				<input type="text" class="custom_select" placeholder = "제품코드" name="prod_code"/>
+                                       
+                                        			
                                         		</td>
-                                        		
                                         			<td style="width:20%;">
+                     
                                         				<input type="text" class="custom_select" placeholder = "제품명" name="prod_name"/>
+                                       
+                                        			
                                         		</td>
                                         		
                                         		
                                         		<td style="width:20%;">
                      
-                                        				<input type="text" class="custom_select" placeholder = "수량" name="prod_cnt"/>
+                                        				<input type="text" class="custom_select" placeholder = "수량입력" name="prod_cnt"/>
                                        
                                         			
                                         		</td>
@@ -254,7 +342,7 @@
 					
 					if(search.length >0){
 						$.ajax({
-							url : "idSearch.do",
+							url : "PsearchList.do",
 							type : "POST",
 							data : {"search" : search} ,
 							datatype: "JSON" ,
@@ -271,7 +359,7 @@
 					
 					});
 			
-				/* 제품 정보 추가 기능 */
+				/* 출고 정보 추가 기능 */
 				// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
 				function ProductInsert() {
 					// form에서 전송한 데이터를 json 형태로 저장
