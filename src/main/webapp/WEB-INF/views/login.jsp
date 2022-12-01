@@ -14,19 +14,31 @@
      <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <title>Login</title>
+    <style>
+    .login-container-box-bottom-right {
+    	cursor:pointer;
+    }
+    </style>
 </head>
 <body>
     <session class = "login">
-        <div class = "login-container">
+  
+        <div class = "login-container" style="display: flex; flex-direction:column;">
+          <h3>의류 분류 및 재고관리 시스템</h3>
             <div class ="login-container-box d-flex align-items-center justify-content-center flex-column">
                 <div class="login-container-box-top">
+
                 
                     <form action ="loginCheck.do" method = "post">
+
+                    
                         <div class = "form-group">
                             <input type = "text" class="form-control mb-3" name ="emp_no" placeholder = "아이디를 입력해 주세요"/>
                             <input type = "password" class ="form-control mb-3" name ="pw" placeholder = "비밀번호를 입력해 주세요"/>
+
                             
                             <input type = "submit" class ="btn btn-primary form-control" value="로그인" />
+
                         </div>
                     </form>
                     

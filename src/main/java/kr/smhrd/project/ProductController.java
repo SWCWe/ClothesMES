@@ -37,6 +37,7 @@ public class ProductController {
 		
 		return Rlist;
 	}
+
     	
     	
 		@RequestMapping("/PsearchList.do")
@@ -107,5 +108,6 @@ public class ProductController {
 		public @ResponseBody void deleteProduct(String prod_code) {
 			mapper.deleteProduct(prod_code);
 		}
+
 
 }

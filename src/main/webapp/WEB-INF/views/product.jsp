@@ -16,6 +16,7 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
          <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <style>
@@ -105,6 +106,7 @@
         }
       
         </style>
+
     </head>
     <body class="sb-nav-fixed">
  <%@ include file="nav-top.jsp" %>
@@ -128,6 +130,7 @@
                             <div class="card-body">
                                	
                                	<!-- 검색 폼  -->
+
                                	
                                	<div class="production-search mt-2 mb-4">
                                	<form id="ProductSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
@@ -141,7 +144,7 @@
 	                            			<div class="date-search-form">
 	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
 	                            			</div>
-                            	
+
                             			<div class="emp_search_form">
                             			<select class="form-select" name="prod_code" >
                             				<option selected disabled> 제품코드 </option>
@@ -216,6 +219,7 @@
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
 	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-danger btn-sm">X</button></td>
+
 	                                        </tr>
                                     	</c:forEach>
                         			</tbody>

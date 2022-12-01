@@ -20,22 +20,9 @@
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         
-        <style>
-        tr{
-       
-        	text-align : center;
-        	font-size:16px;
-        }
-        
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        
-        .pruduction_form_button .btn:nth-child(1){
-        	margin-right:10px;
-        }
-        
+   
       
+<style>
         
         table input[type=text],
          table input[type=date],
@@ -118,6 +105,7 @@
     
         }
         </style>
+
     </head>
     
     <body class="sb-nav-fixed">
@@ -162,7 +150,7 @@
                             <div class="card-body">
                             
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4">
+	                            <div class="production-search release mt-2 mb-4">
 	                            		<form id="releaseSearch" method = "post">
 	                            			
 	                            			<!-- 제품 코드 검색 부분 -->
@@ -207,9 +195,11 @@
 	                            			<!-- 검색 버튼 -->
 	                            			<div class="pruduction_form_button">
 	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
+
 	                            			    <button type="reset" onclick="releaseLoad()" class="btn btn-light">
                             						<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  	</button>
+
 	                            			</div>
 	                            			
 	                            		</form>
@@ -238,6 +228,7 @@
 		                                   	<!-- 출고 목록 보기 기능 -->
 		                                    <tbody id="releaseList">
 		                                    	<c:forEach items="${list}" var="release" varStatus="i">
+
 			                                    	<tr>
 			                                    		<td style="width:10%;">${release.r_seq}</td>
 			                                    		<td style="width:10%;">${release.order_seq}</td>
@@ -248,6 +239,7 @@
 			                                    		<td style="width:12.5%;">${release.prod_rack}</td>
 			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
 			                                    	</tr>
+
 		                                    	</c:forEach>
 		                                   	</tbody>
 		                               	</table>

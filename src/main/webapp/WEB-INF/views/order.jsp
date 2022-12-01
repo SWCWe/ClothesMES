@@ -16,6 +16,7 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
          
@@ -156,6 +157,7 @@
                             </div>
                             <div class="card-body">
                                	
+
                              
                             	<!-- 검색 폼  -->
                                	
@@ -171,6 +173,9 @@
 	                            			<div class="date-search-form">
 	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
 	                            			</div>
+
+                            
+
                             	
                             			<div class="emp_search_form">
                             			<select class="form-select" name="order_seq" >
