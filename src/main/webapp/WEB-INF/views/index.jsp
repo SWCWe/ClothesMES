@@ -168,7 +168,7 @@
         loadList();
    
         function listProduct(data){
-        	var html = "";
+        	var html = "<";
         	for(var i = 0; i < data.length; i++){
         		
         	html += "<tr>";

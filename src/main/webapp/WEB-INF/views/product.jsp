@@ -16,8 +16,12 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
         <!-- jquery 정의 -->
+
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+
     </head>
     
     <body class="sb-nav-fixed">
@@ -131,6 +135,7 @@
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
 	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-secondary btn-sm t-button">X</button></td>
+
 
 	                                        </tr>
                                     	</c:forEach>

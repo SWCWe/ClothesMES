@@ -174,7 +174,12 @@
 	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
 	                            			</div>
 
-                            
+                               	<!-- 검색 폼  -->
+                            	<div class="production-search order mt-2 mb-4">
+                            		<form action = "" method = "get" class="what">
+                            			<div class="date-search-form">
+                            				<input type = "date" class =" form-control" name = "date"/>
+                            			</div>
 
                             	
                             			<div class="emp_search_form">

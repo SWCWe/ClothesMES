@@ -109,5 +109,4 @@ public class ProductController {
 			mapper.deleteProduct(prod_code);
 		}
 
-
 }

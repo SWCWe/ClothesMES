@@ -19,8 +19,10 @@
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
         <!-- Chart.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
     </head>
     
     <body class="sb-nav-fixed">
@@ -133,9 +135,6 @@
 	                            			<div class="pruduction_form_button">
 	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
 
-
-
-
 	                            			    <button type="reset" onclick="releaseLoad()" class="btn btn-light">
                             						<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  	</button>
@@ -168,7 +167,10 @@
 		                                   	<!-- 출고 목록 보기 기능 -->
 		                                    <tbody id="releaseList">
 		                                    	<c:forEach items="${list}" var="release" varStatus="i">
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/yujin
 			                                    	<tr>
 			                                    		<td style="width:10%;">${release.r_seq}</td>
 			                                    		<td style="width:10%;">${release.order_seq}</td>

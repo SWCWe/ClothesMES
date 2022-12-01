@@ -11774,7 +11774,7 @@ body {
       
         
         display:grid;
-        grid-template-columns : 20% 20% 20% 20% 20%;
+        grid-template-columns : 16% 16% 16% 16% 16% 16%;
         
         grid-gap:10px;
       
