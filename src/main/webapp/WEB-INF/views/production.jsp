@@ -18,7 +18,7 @@
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- chart.js -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         
@@ -72,12 +72,14 @@
             <div id="layoutSidenav_content" class="mt-2">
             	<main>
                 	<div class="container-fluid px-4">
-                        <h1 class="mt-4">생산관리 💫</h1>
+                		<h1 class="mt-4">생산관리 💫 <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
+                      
                         <div class="card mb-4">
                             <div class="card-header">
                             	<i class="fas fa-table me-1"></i>
                            				철원이의 생산관리  
-                            </div>
+                         
+			                </div>
                          
                             <div class="card-body">         
                             	<!-- 검색 폼 -->
