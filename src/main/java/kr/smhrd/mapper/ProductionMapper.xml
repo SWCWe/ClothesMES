@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.ProductionMapper">
+    <!-- DB에 있는 생산 테이블 전체 데이터 가져오기 -->
+    <!-- 사원번호 대신 사원 이름 쓰기위해서 t_member테이블과 join 하였음 -->
+    <select id="prodList" resultType="kr.smhrd.entity.ProductionVO">
+        select f.m_seq, f.prod_code, f.prod_m_date, f.m_cnt, m.name
+        from t_manufacture f, t_member m
+        where f.emp_no = m.emp_no
+    </select>
+    <!-- 생산 담당자 이름 중복없이 가져오기 -->
+    <select id="Prod_codeList" resultType="String">
+        select distinct prod_code
+        from t_manufacture
+    </select>
+      <!-- 생산 제품 코드 중복없이 가져오기 -->
+    <select id="NameList" resultType="String">
+        select distinct m.name
+        from t_manufacture f, t_member m
+        where f.emp_no = m.emp_no
+    </select>
+     <!-- 생산 정보 추가하기 -->
+     <!-- 생산 정보 추가할때 사원번호가 아닌 담당 사원 이름을 작성해서 추가하기 때문에 m.name = #{name} 을 써준다 -->
+    <insert id="insertmanufactureList" parameterType="kr.smhrd.entity.ProductionVO">
+        insert into t_manufacture(prod_code, prod_m_date, m_cnt, emp_no)
+        values (#{prod_code}, ${prod_m_date}, #{m_cnt},
+        		(select distinct f.emp_no
+        		from t_manufacture f, t_member m
+        		where f.emp_no = m.emp_no
+        		and m.name = #{name}))	
+	 </insert>
+    <!-- 생산 정보 삭제하기 -->
+    <delete id="deleteprod" parameterType="kr.smhrd.entity.ProductionVO">
+        delete from t_manufacture
+        where m_seq = #{m_seq}
+    </delete>
+    <!-- 검색 내용 가져오기(조건 부분 쿼리 통째로 삽입) -->
+    <select id="searchmanufactureList" parameterType="kr.smhrd.entity.ProductionVO" resultType="kr.smhrd.entity.ProductionVO">
+        select f.m_seq, f.prod_code, f.prod_m_date, f.m_cnt , m.name
+        from t_manufacture f, t_member m
+        where f.emp_no = m.emp_no
+        ${manufactureQuery}
+    </select>
+</mapper>
