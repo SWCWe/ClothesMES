@@ -11744,6 +11744,12 @@ body {
        
        }
        
+       .badge{
+       	height:25px;
+       	font-size:18px;
+       	line-height:10px;
+       }
+       
        .production-search{
        	display:flex;
        	justify-content:center;

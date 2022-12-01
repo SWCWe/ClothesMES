@@ -36,8 +36,15 @@
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
+                                <div class="card bg-success text-white mb-4">
+                                	<div class="card-header"> 2022-02-01 22:22:22</div>
+                                    <div class="card-body">
+                                    	<div class="id_area mb-2"> ID : yujin123 </div>
+                                    	<div class="d-flex align-items-center">
+                                    	<h3> 말랑말랑 바지 </h3>
+                                    	<div class="badge badge-lg bg-secondary ml-3"> 1개 </div>
+                                    	</div>
+                                    </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -190,6 +197,8 @@
         		}
         	})
         }
+        
+      
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${path}/resources/js/scripts.js"></script>
