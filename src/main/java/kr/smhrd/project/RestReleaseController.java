@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -103,9 +104,9 @@ public class RestReleaseController {
 	@RequestMapping("/loadChartRelease.do")
 	public String loadChartRelease() {
 		List<ReleaseVO> loadChart = mapper.releaseChartData();
-
-		Gson gson = new Gson(); // json으로 가공하기 위해 gson 객체 생성
-		JsonArray jArray = new JsonArray(); // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+			// 차트에 사용할 수 있는 데이터로 변환하는 과정
+		Gson gson = new Gson();                        // json으로 가공하기 위해 gson 객체 생성
+		JsonArray jArray = new JsonArray();            // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
 		
 		Iterator<ReleaseVO> it = loadChart.iterator(); // list의 반복자를 얻어,,?
 		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
@@ -125,20 +126,21 @@ public class RestReleaseController {
 	
 	// 상위/하위 n개 데이터 가져오기
 	@RequestMapping("/releaseTB.do")
-	public String releaseTop(@Param(value = "cnt") int cnt, @Param ( value = "data") String data) {
-		
+	public String releaseTB(@Param(value = "cnt") int cnt, @Param(value = "data") String data) {
 		String releaseChartQuery = "";
-		
+		// 어떤 버튼을 눌렀는지에 따라 다른 쿼리문
 		if (data.equals("top")) {
 			releaseChartQuery = "desc limit " + cnt;
 		} else if (data.equals("bottom")) {
 			releaseChartQuery = "limit " + cnt;
+		} else {
+			releaseChartQuery = "desc limit 10"; // 기본 설정
 		}
 		
 		List<ReleaseVO> loadChart = mapper.releaseTB(releaseChartQuery);
-
-		Gson gson = new Gson(); // json으로 가공하기 위해 gson 객체 생성
-		JsonArray jArray = new JsonArray(); // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+			// 차트에 사용할 수 있는 데이터로 변환하는 과정
+		Gson gson = new Gson();                        // json으로 가공하기 위해 gson 객체 생성
+		JsonArray jArray = new JsonArray();            // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
 		
 		Iterator<ReleaseVO> it = loadChart.iterator(); // list의 반복자를 얻어,,?
 		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
@@ -155,19 +157,5 @@ public class RestReleaseController {
 		String releaseTop = gson.toJson(jArray);
 		return releaseTop;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

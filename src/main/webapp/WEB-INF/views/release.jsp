@@ -22,7 +22,6 @@
         <!-- Chart.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         
-        
     </head>
     
     <body class="sb-nav-fixed">
@@ -47,7 +46,6 @@
     	
     	// 차트에 필요한 데이터
     	String chartDatas = (String) request.getAttribute("chartDatas");
-    	
     %>
     
  <%@ include file="nav-top.jsp" %>
@@ -66,7 +64,7 @@
                         <div class="card mb-4">
                             <div class="card-header" onclick="chartShow()" style="height:45px;">
                                 <p>
-	                                <i class="fas fa-chart-area me-1"></i>출고 현황
+	                                <i class="fas fa-chart-area me-1"></i>제품 출고 현황
                                 </p>
                             </div>
                             <!-- 차트 들어올 부분 -->
@@ -182,7 +180,7 @@
 	                               	</div>
                                	</form>
                                	
-                               	<!-- 출고 정보 s추가 폼 -->
+                               	<!-- 출고 정보 추가 폼 -->
                                	<form id="releaseInsertFrm" method="post">
 	                               	<table class="table table-borderless table-striped table-hover">
 	                                   	<tbody>
@@ -333,9 +331,9 @@
 			
 			// 상위/하위 n개 데이터 차트 보이기
 			function releaseTB(data) {
-				
+				// 사용자가 직접 입력한 수
 				var cnt = document.getElementById('cnt').value;
-				
+				// data -> 어떤 버튼인지 구별
 				$.ajax({
 					url : "releaseTB.do",
 					method : "POST",

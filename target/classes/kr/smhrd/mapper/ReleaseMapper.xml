@@ -89,6 +89,7 @@
     </select>
     
     <!-- 차트에 필요한 정보 가져오기 -->
+    <!-- 제품 수가 많으면 차트 보기 힘드므로 기본 10개로 제한 -->
     <select id="releaseChartData" resultType="kr.smhrd.entity.ReleaseVO">
         select prod_code, sum(r_cnt) r_cnt
         from t_release

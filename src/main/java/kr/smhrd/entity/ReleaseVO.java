@@ -1,5 +1,7 @@
 package kr.smhrd.entity;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +24,6 @@ public class ReleaseVO {
 	// 기간 검색 기능
 	private String start_r_date;     // 시작 일자
 	private String end_r_date;     // 끝 일자
+	
+	private List<ReleaseVO> releaseVO;
 }
