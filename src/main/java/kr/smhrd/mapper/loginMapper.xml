@@ -14,4 +14,12 @@
 		VALUES (#{emp_no}, #{pw}, #{name}, #{position}, #{dept});
     </insert>
   
+    
+    <!--  로그인 -->
+     <select id = "loginCheck" resultType ="kr.smhrd.entity.MemberVO" parameterType = "kr.smhrd.entity.MemberVO">
+       select *
+       from t_member 
+       where emp_no = #{emp_no} and pw = #{pw}
+   </select>
+    
   </mapper>

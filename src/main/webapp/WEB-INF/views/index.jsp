@@ -17,6 +17,7 @@
          <link href="${path}/resources/css/styles.css" rel="stylesheet" >
          <link href="${path}/resources/css/button.css" rel="stylesheet" >
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     </head>
     <body class="sb-nav-fixed">
  		<%@ include file="nav-top.jsp" %>

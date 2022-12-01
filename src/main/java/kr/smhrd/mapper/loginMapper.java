@@ -11,6 +11,8 @@ public interface loginMapper {
 
 	void joinRegister(MemberVO memberVO); // 회원가입
 
+	MemberVO loginCheck(MemberVO memberVO);
+
 	
 
 }

@@ -24,7 +24,8 @@ select count(*) from t_member where emp_no = '138'
 where emp_no='138' and pw='123'
 
 select * from t_member
-
+select count(*),emp_no,pw from t_member 
+       where emp_no ='111' and pw = '111'
 
  INSERT INTO t_member (emp_no, pw, name, position, dept, emp_joindate)
 		VALUES ('111', '111', '루키', '사원', '생산', NOW());
