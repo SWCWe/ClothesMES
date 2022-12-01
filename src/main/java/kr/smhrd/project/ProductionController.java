@@ -15,7 +15,7 @@ public class ProductionController {
 	
 	// 생산관리 페이지 DB에서 데이터 가져오기
 	@RequestMapping("/production.do")
-	public void prodList(Model model){
+	public String prodList(Model model){
 		
 		// ProductionVO 에 있는 값들 리스트로 가져오기
 		List<ProductionVO> list = mapper.prodList();
@@ -31,6 +31,7 @@ public class ProductionController {
 		List<String> nameList = mapper.NameList();
 		model.addAttribute("nameList", nameList);		
 		
+		return "production";
 	}
 	
 	// 생산 정보 불러오기 기능(비동기)

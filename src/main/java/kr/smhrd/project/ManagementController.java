@@ -39,11 +39,6 @@ public class ManagementController {
 	
 	
 	
-	@RequestMapping("/production.do")
-	public String production() {
-		return "Production";
-	}
-	
 	
 	
 }

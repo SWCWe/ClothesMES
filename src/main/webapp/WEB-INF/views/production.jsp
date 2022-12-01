@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,36 +21,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <style>
-        tr{
-        	text-align : center;
-        	font-size:16px;
-        }
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        @media (max-width:576px) {
-        	.add_production {
-        		margin-left:-50px;
-        	}
-        }
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
-       }
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-    </style>
+      
     </head>
     <body class="sb-nav-fixed">
  <%@ include file="nav-top.jsp" %>
@@ -60,7 +32,7 @@
             <div id="layoutSidenav_content" class="mt-2">
             	<main>
                 	<div class="container-fluid px-4">
-                		<h1 class="mt-4">생산관리 :어지러운: <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
+                		<h1 class="mt-4">생산관리  <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
                         <div class="card mb-4">
                             <div class="card-header">
                             	<i class="fas fa-table me-1"></i>
@@ -105,11 +77,14 @@
 		                            			</select>
 	                            			</div>
 	                            			
-	                            			<div class="pruduction_form_button">
+	                            			<div class="pruduction_form_button" style="display: flex;">
 	                            				<!-- 검색 버튼 -->
-	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> :돋보기: </button>
-	                            				<!-- 검색 부분 초기화 / 생산관리 테이블 초기화 버튼 -->
-		                            			<button type="reset"  onclick="prodload()" class="btn btn-dark">:돋보기: </button>
+	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> 🔍</button>
+	                            				<!-- 검색 부분 초기화 / 생산관리 테이블 초기화 버튼 -->                            	
+		                            			<button type="reset" onclick="prodload()" class="btn btn-light">
+                            						<i class="fa-solid fa-arrow-rotate-left"></i>
+                            				  	</button>
+		                            			
 	                            			</div>
 	  
 	                            		</form>
@@ -231,7 +206,7 @@
 					html += "</tr>";
 				}
 				// id가 "prodList"인 <tbody>안의 html 교체
-				$('#prodList').html(html);
+				$('#prodList').html(html); 
 			}
 		
 		// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수
