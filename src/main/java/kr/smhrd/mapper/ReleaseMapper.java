@@ -30,4 +30,8 @@ public interface ReleaseMapper {
 
 	List<String> order_seqChangeList(String prod_code);
 
+	List<ReleaseVO> releaseChartData();
+
+	List<ReleaseVO> releaseTB(String releaseChartQuery);
+
 }

@@ -1,11 +1,18 @@
 package kr.smhrd.project;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import kr.smhrd.entity.ReleaseVO;
 import kr.smhrd.mapper.ReleaseMapper;
@@ -93,6 +100,62 @@ public class RestReleaseController {
 		return order_seqChange;
 	}
 	
+	// 비동기로 차트에 필요한 데이터 가져오기
+	@RequestMapping("/loadChartRelease.do")
+	public String loadChartRelease() {
+		List<ReleaseVO> loadChart = mapper.releaseChartData();
+			// 차트에 사용할 수 있는 데이터로 변환하는 과정
+		Gson gson = new Gson();                        // json으로 가공하기 위해 gson 객체 생성
+		JsonArray jArray = new JsonArray();            // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+		
+		Iterator<ReleaseVO> it = loadChart.iterator(); // list의 반복자를 얻어,,?
+		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
+			ReleaseVO chartVO = it.next();
+			JsonObject object = new JsonObject();
+			String prod_code = chartVO.getProd_code(); // 각각의 변수에 임시로 넣어두었다가
+			int r_cnt = chartVO.getR_cnt();
+			
+			object.addProperty("Code", prod_code);     // jsonobject에 addproperty 메소드를 통해 추가하고
+			object.addProperty("Count", r_cnt);
+			jArray.add(object);                        // 완성된 jsonobject를 jsonarray에 추가
+		}
+		
+		String loadChartRelease = gson.toJson(jArray);
+		return loadChartRelease;
+	}
 	
+	// 상위/하위 n개 데이터 가져오기
+	@RequestMapping("/releaseTB.do")
+	public String releaseTB(@Param(value = "cnt") int cnt, @Param(value = "data") String data) {
+		String releaseChartQuery = "";
+		// 어떤 버튼을 눌렀는지에 따라 다른 쿼리문
+		if (data.equals("top")) {
+			releaseChartQuery = "desc limit " + cnt;
+		} else if (data.equals("bottom")) {
+			releaseChartQuery = "limit " + cnt;
+		} else {
+			releaseChartQuery = "desc limit 10"; // 기본 설정
+		}
+		
+		List<ReleaseVO> loadChart = mapper.releaseTB(releaseChartQuery);
+			// 차트에 사용할 수 있는 데이터로 변환하는 과정
+		Gson gson = new Gson();                        // json으로 가공하기 위해 gson 객체 생성
+		JsonArray jArray = new JsonArray();            // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+		
+		Iterator<ReleaseVO> it = loadChart.iterator(); // list의 반복자를 얻어,,?
+		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
+			ReleaseVO chartVO = it.next();
+			JsonObject object = new JsonObject();
+			String prod_code = chartVO.getProd_code(); // 각각의 변수에 임시로 넣어두었다가
+			int r_cnt = chartVO.getR_cnt();
+			
+			object.addProperty("Code", prod_code);     // jsonobject에 addproperty 메소드를 통해 추가하고
+			object.addProperty("Count", r_cnt);
+			jArray.add(object);                        // 완성된 jsonobject를 jsonarray에 추가
+		}
+		
+		String releaseTop = gson.toJson(jArray);
+		return releaseTop;
+	}
 	
 }

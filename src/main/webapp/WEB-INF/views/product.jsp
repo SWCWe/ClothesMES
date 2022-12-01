@@ -16,98 +16,10 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-
-         <!-- jquery 정의 -->
+        <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <style>
-        tr{
-       
-        	text-align : center;
-        	font-size:16px;
-        }
-        
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        
-        .pruduction_form_button {
-        	display:flex; 
-        }
-        
-        .pruduction_form_button .btn:nth-child(1){
-        	margin-right:10px;
-        }
-        
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-        
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:17px; text-align:center;
-       }
-       
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-       
-       .production-search{
-
-       	display:flex;
-       	justify-content:center;
-       }
-       
-        .production-search form {
-       display:grid; grid-template-columns : 20% 20% 20% 20% 20%; grid-gap:10px;
-       }
-
-	@media (max-width:576px) {
-		.production-search {
-			display:block;
-		}
- 		form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-        
-        
-        @media (max-width:1200px) {
-		.production-search {
-			display:block;
-		}
- 		form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-      
-        </style>
-
     </head>
+    
     <body class="sb-nav-fixed">
  <%@ include file="nav-top.jsp" %>
         <div id="layoutSidenav">
@@ -132,8 +44,8 @@
                                	<!-- 검색 폼  -->
 
                                	
-                               	<div class="production-search mt-2 mb-4">
-                               	<form id="ProductSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+                               	<div class="production-search product mt-2 mb-4">
+                               	<form id="ProductSearch" method = "post">
                                	
                             
                             		
@@ -218,7 +130,7 @@
 	                                            <td style="width:20%;">${prod.prod_cnt}</td>
 	                                            <td style="width:20%;">${prod.prod_m_date}</td>
 	                                            <td style="width:10%;">${prod.prod_rack}</td>
-	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-danger btn-sm">X</button></td>
+	                                            <td style="width:10%;"><button type="button" onclick="deleteProduct('${prod.prod_code}')" class="btn btn-secondary btn-sm t-button">X</button></td>
 
 	                                        </tr>
                                     	</c:forEach>
