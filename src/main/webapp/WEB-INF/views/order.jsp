@@ -119,11 +119,9 @@
                                 <table id="" class="table table-borderless table-striped table-hover" >
                                   <thead>
                                         <tr class="table-secondary">
-                                        	<th style="width:10%">주문 순번</th>
                                         	
-                                        
+                                        	<th style="width:10%">주문 번호</th>
                                             <th  style="width:20%">주문 날짜</th>
-                                            
                                             <th style="width:20%">주문 아이디</th>
                                             <th style="width:20%">제품 코드</th>
                                             <th style="width:20%">제품 수량</th>
@@ -151,7 +149,7 @@
                                     	
 	                                        <tr>
 	                                        	
-	                                            <td style="width:10%;">${prod.od_seq}</td>
+	                                         
 	                                            <td style="width:20%;">${prod.order_seq}</td>
 	                                            <td style="width:20%;">${prod.order_date}</td>
 	                                            <td style="width:20%;">${prod.cus_id}</td>
