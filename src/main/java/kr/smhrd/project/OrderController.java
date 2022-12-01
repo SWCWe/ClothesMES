@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.entity.OrderVO;
+import kr.smhrd.entity.ProductVO;
 import kr.smhrd.entity.ReleaseVO;
 import kr.smhrd.mapper.OrderMapper;
 
@@ -18,14 +19,31 @@ public class OrderController {
 	@Autowired
 	private OrderMapper orderMapper; // DB관련된 것은 mapper
 	
+	
+	// 주문 정보 가져오기
 	@RequestMapping("/order.do")
 	public void order(Model model) {
 		List<OrderVO> list = orderMapper.orderList();
 		model.addAttribute("list", list);
-		System.out.println("완료2");
+		
 	}
+	 // 비동기로 주문정보 가져옴	
+	@RequestMapping("/restorder.do")
+	public @ResponseBody List<OrderVO> restOrder() {
+	// 주문정보 가져오기
+	List<OrderVO> Olist = orderMapper.orderList();
 	
-	
+	return Olist;
+}
+	// 자동완성 아이디 검색
+	@RequestMapping("/idSearch.do")
+	public @ResponseBody List<OrderVO> searchOrder(String idSearch){
+		
+		System.out.println(idSearch);
+		List<OrderVO> searchlist = orderMapper.idSearch(idSearch);
+		
+		return searchlist;
+	}
 	
 	@RequestMapping("/searchOrder.do")
 	public @ResponseBody List<OrderVO> searchOrder(OrderVO OrderVO) {
@@ -50,7 +68,7 @@ public class OrderController {
 		
 		
 		if (prod_code != null) { // 제품코드가 비어있지 않다면
-			orderQuery += "and r.prod_code = '" + prod_code + "'";
+			orderQuery += "and m.prod_code = '" + prod_code + "'";
 		}
 		if (order_seq > 0) { // 주문순번이 비어있지 않다면
 			orderQuery += "and r.order_seq = " + order_seq;

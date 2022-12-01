@@ -31,34 +31,7 @@
         	text-align:center;
         }
         
-<<<<<<< HEAD
-        @media (max-width:576px) {
-        	.add_production {
-        		margin-left:-50px;
-        	}
-        }
-        
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-        
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
-       }
-       
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-       
-=======
+
         .pruduction_form_button {
         	display:flex; 
         }
@@ -152,7 +125,7 @@
        	justify-content:end;
        }
 
->>>>>>> refs/remotes/origin/yeji
+
         </style>
         
     </head>
@@ -183,37 +156,7 @@
                             </div>
                             <div class="card-body">
                                	
-                               	<!-- 검색 폼  -->
-                            	<div class="production-search mt-2 mb-4">
-                            		<form action = "" method = "get" class="what">
-                            			<div class="date-search-form">
-                            				<input type = "date" class =" form-control" name = "date"/>
-                            			</div>
-                            	
-                            			
-                            			
-                            			<div class="prod_code_search-form">
-	                            			<input type ="text" class="form-control" placeholder = "주문아이디"/>
-                            			</div>
-                            			
-                            			
-                            			
-                            			<div class="pruduction_form_button">
-                            				<button type="submit" class="btn btn-light"> 🔍 </button>
-                            				<button type="reset" class="btn btn-light">
-                            				<i class="fa-solid fa-arrow-rotate-left"></i>
-                            				  </button>
-                            			</div>
-                            			
-                            			
-                            			
-                            			
-                            			
-                            			
-                            		</form>
-                            	</div>
-                            
-<<<<<<< HEAD
+                             
                             	<!-- 검색 폼  -->
                                	
                                	<div class="production-search mt-2 mb-4">
@@ -249,14 +192,14 @@
                             			
                             			
                             			<div class="prod_code_search-form">
-	                            			<input type ="text" id ="search"class="form-control" placeholder = "주문아이디"/>
+	                            			<input type ="text" name="cus_id" id ="idSearch"class="form-control" placeholder = "주문아이디"/>
                             			</div>
                             			
                             			
                             			
                             			<div class="pruduction_form_button">
                             				<button type="button" onclick="orderSearch()" class="btn btn-light"> 🔍 </button>
-                            				<button type="reset" onclick="productLoad()" class="btn btn-light">
+                            				<button type="reset" onclick="orderLoad()" class="btn btn-light">
                             				<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  </button>
                             			</div>
@@ -272,20 +215,7 @@
                             
                             
                             
-                                <table id="" class="table table-borderless table-striped table-hover">
-                                
-                                
-                                
-                                    <thead>
-                                        <tr class="">
-                                        	<th>주문상세 순번</th>
-                                        	<th>주문 번호(순번)</th>                         
-                                            <th>주문 날짜</th>          
-                                            <th>주문 아이디</th>
-                                            <th>제품 코드</th>	
-                                            <th>주문 수량</th>
-=======
-                            
+                               
                             <!-- TABLE HEADER -->
                                 
                                 
@@ -302,12 +232,12 @@
                                             <th style="width:20%">제품 수량</th>
                                             <th style="width:10%"> 삭제 </th>
                                             <th style="width:1%"></th>
->>>>>>> refs/remotes/origin/yeji
+
                                             
                                           
                                         </tr>
                                     </thead>
-<<<<<<< HEAD
+
                                     </table>
                                     
                                     <form id="deleteorder" method="post">
@@ -342,7 +272,7 @@
                         				  </form> 
       
       
-    								   <form id ="ProductInsert" method = "post">
+    								   <form id ="orderInsert" method = "post">
                         			<table  class="table table-borderless table-striped table-hover" >
                         			
                         				<!--  추가 FORM  -->
@@ -384,7 +314,7 @@
                                         			
                                         		</td>
                                         		
-                                        		<td style="width:10%;"><input onclick="ProductInsert()" type="button" class="btn btn-success btn-sm" value="추가"> </td>
+                                        		<td style="width:10%;"><input onclick="orderInsert()" type="button" class="btn btn-success btn-sm" value="추가"> </td>
                                         
                                         		<td style="width:1%"> </td>
                                         
@@ -403,46 +333,10 @@
       
       <!--  검색기능 추가하기  -->
       
-      		<script type="text/javascript">
-=======
-           						</table>
-           						<div style = "overflow-y : scroll; width:100%; height:300px;">
-           						
-           						<!--  table body  -->
-           						<table class="table table-borderless table-striped table-hover">
-           						
-                                    <tbody>
-                		
-                        
-                        				   <!-- 여기 부터 바꿨음. -->
-                                        <c:forEach items = "${list}" var="OrderVO" varStatus="i">
-                                        	<tr>
-                                        	<!--
-                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_seq}</a></td>
-                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_date}</a></td>
-                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.cus_id}</a></td>
-                                        	-->
-                                        	
-                                        		<td style="width:10%">${OrderVO.order_seq}</a></td>
-                                        		<td style="width:20%">${OrderVO.order_date}</td>
-                                        		<td style="width:20%">${OrderVO.cus_id}</td>
-                                        		<td style="width:20%"> d </td>
-                                        		<td style="width:20%"> a</td>
-                                        		<td style="width:10%"> <button type = "button" class="btn btn-danger btn-sm"> 삭제 </button></td>
-             
-                                        	</tr>
-                                        </c:forEach>
-                                      	
-                                 		<!-- 여기까지 바꿨음. -->
-                                 		
-                        				
-                        			</tbody>
-                        			</table>
-                        			  </div>
-                        <div class="add-btn mt-3">
-                        	<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal">주문 등록</button>
-                        </div>
-                              
+      	
+
+           					
+           					
 
 
 										
@@ -550,9 +444,35 @@
   </div>
 </div>
      	<script type="text/javascript">
->>>>>>> refs/remotes/origin/yeji
-		
-			/* 출고 정보 검색 기능 */
+     	var html = $("#list").html();
+     	  
+     	// 아이디 검색으로 주문정보 가져오기
+     	
+     	$('#idSearch').on("keyup", function(key){
+			var idSearch = $("#idSearch").val();
+			
+			if(idSearch.length >0){
+				$.ajax({
+					url : "idSearch.do",
+					type : "POST",
+					data : {"idSearch" : idSearch} ,
+					datatype: "JSON" ,
+					success : orderList ,
+					error : function(e){
+						console.log(e);
+					}
+					
+				});
+			}else{
+				
+				 $("#list").html(html);
+			}
+			
+			});
+	
+     	
+     	
+			/* 주문 정보 검색 기능 */
 			
 			// form에서 전송한 데이터를 받아 검색 내용을 조회하는 함수
 			function orderSearch() {
@@ -593,10 +513,10 @@
 			
 			
 		
-			/* 출고 정보 추가 기능 */
+			/* 주문 정보 추가 기능                                                     만들어야됨 아직 안만듬 */
 			
 			// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
-			function releaseInsert() {
+			function orderInsert() {
 				// form에서 전송한 데이터를 json 형태로 저장
 				var frmData = $("releaseInsert").serialize();
 				
@@ -615,12 +535,12 @@
 			}
 			
 			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
-			function releaseLoad() {
-				$a.jac({
-					url : "loadRelease.do",
+			function orderLoad() {
+				$.ajax({
+					url : "restorder.do",
 					method : "POST",
 					dataType : "JSON",
-					success : releaseList,
+					success : orderList,
 					error : function(e){
 						console.log(e);
 					}

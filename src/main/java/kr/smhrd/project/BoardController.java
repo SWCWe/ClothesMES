@@ -37,7 +37,10 @@ public class BoardController {
 	}
 	
 
-	
+	@RequestMapping("/TestRegister.do")
+	public String notice1() {
+		return "TestRegister";
+	}
 	
 	
 }

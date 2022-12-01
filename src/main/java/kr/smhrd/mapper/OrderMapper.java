@@ -17,6 +17,8 @@ public interface OrderMapper {
 	public OrderVO orderSelect(int order_seq);
 
 	public List<OrderVO> searchOrderList(String orderQuery);
+
+	public List<OrderVO> idSearch(String order);
 	
 	
 }

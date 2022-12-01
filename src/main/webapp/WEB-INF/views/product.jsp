@@ -333,7 +333,7 @@
 					
 					if(search.length >0){
 						$.ajax({
-							url : "PsearchList.do",
+							url : "idSearch.do",
 							type : "POST",
 							data : {"search" : search} ,
 							datatype: "JSON" ,
