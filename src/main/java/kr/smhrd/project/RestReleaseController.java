@@ -60,6 +60,9 @@ public class RestReleaseController {
 			r_date = "'" + r_date + "'";
 		}
 		releaseVO.setR_date(r_date);
+		
+		// 이름이 비어있다면 로그인 한 사람 이름 입력
+		
 		mapper.insertReleaseList(releaseVO);
 	}
 	

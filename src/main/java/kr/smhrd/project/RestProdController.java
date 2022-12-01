@@ -6,11 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseBody; 
 
-
-import kr.smhrd.entity.ProductDAO;
+import kr.smhrd.entity.ProductVO;
 import kr.smhrd.mapper.ProductMapper;
 
 @RestController
@@ -20,8 +17,8 @@ public class RestProdController {
 	private ProductMapper mapper;
 	
 	@RequestMapping("/list.do")
-	public List<ProductDAO> list(){
-		List<ProductDAO> list = mapper.product_list();
+	public List<ProductVO> list(){
+		List<ProductVO> list = mapper.productList();
 		return list;
 		
 	}

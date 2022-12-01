@@ -7,6 +7,7 @@
         select r.r_seq, r.prod_code, r.r_date, r.r_cnt, r.order_seq, r.prod_rack, m.name
         from t_release r, t_member m
         where r.emp_no = m.emp_no
+        order by r.r_seq desc
     </select>
     
     <!-- 출고 담당자 이름 중복없이 가져오기 -->
@@ -19,7 +20,7 @@
     <!-- 출고 제품 코드 중복없이 가져오기 -->
     <select id="releaseProd_codeList" resultType="String">
         select distinct prod_code
-        from t_release
+        from t_release 
     </select>
     
     <!-- 주문 순번 중복없이 가져오기 -->
@@ -34,6 +35,7 @@
         from t_release r, t_member m
         where r.emp_no = m.emp_no
         ${releaseQuery}
+        order by r.r_seq desc
     </select>
     
     <!-- 출고 정보 추가하기 -->
