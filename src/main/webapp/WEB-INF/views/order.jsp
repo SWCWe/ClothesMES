@@ -115,7 +115,7 @@
                                         		<td style="width:20%">${OrderVO.cus_id}</td>
                                         		<td style="width:20%"> d </td>
                                         		<td style="width:20%"> a</td>
-                                        		<td style="width:10%"> <button type = "button" class="btn btn-danger btn-sm"> 삭제 </button></td>
+                                        		<td style="width:10%"> <button type = "button" class="btn btn-secondary btn-sm"> 삭제 </button></td>
              
                                         	</tr>
                                         </c:forEach>

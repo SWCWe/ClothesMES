@@ -43,8 +43,8 @@
                                	
                                	<!-- 검색 폼  -->
                                	
-                               	<div class="production-search productionmt-2 mb-4">
-                               	<form id="ProductSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+                               	<div class="production-search product mt-2 mb-4">
+                               	<form id="ProductSearch" method = "post">
                                	
                             
                             		
