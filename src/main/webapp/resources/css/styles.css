@@ -11704,3 +11704,143 @@ body {
 }
 
 
+
+
+  tr{
+       
+        	text-align : center;
+        	font-size:16px;
+        }
+        
+        a.dataTable-sorter{
+        	text-align:center;
+        }
+        
+        .pruduction_form_button .btn:nth-child(1){
+        	margin-right:10px;
+        }
+        
+      
+        
+        table input[type=text],
+         table input[type=date],
+         .custom_select
+        {
+        
+       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
+       }
+       
+       table input[type=text]:focus,
+       table input[type=date]:focus,
+       .custom_select
+       {
+      outline:none;
+       }
+       
+       table tr{
+       	height:40px;
+       	line-height:40px;
+       	
+       
+       }
+       
+       .production-search{
+       	display:flex;
+       	justify-content:center;
+      
+       
+       }
+       
+    
+       .production-search.release form{
+      
+        
+        display:grid;
+        grid-template-columns : 16% 16% 16% 16% 16% 16%;        
+        grid-gap:10px;
+      
+        
+        
+        
+       }
+       
+          .production-search.product form{
+      
+        
+        display:grid;
+        grid-template-columns : 20% 20% 20% 20% 20%;
+        
+        grid-gap:10px;
+      
+        
+        
+        
+       }
+       
+          .production-search.order form{
+      
+        
+        display:grid;
+        grid-template-columns : 33% 33% 33%;        
+        grid-gap:10px;
+      
+        
+        }
+        
+        .add-btn{
+        	display:flex;
+        	justify-content: end;
+        }
+       
+    
+       
+       
+       
+       
+       
+             
+      @media (max-width:1200px) {
+		.production-search {
+			display:block;
+		}
+ 		.production-search.release form {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+       
+       
+       .production-search.product form {
+       display:grid; grid-template-columns : 100%; grid-gap:10px;
+       }
+       
+        .pruduction_form_button{
+        	display:flex;
+        	justify-content:end;
+
+        }	
+        
+        .pruduction_form_button .btn{
+        	width:100%;
+        }
+        
+            table tr {
+        	font-size:12px;
+        }
+        	div.add table tr input::placeholder{
+        		font-size:10px;
+        	}
+       
+        	
+        	 table input[type=text], table input[type=date], .custom_select{
+     	font-size:10px;
+     }
+        	
+  
+        }
+        
+       
+       
+
+ 
+        
+    
+        }

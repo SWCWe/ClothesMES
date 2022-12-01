@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: 82103
 Build-Jdk: 1.8.0_242
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: ai_schooo
+Build-Jdk: 1.8.0_242
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> refs/remotes/origin/yeji

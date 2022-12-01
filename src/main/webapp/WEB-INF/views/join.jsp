@@ -12,14 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href="https://bootswatch.com/5/lumen/bootstrap.min.css">
     <link href="${path}/resources/css/join.css" rel="stylesheet" />
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
     <title>Join</title>
+    <style>
+    	.id_input_re_1{
+    		color : green;
+    		display:none;
+    	}
+    	
+    	.id_input_re_2{
+    		color : red;
+    		display : none;
+    	}
+    </style>
 </head>
 <body>
     <session class = "join">
         <div class = "join-container">
             <div class ="join-container-box d-flex align-items-center justify-content-center flex-column">
                 <div class="join-container-box-top">
-                    <form action ="" method = "post">
+                    <form action ="joinInsert.do" method = "post">
                         <div class = "form-group">
                             <div class="list-group">
                                 <div class="list-group-item text-center p-3">
@@ -29,10 +44,11 @@
                                 <div class="list-group-item list-group-item-action">
                                     
     
-                                        <input type="text" class="form-control form-control-lg" name="emp_no" placeholder="아이디">
+                                        <input type="text" class="form-control form-control-lg id_input" name="emp_no" placeholder="아이디">
                                        
                                   
                                 </div>
+                               
                                 <div class="list-group-item list-group-item-action">
                                     
                   
@@ -50,11 +66,11 @@
 
                                 <div class="list-group-item list-group-item-action">
                                    
-                                        <select class="form-select" id = "item_manager" name="c_code">
-                                            <option disabled selected> 기업이름 </option>
-                                            <option value="yeji"> 무한상사 </option>
-                                            <option value="cheolwon"> 철원상사  </option>
-                                            <option value="seongjin"> 성진상사 </option>
+                                        <select class="form-select" id = "item_manager" name="position">
+                                            <option disabled selected> 직책 </option>
+                                            <option value="사원"> 사원 </option>
+                                            <option value="부장"> 부장 </option>
+                                           
                                         </select>
                                  
                                 </div>
@@ -64,13 +80,15 @@
                                     
                                         <select class="form-select" id = "item_manager" name="dept">
                                             <option disabled selected> 부서이름</option>
-                                            <option value = "a"> 생산부서 </option>
-                                            <option value = "b"> 영업부서  </option>
-                                            <option value = "c"> 기획부서 </option>
+                                            <option value = "생산부"> 생산부 </option>
+                                            <option value = "출하부"> 출하부  </option>
+                                            <option value = "경영부"> 경영부 </option>
                                         </select>
                                        
                                  
                                 </div>
+                                
+                           
                                 <div class="joinbutton">
 
                                     
@@ -88,6 +106,8 @@
             </div>
         </div>
     </session>
+    
+
     
 </body>
 </html>

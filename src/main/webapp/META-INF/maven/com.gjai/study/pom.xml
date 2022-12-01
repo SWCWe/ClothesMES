@@ -116,6 +116,7 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>       
+<<<<<<< HEAD
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 <dependency>
@@ -127,6 +128,16 @@
 
 		
 	
+=======
+		<!-- lombok APi 추가 -->
+		<dependency>
+    		<groupId>org.projectlombok</groupId>
+    		<artifactId>lombok</artifactId>
+   			<version>1.18.12</version>
+  		  <scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+>>>>>>> refs/remotes/origin/yeji
 		<dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>

@@ -7,6 +7,7 @@
         select r.r_seq, r.prod_code, r.r_date, r.r_cnt, r.order_seq, r.prod_rack, m.name
         from t_release r, t_member m
         where r.emp_no = m.emp_no
+        order by r.r_seq desc
     </select>
     
     <!-- 출고 담당자 이름 중복없이 가져오기 -->
@@ -19,7 +20,7 @@
     <!-- 출고 제품 코드 중복없이 가져오기 -->
     <select id="releaseProd_codeList" resultType="String">
         select distinct prod_code
-        from t_release
+        from t_release 
     </select>
     
     <!-- 주문 순번 중복없이 가져오기 -->
@@ -34,17 +35,13 @@
         from t_release r, t_member m
         where r.emp_no = m.emp_no
         ${releaseQuery}
+        order by r.r_seq desc
     </select>
     
     <!-- 출고 정보 추가하기 -->
     <insert id="insertReleaseList" parameterType="kr.smhrd.entity.ReleaseVO">
         insert into t_release(prod_code, r_cnt, order_seq, r_date, emp_no, prod_rack)
-        values (#{prod_code}, #{r_cnt}, #{order_seq}, ${r_date},
-        		<!-- 담당자 이름을 사번으로 바꾸어 저장해야 하므로 서브쿼리 사용 -->
-        		(select distinct r.emp_no
-        		from t_release r, t_member m
-        		where r.emp_no = m.emp_no
-        		and m.name = #{name}),
+        values (#{prod_code}, #{r_cnt}, #{order_seq}, ${r_date}, #{emp_no},
         		<!-- 제품 코드에 따른 제품 보관 장소를 저장해야 하므로 -->
         		(select distinct p.prod_rack
         		from t_product p, t_order_detail d
@@ -89,6 +86,24 @@
         select distinct order_seq
         from t_order_detail
         where prod_code = #{prod_code}
+    </select>
+    
+    <!-- 차트에 필요한 정보 가져오기 -->
+    <!-- 제품 수가 많으면 차트 보기 힘드므로 기본 10개로 제한 -->
+    <select id="releaseChartData" resultType="kr.smhrd.entity.ReleaseVO">
+        select prod_code, sum(r_cnt) r_cnt
+        from t_release
+        group by prod_code
+        order by r_cnt desc
+        limit 10
+    </select>
+    
+    <!-- 상위/하위 n개 차트 정보 가져오기 -->
+    <select id="releaseTB" parameterType="String" resultType="kr.smhrd.entity.ReleaseVO">
+        select prod_code, sum(r_cnt) r_cnt
+        from t_release
+        group by prod_code
+        order by r_cnt ${releaseChartQuery}
     </select>
     
 </mapper>
