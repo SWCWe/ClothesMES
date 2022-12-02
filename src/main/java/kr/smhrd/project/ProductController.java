@@ -37,6 +37,7 @@ public class ProductController {
 		
 		return Rlist;
 	}
+
     	
     	
 		@RequestMapping("/PsearchList.do")

@@ -50,11 +50,17 @@ public class BoardController extends HttpServlet {
 		return "notice_view";
 	}
 	
-	
+
+	@RequestMapping("/TestRegister.do")
+	public String notice1() {
+		return "TestRegister";
+	}
+
 	// 여기부터 손댐
 	@RequestMapping("/input_product.do")
 	public String input_product() {
 		return "input_product";
+
 	}
 	
 	@RequestMapping("/result_product.do")

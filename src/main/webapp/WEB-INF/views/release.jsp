@@ -19,107 +19,10 @@
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
         <!-- Chart.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-        
-        <style>
-        tr{
-       
-        	text-align : center;
-        	font-size:16px;
-        }
-        
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        
-        .pruduction_form_button .btn:nth-child(1){
-        	margin-right:10px;
-        }
-        
-      
-        
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-        
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:17px; text-align:center;
-       }
-       
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-       
-       .production-search{
-       	display:flex;
-       	justify-content:center;
-       }
-       .production-search form{
-        display:grid; grid-template-columns : 16% 16% 16% 16% 16% 16%; grid-gap:10px; 
-       }
-       
-       
-       
- 
 
-       
-          @media (max-width:1200px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        
-            table tr {
-        	font-size:12px;
-        }
-        	div.add table tr input::placeholder{
-        		font-size:10px;
-        	}
-       
-        	
-        	 table input[type=text], table input[type=date], .custom_select{
-     	font-size:10px;
-     }
-        	
-  
-        }
-        
-        
-       @media (max-width:576px) {
-		.production-search {
-			display:block;
-		}
- 		.production-searchform {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        
-    
-        }
-        </style>
     </head>
     
     <body class="sb-nav-fixed">
@@ -144,7 +47,6 @@
     	
     	// 차트에 필요한 데이터
     	String chartDatas = (String) request.getAttribute("chartDatas");
-    	
     %>
     
  <%@ include file="nav-top.jsp" %>
@@ -162,11 +64,21 @@
                         <!-- 출고 현황 차트 -->
                         <div class="card mb-4">
                             <div class="card-header" onclick="chartShow()" style="height:45px;">
-                                <p><i class="fas fa-chart-area me-1"></i>출고 현황</p>
+                                <p>
+	                                <i class="fas fa-chart-area me-1"></i>제품 출고 현황
+                                </p>
                             </div>
                             <!-- 차트 들어올 부분 -->
                             <div id="releaseChartArea" class="card-body" style="display:none;">
-                            	<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
+                            
+                            		<input type="text" name="cnt" id="cnt">
+                            		<button type="button" onclick="releaseTB('top')" class="btn btn-light" name="top" value="top">상위</button>
+	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-light" name="bottom" value="bottom">하위</button>
+	                            	<button type="button" onclick="loadChartData()" class="btn btn-light" name="return" value="return">되돌리기</button>
+                            	
+                            	<div style="padding:1%;">
+                            		<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
+                            	</div>
                             </div>
                         </div>
                         
@@ -177,7 +89,7 @@
                             <div class="card-body">
                             
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4">
+	                            <div class="production-search release mt-2 mb-4">
 	                            		<form id="releaseSearch" method = "post">
 	                            			
 	                            			<!-- 제품 코드 검색 부분 -->
@@ -222,9 +134,11 @@
 	                            			<!-- 검색 버튼 -->
 	                            			<div class="pruduction_form_button">
 	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
+
 	                            			    <button type="reset" onclick="releaseLoad()" class="btn btn-light">
                             						<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  	</button>
+
 	                            			</div>
 	                            			
 	                            		</form>
@@ -247,12 +161,13 @@
                                     </thead>
                                  </table>
                                  
-                                 <form id="deleteRelease" method="post">
+                                <form id="deleteRelease" method="post">
 	                                 <div style="overflow-y:scroll; width:100%; height:300px; text-align:center;">
 		           						<table class="table table-borderless table-striped table-hover" >
 		                                   	<!-- 출고 목록 보기 기능 -->
 		                                    <tbody id="releaseList">
 		                                    	<c:forEach items="${list}" var="release" varStatus="i">
+
 			                                    	<tr>
 			                                    		<td style="width:10%;">${release.r_seq}</td>
 			                                    		<td style="width:10%;">${release.order_seq}</td>
@@ -263,6 +178,7 @@
 			                                    		<td style="width:12.5%;">${release.prod_rack}</td>
 			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
 			                                    	</tr>
+
 		                                    	</c:forEach>
 		                                   	</tbody>
 		                               	</table>
@@ -314,6 +230,28 @@
 	                                    </tbody>
 	                                </table>
                                 </form>
+	
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        
+ 	
 
 		<script type="text/javascript">
 		
@@ -341,7 +279,6 @@
 				$('#releaseChart').remove();
 				$('#releaseChartArea').append('<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>');
 				
-				
 				var jsonObject = JSON.stringify(data);       // js에서 문자열 형태로 사용할 수 있도록 변환
 				var jData = JSON.parse(jsonObject);          // 다시, json 객체로 사용할 수 있게 재변환된 데이터를 담음
 				
@@ -368,7 +305,24 @@
 				
 				new Chart(ctx1, {
 					type : 'bar',
-					data : datas
+					data : datas,
+					options : {
+						legend : {
+							display : false
+						},
+						scales : {
+							yAxes : [
+								
+							],
+							xAxes : [
+								{
+									ticks : {
+										fontSize : 20 // x축 폰트 크기 설정(제품 코드)
+									}
+								}
+							]
+						}
+					}
 				});
 			}
 			
@@ -378,6 +332,36 @@
 				var b = Math.floor(Math.random()*200);
 				var color = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.7)';
 				return color;
+			}
+			
+			// 상위/하위 n개 데이터 차트 보이기
+			function releaseTB(data) {
+				// 사용자가 직접 입력한 수
+				var cnt = document.getElementById('cnt').value;
+				// data -> 어떤 버튼인지 구별
+				$.ajax({
+					url : "releaseTB.do",
+					method : "POST",
+					data : {"cnt" : cnt,
+							"data": data},
+					dataType : "JSON", 
+					success : releaseChart,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+			
+			// 차트 데이터 가져오는 함수
+			function loadChartData() {
+				$.ajax({
+					url : "loadChartRelease.do",
+					dataType : "JSON", 
+					success : releaseChart,
+					error : function(e){
+						console.log(e);
+					}
+				});
 			}
 			
 			/* 출고 정보 검색 기능 */
@@ -420,14 +404,7 @@
 				$('#releaseList').html(html);
 				
 				// db가 바뀌었을 때(추가, 삭제) 차트에도 바로 반영되도록
-				$.ajax({
-					url : "loadChartRelease.do",
-					dataType : "JSON", 
-					success : releaseChart,
-					error : function(e){
-						console.log(e);
-					}
-				});
+				loadChartData();
 			}
 			
 			/* 출고 정보 추가 기능 */
@@ -505,27 +482,6 @@
 		
 		</script>
 										
-	
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        
- 	
 		<!-- release.js와 연결 -->
 		<!-- <script src="${path}/resources/js/release.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

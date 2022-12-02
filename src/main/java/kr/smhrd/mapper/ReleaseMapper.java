@@ -32,4 +32,6 @@ public interface ReleaseMapper {
 
 	List<ReleaseVO> releaseChartData();
 
+	List<ReleaseVO> releaseTB(String releaseChartQuery);
+
 }

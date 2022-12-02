@@ -16,113 +16,18 @@
         <link href="${path}/resources/css/styles.css" rel="stylesheet" />
         <link href="${path}/resources/css/button.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <style>
-        tr{
-       
-        	text-align : center;
-        	font-size:16px;
-        }
-        
-        a.dataTable-sorter{
-        	text-align:center;
-        }
-        
-        .pruduction_form_button {
-        	display:flex; 
-        }
-        
-        .pruduction_form_button .btn:nth-child(1){
-        	margin-right:10px;
-        }
-        
-        table input[type=text],
-         table input[type=date],
-         .custom_select
-        {
-        
-       padding:0; margin:0; width:60%; ; border:none; background-color:transparent; height:30px; font-size:21px; text-align:center;
-       }
-       
-       table input[type=text]:focus,
-       table input[type=date]:focus,
-       .custom_select
-       {
-      outline:none;
-       }
-       
-       table tr{
-       	height:40px;
-       	line-height:40px;
-       }
-       
-       .production-search{
 
-       	display:flex;
-       	justify-content:center;
-       }
-       
-       .production-search form {
-       display:grid; grid-template-columns : 40% 40% 20%; grid-gap:10px;
-       }
-
-
-		.addform-container form{
-		display:grid; grid-template-columns : 10% 25% 25% 30% 10%; grid-gap:10px;
-		}
-		
-		.des {
-			cursor:pointer;
-		}
-		
-		.des:hover{
-			border-bottom:1px solid black;
-		}
-	@media (max-width:576px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
+        <!-- jquery 정의 -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+         
+         
         
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-        
-        
-        @media (max-width:1200px) {
-		.production-search {
-			display:block;
-		}
- 		.production-search form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
-        .pruduction_form_button{
-        	display:flex;
-        	justify-content:end;
-
-        }	
-        
-        .pruduction_form_button .btn{
-        	width:100%;
-        }
-        }
-       
-       
-       .add-btn {
-       	display:flex;
-       	justify-content:end;
-       }
-
-        </style>
-    </head>
+    
+    
+    
+    
     <body class="sb-nav-fixed">
+    
  <%@ include file="nav-top.jsp" %>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -144,24 +49,54 @@
                             </div>
                             <div class="card-body">
                                	
-                               	<!-- 검색 폼  -->
-                            	<div class="production-search mt-2 mb-4">
-                            		<form action = "" method = "get" class="what">
-                            			<div class="date-search-form">
-                            				<input type = "date" class =" form-control" name = "date"/>
-                            			</div>
+
+                             
+                            	<!-- 검색 폼  -->
+                               	
+                               	<div class="production-search mt-2 mb-4">
+                               	<form id="orderSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+                               	
+                            
+                            		
+                            				<div class="date-search-form">
+	                            				<input id="start_r_date" type = "date" class =" form-control" name = "start_r_date">
+	                            			</div>
+	                            			
+	                            			<div class="date-search-form">
+	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
+	                            			</div>
+
+                           
+
                             	
+                            			<div class="emp_search_form">
+                            			<select class="form-select" name="order_seq" >
+                            				<option selected disabled> 주문번호 </option>
+                            				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
+                            					<option>${prod.order_seq}</option>
+                            				</c:forEach>
+                            			</select>
+                            			</div>
+                            			
+                            			<div class="prod_code_search-form">
+	                            			<select class="form-select" name="prod_code"style="">
+                            				<option selected disabled> 제품코드 </option>
+                            				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
+                            					<option>${prod.prod_code}</option>
+                            				</c:forEach>
+                            			</select>
+                            			</div>
                             			
                             			
                             			<div class="prod_code_search-form">
-	                            			<input type ="text" class="form-control" placeholder = "주문아이디"/>
+	                            			<input type ="text" name="cus_id" id ="idSearch"class="form-control" placeholder = "주문아이디"/>
                             			</div>
                             			
                             			
                             			
                             			<div class="pruduction_form_button">
-                            				<button type="submit" class="btn btn-light"> 🔍 </button>
-                            				<button type="reset" class="btn btn-light">
+                            				<button type="button" onclick="orderSearch()" class="btn btn-light"> 🔍 </button>
+                            				<button type="reset" onclick="orderLoad()" class="btn btn-light">
                             				<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  </button>
                             			</div>
@@ -175,64 +110,128 @@
                             	</div>
                             
                             
+                            
+                            
+                               
                             <!-- TABLE HEADER -->
                                 
                                 
                                 <table id="" class="table table-borderless table-striped table-hover" >
                                   <thead>
                                         <tr class="table-secondary">
-                                        	<th style="width:10%">주문 순번</th>
                                         	
-                                        
+                                        	<th style="width:10%">주문 번호</th>
                                             <th  style="width:20%">주문 날짜</th>
-                                            
                                             <th style="width:20%">주문 아이디</th>
                                             <th style="width:20%">제품 코드</th>
                                             <th style="width:20%">제품 수량</th>
                                             <th style="width:10%"> 삭제 </th>
                                             <th style="width:1%"></th>
+
                                             
                                           
                                         </tr>
                                     </thead>
-           						</table>
-           						<div style = "overflow-y : scroll; width:100%; height:300px;">
+
+                                    </table>
+                                    
+                                    <form id="deleteorder" method="post">
+           						
+           					     <div style="overflow-y:scroll; width:100%; height:300px; text-align:center;">
            						
            						<!--  table body  -->
            						<table class="table table-borderless table-striped table-hover">
            						
-                                    <tbody>
+                                    <tbody id="list">
                 		
                         
-                        				   <!-- 여기 부터 바꿨음. -->
-                                        <c:forEach items = "${list}" var="OrderVO" varStatus="i">
-                                        	<tr>
-                                        	<!--
-                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_seq}</a></td>
-                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.order_date}</a></td>
-                                        		<td><a href="order_view.do?order_seq=${OrderVO.order_seq}">${OrderVO.cus_id}</a></td>
-                                        	-->
-                                        	
-                                        		<td style="width:10%">${OrderVO.order_seq}</a></td>
-                                        		<td style="width:20%">${OrderVO.order_date}</td>
-                                        		<td style="width:20%">${OrderVO.cus_id}</td>
-                                        		<td style="width:20%"> d </td>
-                                        		<td style="width:20%"> a</td>
-                                        		<td style="width:10%"> <button type = "button" class="btn btn-danger btn-sm"> 삭제 </button></td>
-             
-                                        	</tr>
-                                        </c:forEach>
-                                      	
-                                 		<!-- 여기까지 바꿨음. -->
-                                 		
+                        				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
+                                    	
+	                                        <tr>
+	                                        	
+	                                         
+	                                            <td style="width:20%;">${prod.order_seq}</td>
+	                                            <td style="width:20%;">${prod.order_date}</td>
+	                                            <td style="width:20%;">${prod.cus_id}</td>
+	                                            <td style="width:10%;">${prod.prod_code}</td>
+	                                            <td style="width:10%;">${prod.od_cnt}</td>
+	                                            <td style="width:10%;"><button type="button" onclick="" class="btn btn-danger btn-sm">X</button></td>
+	                                 
+	                                        </tr>
+                                    	</c:forEach>
                         				
                         			</tbody>
                         			</table>
                         			  </div>
-                        <div class="add-btn mt-3">
-                        	<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#orderModal">주문 등록</button>
-                        </div>
-                              
+                        			
+                        				  </form> 
+      
+      
+    								   <form id ="orderInsert" method = "post">
+                        			<table  class="table table-borderless table-striped table-hover" >
+                        			
+                        				<!--  추가 FORM  -->
+                                        
+                                     
+                                        
+                                        <tr class="table-warning">
+                                        	
+                                        		
+                                        		<td style="width:20%;">
+                     
+                                        				<input type="text" class="custom_select" placeholder = "제품코드" name="prod_code"/>
+                                       
+                                        			
+                                        		</td>
+                                        			<td style="width:20%;">
+                     
+                                        				<input type="text" class="custom_select" placeholder = "제품명" name="prod_name"/>
+                                       
+                                        			
+                                        		</td>
+                                        		
+                                        		
+                                        		<td style="width:20%;">
+                     
+                                        				<input type="text" class="custom_select" placeholder = "수량입력" name="prod_cnt"/>
+                                       
+                                        			
+                                        		</td>
+                                        		<td style="width:20%;">
+                                        		<input type="date" name = "prod_m_date"/>
+                                        		</td>
+                                        		
+                                        		
+                                        		<td style="width:10%;">
+                     
+                                        				<input type="text" class="custom_select" placeholder = "보관장소" name="prod_rack"/>
+                                       
+                                        			
+                                        		</td>
+                                        		
+                                        		<td style="width:10%;"><input onclick="orderInsert()" type="button" class="btn btn-success btn-sm" value="추가"> </td>
+                                        
+                                        		<td style="width:1%"> </td>
+                                        
+                                        	
+                                        	
+                                        </tr>
+                                 
+                                </table>
+                              </form>
+      
+      
+      
+      
+      
+      
+      
+      <!--  검색기능 추가하기  -->
+      
+      	
+
+           					
+           					
 
 
 										
@@ -340,22 +339,49 @@
   </div>
 </div>
      	<script type="text/javascript">
-		
-			/* 출고 정보 검색 기능 */
+     	var html = $("#list").html();
+     	  
+     	// 아이디 검색으로 주문정보 가져오기
+     	
+     	$('#idSearch').on("keyup", function(key){
+			var idSearch = $("#idSearch").val();
+			
+			if(idSearch.length >0){
+				$.ajax({
+					url : "idSearch.do",
+					type : "POST",
+					data : {"idSearch" : idSearch} ,
+					datatype: "JSON" ,
+					success : orderList ,
+					error : function(e){
+						console.log(e);
+					}
+					
+				});
+			}else{
+				
+				 $("#list").html(html);
+			}
+			
+			});
+	
+     	
+     	
+			/* 주문 정보 검색 기능 */
 			
 			// form에서 전송한 데이터를 받아 검색 내용을 조회하는 함수
-			function releaseSearch() {
+			function orderSearch() {
 				// form에서 전송한 데이터를 json 형태로 저장
-				var frmData = $("#releaseSearch").serialize();
+				var frmData = $("#orderSearch").serialize();
 
 				// ajax를 통해 searchRelease.do라는 곳으로 입력한 데이터를 보내 select하고
 				// releaseList로 data 보냄
 				$.ajax({
-					url : "searchRelease.do",
+					url : "searchOrder.do",
 					type : "POST",
 					data : frmData,
 					dataType : "JSON",
-					success : releaseList,
+					success : orderList,
 					error : function(e){
 						console.log(e);
 					}
@@ -363,28 +389,29 @@
 			};
 			
 			// 조회 결과를 받아 화면에 보여주는 함수
-			function releaseList(data) {
+			function orderList(data) {
 				var html = "";
 				for (var i = 0; i < data.length; i++) {
 					html += "<tr>";
 					html += "<td><input class='form-check-input' type = 'checkbox' value id = 'flex-CheckChecked'></td>";
-					html += "<td>" + data[i].r_seq + "</td>";	
-					html += "<td>" + data[i].prod_code + "</td>";	
-					html += "<td>" + data[i].r_date + "</td>";	
-					html += "<td>" + data[i].r_cnt + "</td>";	
+					html += "<td>" + data[i].od_seq + "</td>";	
 					html += "<td>" + data[i].order_seq + "</td>";	
-					html += "<td>" + data[i].name + "</td>";	
-					html += "<td>" + data[i].prod_rack + "</td>";
+					html += "<td>" + data[i].order_date + "</td>";	
+					html += "<td>" + data[i].cus_id + "</td>";	
+					html += "<td>" + data[i].prod_code + "</td>";	
+					html += "<td>" + data[i].od_cnt + "</td>";	
 					html += "</tr>";
 				}
 				// id가 "releaseList"인 <tbody>안의 html 교체
-				$('#releaseList').html(html);
+				$('#list').html(html);
 			}
 			
-			/* 출고 정보 추가 기능 */
+			
+		
+			/* 주문 정보 추가 기능          만들어야됨 아직 안만듬 */
 			
 			// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
-			function releaseInsert() {
+			/* function orderInsert() {
 				// form에서 전송한 데이터를 json 형태로 저장
 				var frmData = $("releaseInsert").serialize();
 				
@@ -400,15 +427,15 @@
 						console.log(e);
 					}
 				});
-			}
+			} */
 			
 			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
-			function releaseLoad() {
-				$a.jac({
-					url : "loadRelease.do",
+			function orderLoad() {
+				$.ajax({
+					url : "restorder.do",
 					method : "POST",
 					dataType : "JSON",
-					success : releaseList,
+					success : orderList,
 					error : function(e){
 						console.log(e);
 					}

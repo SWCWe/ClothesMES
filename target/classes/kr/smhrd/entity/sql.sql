@@ -11,4 +11,23 @@ delete from t_product where prod_code = 'A-B-005'
 INSERT INTO t_product (prod_code, prod_name, prod_cnt, prod_m_date, prod_rack)
 		VALUES ('A-B-026', '뽀글이', '300',NOW(),'E6');
 		
-delete from t_release where r_seq=76
+
+		 select m.od_seq, r.order_seq , m.prod_code, m.od_cnt, r.order_date, r.cus_id  
+        from t_order r, t_order_detail m
+        where m.order_seq  = r.order_seq
+        
+ select m.od_seq, r.order_seq , m.prod_code, m.od_cnt, r.order_date, r.cus_id  
+        from t_order r, t_order_detail m
+        where m.order_seq  = r.order_seq
+        
+select count(*) from t_member where emp_no = '138'
+
+where emp_no='138' and pw='123'
+
+select * from t_member
+select count(*),emp_no,pw from t_member 
+       where emp_no ='111' and pw = '111'
+
+ INSERT INTO t_member (emp_no, pw, name, position, dept, emp_joindate)
+		VALUES ('111', '111', '루키', '사원', '생산', NOW());
+

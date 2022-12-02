@@ -15,6 +15,10 @@ public interface OrderMapper {
 	// public void count(int order_seq);
 
 	public OrderVO orderSelect(int order_seq);
+
+	public List<OrderVO> searchOrderList(String orderQuery);
+
+	public List<OrderVO> idSearch(String order);
 	
 	
 }

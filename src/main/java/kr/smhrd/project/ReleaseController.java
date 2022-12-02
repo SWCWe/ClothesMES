@@ -55,9 +55,9 @@ public class ReleaseController {
 		
 		// 차트에 사용할 데이터 가져오기
 		List<ReleaseVO> chartData = mapper.releaseChartData();
-		
-		Gson gson = new Gson(); // json으로 가공하기 위해 gson 객체 생성
-		JsonArray jArray = new JsonArray(); // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+			// 차트에 사용할 수 있는 데이터로 변환하는 과정
+		Gson gson = new Gson();                        // json으로 가공하기 위해 gson 객체 생성
+		JsonArray jArray = new JsonArray();            // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
 		
 		Iterator<ReleaseVO> it = chartData.iterator(); // list의 반복자를 얻어,,?
 		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
