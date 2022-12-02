@@ -68,6 +68,7 @@ public class BoardController extends HttpServlet {
 			// (fileName 리스트에 txt.파일 이름 저장하기)
 			int j = 2;
 			String path = "C:\\Users\\aiSchool\\MachineLearning\\yolov5\\runs\\detect\\exp" + j + "\\labels"; 
+			
 			j++;
 			File f = new File( path ); 
 			File[] files = f.listFiles();
@@ -131,6 +132,7 @@ public class BoardController extends HttpServlet {
 			model.addAttribute("fileName", fileName);
 			model.addAttribute("txtName", txtName);
 			model.addAttribute("txtAcc", txtAcc);
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
