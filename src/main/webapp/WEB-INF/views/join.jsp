@@ -124,7 +124,7 @@
 										<label for="agreement1">아래 사항에 동의 합니다.</label>
 										<input id="agreement1" type="checkbox" name="agreement1"/>
 										<textarea class ="form-control" id="text1" readonly>
-											이용약관 dd
+											이용약관 
 										</textarea>
 									</p>
 								</fieldset>
