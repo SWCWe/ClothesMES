@@ -125,12 +125,12 @@
                                         <tr class="table-secondary">
                                         	
                                         	<th style="width:10%">주문 번호</th>
-                                            <th style="width:10%">주문 날짜</th>
-                                            <th style="width:12.5%">주문 아이디</th>
-                                            <th style="width:12.5%">제품 코드</th>
-                                            <th style="width:10%">제품 수량</th>
-                                            <th style="width:5%"> 삭제 </th>
-                                            
+                                            <th  style="width:20%">주문 날짜</th>
+                                            <th style="width:20%">주문 아이디</th>
+                                            <th style="width:20%">제품 코드</th>
+                                            <th style="width:20%">제품 수량</th>
+                                            <th style="width:10%"> 삭제 </th>
+                                            <th style="width:1%"></th>
 
                                             
                                           
@@ -154,15 +154,6 @@
 	                                        <tr>
 	                                        	
 	                                         
-<<<<<<< HEAD
-	                                            <td style="width:14%;">${prod.order_seq}</td>
-	                                            <td style="width:15%;">${prod.order_date}</td>
-	                                            <td style="width:19%;">${prod.cus_id}</td>
-	                                            <td style="width:16%;">${prod.prod_code}</td>
-	                                            <td style="width:16.6%;">${prod.od_cnt}</td>
-	                                            <td style="width:5%;"><button type="button" onclick="" class="btn btn-danger btn-sm">X</button></td>
-	                                 
-=======
 	                                            <td style="width:10%;">${prod.order_seq}</td>
 	                                            <td style="width:20%;">${prod.order_date}</td>
 	                                            <td style="width:20%;">${prod.cus_id}</td>
@@ -170,7 +161,6 @@
 	                                            <td style="width:20%;">${prod.od_cnt}</td>
 	                                            <td style="width:10%;"><button type="button" onclick="" class="btn btn-secondary btn-sm">X</button></td>
 	                                 			
->>>>>>> refs/remotes/origin/yjBranch
 	                                        </tr>
                                     	</c:forEach>
                         				

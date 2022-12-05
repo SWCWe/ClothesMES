@@ -22,13 +22,9 @@
         <!-- jquery 정의 -->
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
       
-     </head>
-    <!-- 차트에 피요한 데이터 동기식 -->
-    <% String chartDatas = (String) request.getAttribute("chartDatas"); %>
-    
+    </head>
     <body class="sb-nav-fixed">
-      
- 	<%@ include file="nav-top.jsp" %>
+ <%@ include file="nav-top.jsp" %>
  	<div id="layoutSidenav">
     <div id="layoutSidenav_nav">
     	<%@ include file = "./nav.jsp" %>
@@ -36,33 +32,22 @@
             <div id="layoutSidenav_content" class="mt-2">
             	<main>
                 	<div class="container-fluid px-4">
-                		<h1 class="mt-4">생산관리 💫 <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
-                      
+                		<h1 class="mt-4">생산관리  <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
                         <div class="card mb-4">
-                        
                             <div class="card-header">
-                            
-                            	 <!-- 출고 현황 차트 -->
-		                        <div class="card mb-4">
-		                            <div class="card-header" onclick="chartShow()" style="height:45px;">
-		                                <p>
-			                                <i class="fas fa-chart-area me-1"></i>제품 생산 현황
-		                                </p>
-		                            </div>
-		                            
-		                            <!-- 차트 들어올 부분 -->
-			                            <div id="manufactureChartArea" class="card-body" style="display:none;">
-				                            <div style="padding:1%;">
-				                            	<canvas id="manufactureChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
-				                        	</div>
-			                            </div>
-		                        </div>
+                            	<i class="fas fa-table me-1"></i>
+                           				철원이의 생산관리
 			                </div>
-                         
-                            <div class="card-body">         
+                            <div class="card-body">
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
-	                            		<form id="manufactureSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+	                            <div class="production-search production mt-2 mb-4">
+	                            		<form id="manufactureSearch" method = "post">
+	                            			<div class="pruduction_form_button d-flex justify-content-end">
+	                            				<!-- 검색 버튼 -->
+	                            				<button type="reset" onclick="prodload()" class="btn btn-light">
+      												<i class="fa-solid fa-arrow-rotate-left"></i>
+												</button>
+	                            			</div>
 	                            			
 	                            			<div class="date-search-form">
 	                            				<input id="start_r_date" type = "date" class =" form-control" name = "start_r_date">
@@ -97,32 +82,29 @@
 														</c:forEach>
 		                            			</select>
 	                            			</div>
-
 	                            			
 	                            			<div class="pruduction_form_button">
 	                            				<!-- 검색 버튼 -->
-	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> 🔍 </button>
-	                            				<!-- 검색 부분 초기화 / 생산관리 테이블 초기화 버튼 -->
-		                            			<button type="reset"  onclick="prodload()" class="btn btn-dark">🔍 </button>
+	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> 🔍</button>
 	                            			</div>
-	   
+	  
 	                            		</form>
 	                            	</div>
-                            
- 
-                                <table class="table table-borderless table-striped table-hover" >
+	                            	
+	                            	
+	                            	
+	                            	<table class="table table-borderless table-striped table-hover" >
                                     <thead class="table-secondary" >
                                         <tr>
                                             <th style="width:10%;" scope="col">생산 순번</th>
                                             <th style="width:10%;" scope="col">제품 코드</th>
                                             <th style="width:12.5%;" scope="col">생산 일자</th>
                                             <th style="width:12.5%;" scope="col">생산 수량</th>
-                                            <th style="width:10%;" scope="col">담당 사원(사원번호)</th>
+                                            <th style="width:10%;" scope="col">담당 사원</th>
                                         	<th style="width:5%;" scope="col">삭제</th>
                                         </tr>
                                     </thead>
                                  </table>
-           
            						<!-- 생산관리 DB에 있는 값 반복문 통해 보여주는곳 -->
            						<form id="deleteprod" method="post">
            							<div style="overflow-y:scroll; width:100%; height:400px; text-align:center;">
@@ -136,22 +118,21 @@
 												<td style="width:15%;">${manufacture.prod_code}</td>
 												<td style="width:19%;">${manufacture.prod_m_date}</td>
 												<td style="width:16%;">${manufacture.m_cnt}</td>
-												<td style="width:16.6%;">${manufacture.name}(${manufacture.emp_no})</td>
-												<td style="width:5%;"><button type="button" onclick="deleteprod(${manufacture.m_seq})" class="btn btn-danger btn-sm">x</button></td>
+												<td style="width:16.6%;">${manufacture.name}</td>
+												<td style="width:5%;"><button type="button" onclick="deleteprod(${manufacture.m_seq})" class="btn btn-secondary btn-sm">X</button></td>
 											</tr>	
 										</c:forEach>
                                  		</tbody>
 		                               	</table>
 	                               	</div>
                                	</form>
-    
                                 <!-- 생산 추가 부분-->
                                 <form id="manufactureInsertFrm" method="post">
                                     <table class="table table-borderless table-striped table-hover">
 	                                   	<tbody>
                                         <tr class="table-warning">
                                         	
-                                        		<td style="width:20%;">             
+                                        		<td style="width:20%;">
                                         			<input type="text" class="custom_code" placeholder = "제품 코드" name="prod_code"/>
                                         		</td>
                                         		
@@ -159,24 +140,21 @@
                                         			<input type="date" calss ="custom_m_date" name ="prod_m_date"/>
                                         		</td>
                                         		
-                                        		<td style="width:20%;">             
+                                        		<td style="width:20%;">
                                         			<input type="text" class="custom_cnt" placeholder = "생산수량" name="m_cnt"/>
                                         		</td>
                                         		
-                                        		<td style="width:20%;">             
-                                        			<input type="text" class="custom_emp_no" placeholder = "사원 번호 " name="emp_no"/>
+                                        		<td style="width:20%;">
+                                        			<input type="text" class="custom_emp_no" placeholder = "담당 사원 " name="name"/>
                                         		</td>
-
                                         		<td style="width:20%;">
                                         			<button type="button" onclick="manufactureInsert()" class="btn btn-primary btn-sm"> 추가 </button>
                                         		</td>
                                         	
-                                        </tr>  
+                                        </tr>
                                     	</tbody>
                                 </table>
                                </form>
-                               
-
                             </div>
                         </div>
                     </div>
@@ -195,112 +173,12 @@
                 </footer>
             </div>
         </div>
-        
  		<script type="text/javascript">
  		
- 		/* 차트 관련 기능 */
-		// 차트 구역 보이기
-		function chartShow() {
-			// 안 보이면 보이게, 보이면 안 보이게
-			if ($('#manufactureChartArea').css('display') == 'none') {
-					$('#manufactureChartArea').slideDown(400);
-			} else {
-					$('#manufactureChartArea').slideUp(400);
-			}
-		}
-		
-		// 동기로 가져온 차트에 필요한 데이터
-		var chartDatas = ${chartDatas}                  // 컨트롤러에서 가공하여 넘겨준 데이터를 jsonData 변수에 담는다
-		// 페이지가 열렸을 때 실행
-		manufactureChart(chartDatas);
-		
-		// 차트를 만들 수 있도록 데이터를 변환해서 차트를 만들어주는 함수
-		function manufactureChart(data) {
-			// 데이터가 새로 반영될 때마다 차트가 겹쳐서 이전 데이터가 보이는 상황을 방지하기 위해
-			// 삭제 후 다시 만들기
-			$('#manufactureChart').remove();
-			$('#manufactureChartArea').append('<canvas id="manufactureChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>');
-			
-			var jsonObject = JSON.stringify(data);       // js에서 문자열 형태로 사용할 수 있도록 변환
-			var jData = JSON.parse(jsonObject);          // 다시, json 객체로 사용할 수 있게 재변환된 데이터를 담음
-			
-			var labelList = new Array();
-			var valueList = new Array();
-			var colorList = new Array();
-			
-			for (var i = 0; i < jData.length; i++) {
-				var d = jData[i];
-				labelList.push(d.Code);     // jData에 담겨있는 값들 추출하여 분배
-				valueList.push(d.Count);
-				colorList.push(colorize()); // 그냥 랜덤하게 색깔 넣어주는 함수
-			}
-			
-			var datas = {
-					labels : labelList,
-					datasets : [{
-						backgroundColor : colorList,
-						data : valueList
-					}]
-			};
-			
-			var ctx1 = document.getElementById("manufactureChart").getContext('2d');
-			
-			new Chart(ctx1, {
-				type : 'bar',
-				data : datas,
-				options : {
-					legend : {
-						display : false
-					},
-					scales : {
-						yAxes : [
-							{
-								ticks:{
-									beginAtZero: true, // y축 범위설정 0부터 시작
-									fontSize : 14,
-								}
-							}
-							
-						],
-						xAxes : [
-							{
-								ticks : {
-									fontSize : 20 // x축 폰트 크기 설정(제품 코드)
-								}
-							}
-						]
-					}
-				}
-			});
-		}
-		
-		function colorize() { // 랜덤하게 색을 넣어주는 함수. 그냥 편의를 위해 넣음
-			var r = Math.floor(Math.random()*200);
-			var g = Math.floor(Math.random()*200);
-			var b = Math.floor(Math.random()*200);
-			var color = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.7)';
-			return color;
-		}
-		
-
-		// 차트 데이터 가져오는 함수
-		function loadChartData() {
-			$.ajax({
-				url : "loadChartManufacture.do",
-				dataType : "JSON", 
-				success : manufactureChart,
-				error : function(e){
-					console.log(e);
-				}
-			});
-		}
- 		
-		
  		// form에서 전송한 데이터를 받아 검색 내용을 조회하는 함수
 			function manufactureSearch() {
 				// form에서 id값이 manufactureSearch 이 전송한 데이터를 json 형태로 저장
 				var frmData = $("#manufactureSearch").serialize();
-
 				// ajax를 통해 searchmanufacture.do라는 곳으로 입력한 데이터를 보내 select하고
 				// prodList로 data 보냄
 				$.ajax({
@@ -324,12 +202,12 @@
 					html += "<td style='width:15%;'>" + data[i].prod_code + "</td>";	
 					html += "<td style='width:19%;'>" + data[i].prod_m_date + "</td>";	
 					html += "<td style='width:16%;'>" + data[i].m_cnt + "</td>";	
-					html += "<td style='width:16.6%;'>" + data[i].name + "(" + data[i].emp_no + ")" + "</td>";
+					html += "<td style='width:16.6%;'>" + data[i].name + "</td>";	
 					html += "<td style='width:5%;'><button type='button' onclick='deleteprod(" + data[i].m_seq + ")' class='btn btn-danger btn-sm'>x</button></td>"
 					html += "</tr>";
 				}
 				// id가 "prodList"인 <tbody>안의 html 교체
-				$('#prodList').html(html);
+				$('#prodList').html(html); 
 			}
 		
 		// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수
@@ -342,7 +220,6 @@
 					}
 				});
 			}
-
 		// 삭제 기능
 			function deleteprod(m_seq) {
 				
@@ -376,8 +253,7 @@
 				});
 			
 			}
-	   
-   
+	  
 		</script>
 		
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
