@@ -26,6 +26,7 @@
 	
 	
 	<img src="resources/assets/img/frame521.png" alt="My Image"/>
+	<img src="C:\resource\frame521.png" alt="My Image"/>
 	
 </body>
 </html>

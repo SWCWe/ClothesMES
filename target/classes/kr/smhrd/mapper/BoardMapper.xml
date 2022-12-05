@@ -3,8 +3,8 @@
 <mapper namespace="kr.smhrd.mapper.BoardMapper">
     
     <insert id="put_product" parameterType="String">
-        insert into t_manufacture(prod_code, prod_m_date, m_cnt, emp_no)
-        values(#{prod_code}, '2020-11-22 00:00:00', 1, "230")
+        insert into t_manufacture(prod_code, m_cnt, emp_no)
+        values(#{prod_code}, 1, "230")
     </insert>
     
 </mapper>
