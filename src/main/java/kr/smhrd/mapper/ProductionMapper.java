@@ -16,4 +16,6 @@ public interface ProductionMapper {
 	void insertmanufactureList(ProductionVO productionVO);
 	
 	List<ProductionVO> searchmanufactureList(String manufactureQuery);
+
+	List<ProductionVO> manufactureChartData();
 }
