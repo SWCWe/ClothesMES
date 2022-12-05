@@ -269,6 +269,8 @@
 			
 			// 동기로 가져온 차트에 필요한 데이터
 			var chartDatas = ${chartDatas}                   // 컨트롤러에서 가공하여 넘겨준 데이터를 jsonData 변수에 담는다
+			// 주문 데이터도 가져오기 (컨트롤러 등 수정...)
+			
 			// 페이지가 열렸을 때 실행
 			releaseChart(chartDatas);
 			
@@ -295,10 +297,15 @@
 				
 				var datas = {
 						labels : labelList,
-						datasets : [{
-							backgroundColor : colorList,
-							data : valueList
-						}]
+						datasets : 
+							[{  // 주문 관련 데이터 넣기
+								backgroundColor : colorList,
+								data : valueList
+							},
+							{   // 출고 데이터
+								backgroundColor : colorList,
+								data : valueList
+							}]
 				};
 				
 				var ctx1 = document.getElementById("releaseChart").getContext('2d');
