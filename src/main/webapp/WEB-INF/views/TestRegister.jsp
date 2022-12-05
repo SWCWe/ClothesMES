@@ -117,7 +117,7 @@
 		<input id="agreement2" type="checkbox" name="agreement2"/>
 		<textarea id="text2" readonly>
 			개인정보 방침 및 안내
-		</textarea>
+end		</textarea>
 	</p>
 </fieldset>
 </div>
