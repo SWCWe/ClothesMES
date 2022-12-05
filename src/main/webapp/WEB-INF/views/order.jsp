@@ -53,11 +53,17 @@
                              
                             	<!-- 검색 폼  -->
                                	
-                               	<div class="production-search mt-2 mb-4">
-                               	<form id="orderSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+                               	<div class="production-search order mt-2 mb-4">
+                               	<form id="orderSearch" method = "post">
                                	
-                            
-                            		
+                            		<!-- 리셋버튼 -->
+                            		<div class="pruduction_form_button d-flex justify-content-end">
+                            				<button type="reset" onclick="orderLoad()" class="btn btn-light">
+                            				<i class="fa-solid fa-arrow-rotate-left"></i>
+                            				  </button>
+                            				
+                            			</div>
+                            			
                             				<div class="date-search-form">
 	                            				<input id="start_r_date" type = "date" class =" form-control" name = "start_r_date">
 	                            			</div>
@@ -96,9 +102,7 @@
                             			
                             			<div class="pruduction_form_button">
                             				<button type="button" onclick="orderSearch()" class="btn btn-light"> 🔍 </button>
-                            				<button type="reset" onclick="orderLoad()" class="btn btn-light">
-                            				<i class="fa-solid fa-arrow-rotate-left"></i>
-                            				  </button>
+                            				
                             			</div>
                             			
                             			
@@ -150,6 +154,7 @@
 	                                        <tr>
 	                                        	
 	                                         
+<<<<<<< HEAD
 	                                            <td style="width:14%;">${prod.order_seq}</td>
 	                                            <td style="width:15%;">${prod.order_date}</td>
 	                                            <td style="width:19%;">${prod.cus_id}</td>
@@ -157,6 +162,15 @@
 	                                            <td style="width:16.6%;">${prod.od_cnt}</td>
 	                                            <td style="width:5%;"><button type="button" onclick="" class="btn btn-danger btn-sm">X</button></td>
 	                                 
+=======
+	                                            <td style="width:10%;">${prod.order_seq}</td>
+	                                            <td style="width:20%;">${prod.order_date}</td>
+	                                            <td style="width:20%;">${prod.cus_id}</td>
+	                                            <td style="width:20%;">${prod.prod_code}</td>
+	                                            <td style="width:20%;">${prod.od_cnt}</td>
+	                                            <td style="width:10%;"><button type="button" onclick="" class="btn btn-secondary btn-sm">X</button></td>
+	                                 			
+>>>>>>> refs/remotes/origin/yjBranch
 	                                        </tr>
                                     	</c:forEach>
                         				
@@ -177,15 +191,15 @@
                                         <tr class="table-warning">
                                         	
                                         		
-                                        		<td style="width:20%;">
+                                        		<td style="width:10%;">
                      
-                                        				<input type="text" class="custom_select" placeholder = "제품코드" name="prod_code"/>
+                                        			
                                        
                                         			
                                         		</td>
                                         			<td style="width:20%;">
                      
-                                        				<input type="text" class="custom_select" placeholder = "제품명" name="prod_name"/>
+                                        				<input type="date" name = "prod_m_date"/>
                                        
                                         			
                                         		</td>
@@ -193,18 +207,18 @@
                                         		
                                         		<td style="width:20%;">
                      
-                                        				<input type="text" class="custom_select" placeholder = "수량입력" name="prod_cnt"/>
+                                        				<input type="text" class="custom_select" placeholder = "주문아이디" name="prod_cnt"/>
                                        
                                         			
                                         		</td>
                                         		<td style="width:20%;">
-                                        		<input type="date" name = "prod_m_date"/>
+                                        			<input type="text" class="custom_select" placeholder = "제품 코드" name="prod_cnt"/>
                                         		</td>
                                         		
                                         		
-                                        		<td style="width:10%;">
+                                        		<td style="width:20%;">
                      
-                                        				<input type="text" class="custom_select" placeholder = "보관장소" name="prod_rack"/>
+                                        				<input type="text" class="custom_select" placeholder = "제품 수량" name="prod_rack"/>
                                        
                                         			
                                         		</td>
