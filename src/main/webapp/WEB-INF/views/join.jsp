@@ -47,8 +47,8 @@
                                     
                                   
     
-                                        <input type="text" class="form-control form-control-lg" id ="emp_no" name="emp_no" placeholder="아이디" required maxlength="8">
-                                        <span class="point successNameChk">아이디는 2자 이상 8자 이하로 설정해 주시기 바랍니다.</span>
+                                        <input type="text" class="form-control form-control-lg" id ="emp_no" name="emp_no" placeholder="사번" required maxlength="8">
+                                        <span class="point successNameChk">사번은 2자 이상 8자 이하로 설정해 주시기 바랍니다.</span>
                                         <input type = "hidden" id = "nameDoubleChk"/>
                                   
                                 </div>
@@ -175,7 +175,7 @@
 $("#emp_no").blur(function(){
 	var sm_name = $("#emp_no").val();
 	if(sm_name == "" || sm_name.length < 2){
-		$(".successNameChk").text("아이디는 2자 이상 8자 이하로 설정해주세요 :)");
+		$(".successNameChk").text("사번은 2자 이상 8자 이하로 설정해주세요 :)");
 		$(".successNameChk").css("color", "red");
 		$("#nameDoubleChk").val("false");
 	}else{
