@@ -40,8 +40,14 @@
 			                </div>
                             <div class="card-body">
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
-	                            		<form id="manufactureSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+	                            <div class="production-search production mt-2 mb-4">
+	                            		<form id="manufactureSearch" method = "post">
+	                            			<div class="pruduction_form_button d-flex justify-content-end">
+	                            				<!-- 검색 버튼 -->
+	                            				<button type="reset" onclick="prodload()" class="btn btn-light">
+      												<i class="fa-solid fa-arrow-rotate-left"></i>
+												</button>
+	                            			</div>
 	                            			
 	                            			<div class="date-search-form">
 	                            				<input id="start_r_date" type = "date" class =" form-control" name = "start_r_date">
@@ -77,14 +83,9 @@
 		                            			</select>
 	                            			</div>
 	                            			
-	                            			<div class="pruduction_form_button" style="display: flex;">
+	                            			<div class="pruduction_form_button">
 	                            				<!-- 검색 버튼 -->
 	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> 🔍</button>
-	                            				<!-- 검색 부분 초기화 / 생산관리 테이블 초기화 버튼 -->                            	
-		                            			<button type="reset" onclick="prodload()" class="btn btn-light">
-                            						<i class="fa-solid fa-arrow-rotate-left"></i>
-                            				  	</button>
-		                            			
 	                            			</div>
 	  
 	                            		</form>
@@ -118,7 +119,7 @@
 												<td style="width:19%;">${manufacture.prod_m_date}</td>
 												<td style="width:16%;">${manufacture.m_cnt}</td>
 												<td style="width:16.6%;">${manufacture.name}</td>
-												<td style="width:5%;"><button type="button" onclick="deleteprod(${manufacture.m_seq})" class="btn btn-danger btn-sm">x</button></td>
+												<td style="width:5%;"><button type="button" onclick="deleteprod(${manufacture.m_seq})" class="btn btn-secondary btn-sm">X</button></td>
 											</tr>	
 										</c:forEach>
                                  		</tbody>
