@@ -11787,7 +11787,7 @@ body {
       
         
         display:grid;
-        grid-template-columns : 33% 33% 33%;        
+        grid-template-columns : 14% 14% 14% 14% 14% 14% 14%;        
         grid-gap:10px;
       
         
@@ -11796,6 +11796,12 @@ body {
          .production-search.production form{
       	display:grid;
         grid-template-columns : 16% 16% 16% 16% 16% 16%;        
+        grid-gap:10px;
+      }
+      
+        .production-search.product form{
+      	display:grid;
+        grid-template-columns : 14% 14% 14% 14% 14% 14% 14%;               
         grid-gap:10px;
       }
         
@@ -11817,7 +11823,9 @@ body {
 		}
  		.production-search.release form,
  		 .production-search.product form,
- 		 .production-search.production form
+ 		 .production-search.production form,
+ 		  .production-search.order form,
+ 		  .production-search.product form
  		 {
        display:grid; grid-template-columns : 100%; grid-gap:10px;
        }
@@ -11858,7 +11866,9 @@ body {
        /*
        release
        */
-       
+       .chart-form button{
+       	margin-left:20px;
+       }
    		
        	
        /*

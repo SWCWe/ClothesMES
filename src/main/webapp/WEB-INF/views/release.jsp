@@ -72,10 +72,13 @@
                             <!-- 차트 들어올 부분 -->
                             <div id="releaseChartArea" class="card-body" style="display:none;">
                             	<form>
-                            		<input type="text" name="cnt" id="cnt">
-                            		<button type="button" onclick="releaseTB('top')" class="btn btn-light" name="top" value="top">상위</button>
-	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-light" name="bottom" value="bottom">하위</button>
-	                            	<button type="reset" onclick="loadChartData()" class="btn btn-light" name="return" value="return">되돌리기</button>
+                            		<div class="chart-form d-flex justify-content-center mt-3">
+                            		<input type="text" class="form-control" name="cnt" id="cnt" style="width:300px;">
+                            		<button type="button" onclick="releaseTB('top')" class="btn btn-lg btn-light" name="top" value="top">상위</button>
+	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-lg btn-light" name="bottom" value="bottom">하위</button>
+	                            	<button type="reset" onclick="loadChartData(); d-con()" class="btn btn-lg btn-light" name="return" value="return">되돌리기</button>
+                            		</div>
+                            		
                             	</form>
                             	<div style="padding:1%;">
                             		<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
@@ -180,7 +183,7 @@
 			                                    		<td style="width:10%;">${release.r_cnt}</td>
 			                                    		<td style="width:12.5%;">${release.name}</td>
 			                                    		<td style="width:12.5%;">${release.prod_rack}</td>
-			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
+			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq});" class="btn btn-secondary btn-sm">X</button></td>
 			                                    	</tr>
 
 		                                    	</c:forEach>
@@ -485,10 +488,16 @@
 			
 		
 			
-			
+
 
 		</script>
 			
+			
+			<script type="text/javascript">
+			function d-con(){
+				console.log('hi');
+			}
+			</script>
 							
 		<!-- release.js와 연결 -->
 		<!-- <script src="${path}/resources/js/release.js"></script> -->
