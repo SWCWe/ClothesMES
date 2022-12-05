@@ -70,12 +70,12 @@
                             </div>
                             <!-- 차트 들어올 부분 -->
                             <div id="releaseChartArea" class="card-body" style="display:none;">
-                            
+                            	<form>
                             		<input type="text" name="cnt" id="cnt">
                             		<button type="button" onclick="releaseTB('top')" class="btn btn-light" name="top" value="top">상위</button>
 	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-light" name="bottom" value="bottom">하위</button>
-	                            	<button type="button" onclick="loadChartData()" class="btn btn-light" name="return" value="return">되돌리기</button>
-                            	
+	                            	<button type="reset" onclick="loadChartData()" class="btn btn-light" name="return" value="return">되돌리기</button>
+                            	</form>
                             	<div style="padding:1%;">
                             		<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
                             	</div>
