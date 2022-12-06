@@ -58,7 +58,7 @@
                                	
                             		<!-- 리셋버튼 -->
                             		<div class="pruduction_form_button d-flex justify-content-end">
-                            				<button type="reset" onclick="orderLoad()" class="btn btn-light">
+                            				<button type="reset" onclick="orderLoad()" class="btn btn-lg btn-light">
                             				<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  </button>
                             				
@@ -75,7 +75,7 @@
                            
 
                             	
-                            			<div class="emp_search_form">
+                            			<div class="prod_code_search-form">
                             			<select class="form-select" name="order_seq" >
                             				<option selected disabled> 주문번호 </option>
                             				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
@@ -94,14 +94,14 @@
                             			</div>
                             			
                             			
-                            			<div class="prod_code_search-form">
+                            			<div class="date-search-form">
 	                            			<input type ="text" name="cus_id" id ="idSearch"class="form-control" placeholder = "주문아이디"/>
                             			</div>
                             			
                             			
                             			
                             			<div class="pruduction_form_button">
-                            				<button type="button" onclick="orderSearch()" class="btn btn-light"> 🔍 </button>
+                            				<button type="button" onclick="orderSearch()" class="btn btn-light btn-lg"> <i class="fa-solid fa-magnifying-glass"></i> </button>
                             				
                             			</div>
                             			

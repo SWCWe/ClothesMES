@@ -2,6 +2,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LINESeedKR-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
 *{
     padding : 0;
     margin : 0;
@@ -14,6 +30,7 @@ body {
     font-size : 16px;
     font-family : 'Nanum Gothic', sans-serif;
     background-color: #f1faee;
+    font-family: 'LINESeedKR-Rg';
 
 }
 
@@ -49,8 +66,7 @@ body {
 }
 
 .list-group-item h1{
-    letter-spacing: 4px;
-    font-weight: 650;
+		font-family: 'LINESeedKR-Bd';
 }
 
 .joinbutton{

@@ -32,11 +32,11 @@
             <div id="layoutSidenav_content" class="mt-2">
             	<main>
                 	<div class="container-fluid px-4">
-                		<h1 class="mt-4">생산관리  <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
+                		<h1 class="mt-4">생산 관리  <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
                         <div class="card mb-4">
                             <div class="card-header">
                             	<i class="fas fa-table me-1"></i>
-                           				철원이의 생산관리
+                           				철원이의 생산 관리
 			                </div>
                             <div class="card-body">
                             	<!-- 검색 폼 -->
@@ -44,7 +44,7 @@
 	                            		<form id="manufactureSearch" method = "post">
 	                            			<div class="pruduction_form_button d-flex justify-content-end">
 	                            				<!-- 검색 버튼 -->
-	                            				<button type="reset" onclick="prodload()" class="btn btn-light">
+	                            				<button type="reset" onclick="prodload()" class="btn btn-lg btn-light">
       												<i class="fa-solid fa-arrow-rotate-left"></i>
 												</button>
 	                            			</div>
@@ -85,7 +85,7 @@
 	                            			
 	                            			<div class="pruduction_form_button">
 	                            				<!-- 검색 버튼 -->
-	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> 🔍</button>
+	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-lg btn-light"> <i class="fa-solid fa-magnifying-glass"></i> </button>
 	                            			</div>
 	  
 	                            		</form>
@@ -163,7 +163,7 @@
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">내이름은 예지 '팀장' 이조</div>
-                            <div>
+                            <div >
                                 <a href="#">내이름은 철원</a>
                                 &middot;
                                 <a href="#">'부팀장'이조</a>
