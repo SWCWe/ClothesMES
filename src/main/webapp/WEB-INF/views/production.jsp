@@ -32,16 +32,22 @@
             <div id="layoutSidenav_content" class="mt-2">
             	<main>
                 	<div class="container-fluid px-4">
-                		<h1 class="mt-4">생산관리  <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
+                		<h1 class="mt-4">생산 관리  <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
                         <div class="card mb-4">
                             <div class="card-header">
                             	<i class="fas fa-table me-1"></i>
-                           				철원이의 생산관리
+                           				철원이의 생산 관리
 			                </div>
                             <div class="card-body">
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
-	                            		<form id="manufactureSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+	                            <div class="production-search production mt-2 mb-4">
+	                            		<form id="manufactureSearch" method = "post">
+	                            			<div class="pruduction_form_button d-flex justify-content-end">
+	                            				<!-- 검색 버튼 -->
+	                            				<button type="reset" onclick="prodload()" class="btn btn-lg btn-light">
+      												<i class="fa-solid fa-arrow-rotate-left"></i>
+												</button>
+	                            			</div>
 	                            			
 	                            			<div class="date-search-form">
 	                            				<input id="start_r_date" type = "date" class =" form-control" name = "start_r_date">
@@ -77,14 +83,9 @@
 		                            			</select>
 	                            			</div>
 	                            			
-	                            			<div class="pruduction_form_button" style="display: flex;">
+	                            			<div class="pruduction_form_button">
 	                            				<!-- 검색 버튼 -->
-	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> 🔍</button>
-	                            				<!-- 검색 부분 초기화 / 생산관리 테이블 초기화 버튼 -->                            	
-		                            			<button type="reset" onclick="prodload()" class="btn btn-light">
-                            						<i class="fa-solid fa-arrow-rotate-left"></i>
-                            				  	</button>
-		                            			
+	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-lg btn-light"> <i class="fa-solid fa-magnifying-glass"></i> </button>
 	                            			</div>
 	  
 	                            		</form>
@@ -118,7 +119,7 @@
 												<td style="width:19%;">${manufacture.prod_m_date}</td>
 												<td style="width:16%;">${manufacture.m_cnt}</td>
 												<td style="width:16.6%;">${manufacture.name}</td>
-												<td style="width:5%;"><button type="button" onclick="deleteprod(${manufacture.m_seq})" class="btn btn-danger btn-sm">x</button></td>
+												<td style="width:5%;"><button type="button" onclick="deleteprod(${manufacture.m_seq})" class="btn btn-secondary btn-sm">X</button></td>
 											</tr>	
 										</c:forEach>
                                  		</tbody>
@@ -162,7 +163,7 @@
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">내이름은 예지 '팀장' 이조</div>
-                            <div>
+                            <div >
                                 <a href="#">내이름은 철원</a>
                                 &middot;
                                 <a href="#">'부팀장'이조</a>

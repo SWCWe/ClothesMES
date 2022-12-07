@@ -22,7 +22,8 @@
 
         <!-- Chart.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
+	
+	
     </head>
     
     <body class="sb-nav-fixed">
@@ -63,19 +64,22 @@
                         
                         <!-- 출고 현황 차트 -->
                         <div class="card mb-4">
-                            <div class="card-header" onclick="chartShow()" style="height:45px;">
-                                <p>
-	                                <i class="fas fa-chart-area me-1"></i>제품 출고 현황
+                            <div class="card-header arrow" onclick="chartShow()" style="height:45px; line-height:25px;">
+                                <p style="margin-left:30px;">
+	                              제품 출고 현황
                                 </p>
                             </div>
                             <!-- 차트 들어올 부분 -->
                             <div id="releaseChartArea" class="card-body" style="display:none;">
-                            
-                            		<input type="text" name="cnt" id="cnt">
-                            		<button type="button" onclick="releaseTB('top')" class="btn btn-light" name="top" value="top">상위</button>
-	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-light" name="bottom" value="bottom">하위</button>
-	                            	<button type="button" onclick="loadChartData()" class="btn btn-light" name="return" value="return">되돌리기</button>
-                            	
+                            	<form>
+                            		<div class="chart-form d-flex justify-content-center mt-3">
+                            		<input type="text" class="form-control" name="cnt" id="cnt" style="width:300px;">
+                            		<button type="button" onclick="releaseTB('top')" class="btn btn-lg btn-light" name="top" value="top">상위</button>
+	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-lg btn-light" name="bottom" value="bottom">하위</button>
+	                            	<button type="reset" onclick="loadChartData(); d-con()" class="btn btn-lg btn-light" name="return" value="return">되돌리기</button>
+                            		</div>
+                            		
+                            	</form>
                             	<div style="padding:1%;">
                             		<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
                             	</div>
@@ -91,6 +95,14 @@
                             	<!-- 검색 폼 -->
 	                            <div class="production-search release mt-2 mb-4">
 	                            		<form id="releaseSearch" method = "post">
+	                            			
+	                            			
+	                            			<!-- 리셋 버튼 -->
+	                            			<div class="pruduction_form_button d-flex justify-content-end">
+	                            				<button type="reset" onclick="releaseLoad()" class="btn btn-lg btn-light">
+                            						<i class="fa-solid fa-arrow-rotate-left"></i>
+                            				  	</button>
+	                            			</div>
 	                            			
 	                            			<!-- 제품 코드 검색 부분 -->
 	                            			<div class="prod_code_search-form">
@@ -111,7 +123,7 @@
 	                            			</div>
 	                            			
 	                            			<!-- 주문 순번 검색 부분 -->
-	                            			<div class="order_seq_search-form">
+	                            			<div class="prod_code_search-form">
 		                            			<select id="order_seq" class="form-select" name="order_seq">
 		                            				<option selected disabled> 주문 순번 </option>
 	                            				<%for (int i = 0; i < order_seqList.size(); i++) { %>
@@ -121,7 +133,7 @@
 	                            			</div>
 	                            	
 	                            			<!-- 담당자 검색 부분 -->
-	                            			<div class="emp_search_form">
+	                            			<div class="prod_code_search-form">
 	                            			<select id="name" class="form-select" name="name">
 	                            				<option selected disabled> 담당자 </option>
 	                            				<!-- 담당자 목록 출력 -->
@@ -133,12 +145,7 @@
 	                            			
 	                            			<!-- 검색 버튼 -->
 	                            			<div class="pruduction_form_button">
-	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
-
-	                            			    <button type="reset" onclick="releaseLoad()" class="btn btn-light">
-                            						<i class="fa-solid fa-arrow-rotate-left"></i>
-                            				  	</button>
-
+	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light btn-lg"> <i class="fa-solid fa-magnifying-glass"></i> </button>
 	                            			</div>
 	                            			
 	                            		</form>
@@ -176,7 +183,7 @@
 			                                    		<td style="width:10%;">${release.r_cnt}</td>
 			                                    		<td style="width:12.5%;">${release.name}</td>
 			                                    		<td style="width:12.5%;">${release.prod_rack}</td>
-			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
+			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq});" class="btn btn-secondary btn-sm">X</button></td>
 			                                    	</tr>
 
 		                                    	</c:forEach>
@@ -269,8 +276,6 @@
 			
 			// 동기로 가져온 차트에 필요한 데이터
 			var chartDatas = ${chartDatas}                   // 컨트롤러에서 가공하여 넘겨준 데이터를 jsonData 변수에 담는다
-			// 주문 데이터도 가져오기 (컨트롤러 등 수정...)
-			
 			// 페이지가 열렸을 때 실행
 			releaseChart(chartDatas);
 			
@@ -297,15 +302,10 @@
 				
 				var datas = {
 						labels : labelList,
-						datasets : 
-							[{  // 주문 관련 데이터 넣기
-								backgroundColor : colorList,
-								data : valueList
-							},
-							{   // 출고 데이터
-								backgroundColor : colorList,
-								data : valueList
-							}]
+						datasets : [{
+							backgroundColor : colorList,
+							data : valueList
+						}]
 				};
 				
 				var ctx1 = document.getElementById("releaseChart").getContext('2d');
@@ -487,13 +487,24 @@
 			}
 			
 		
+			
+
+
 		</script>
-										
+			
+			
+			<script type="text/javascript">
+			function d-con(){
+				console.log('hi');
+			}
+			</script>
+							
 		<!-- release.js와 연결 -->
 		<!-- <script src="${path}/resources/js/release.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${path}/resources/js/scripts.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="${path}/resources/js/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" <script src="${path}/resources/js/scripts.js"></script>crossorigin="anonymous"></script>
         <script src="${path}/resources/js/datatables-simple-demo.js"></script>
     </body>
 </html>

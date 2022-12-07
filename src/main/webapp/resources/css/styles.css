@@ -1,4 +1,17 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LINESeedKR-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
 /*!
 * Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
 * Copyright 2013-2022 Start Bootstrap
@@ -81,6 +94,7 @@
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
+  font-family: 'LINESeedKR-Rg';
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
@@ -4067,13 +4081,21 @@ textarea.form-control-lg {
   justify-content: space-between;
 }
 .navbar-brand {
+
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
+  margin-left: 3rem;
+  font-size: 1.5rem;
   text-decoration: none;
   white-space: nowrap;
+  font-family: 'LINESeedKR-Bd';
 }
+
+a.navbar-brand.ps-3{
+	margin-left:30px;
+	margin-top: 10px;
+}
+
 .navbar-nav {
   display: flex;
   flex-direction: column;
@@ -11703,7 +11725,9 @@ body {
   border-radius: 0.25rem !important;
 }
 
-
+h1{
+	font-family: 'LINESeedKR-Bd';
+}
 
 
   tr{
@@ -11753,16 +11777,22 @@ body {
        .production-search{
        	display:flex;
        	justify-content:center;
-      
-       
        }
        
+    .date-search-form input{
+    	height:100%;
+    	font-size:20px;
+    }
     
+    .prod_code_search-form select{
+    	height:100%;
+    	font-size:20px;
+    }
        .production-search.release form{
       
         
         display:grid;
-        grid-template-columns : 16% 16% 16% 16% 16% 16%;        
+        grid-template-columns : 14% 14% 14% 14% 14% 14% 14%;        
         grid-gap:10px;
       
         
@@ -11787,11 +11817,23 @@ body {
       
         
         display:grid;
-        grid-template-columns : 33% 33% 33%;        
+        grid-template-columns : 14% 14% 14% 14% 14% 14% 14%;        
         grid-gap:10px;
       
         
         }
+        
+         .production-search.production form{
+      	display:grid;
+        grid-template-columns : 16% 16% 16% 16% 16% 16%;        
+        grid-gap:10px;
+      }
+      
+        .production-search.product form{
+      	display:grid;
+        grid-template-columns : 14% 14% 14% 14% 14% 14% 14%;               
+        grid-gap:10px;
+      }
         
         .add-btn{
         	display:flex;
@@ -11809,14 +11851,19 @@ body {
 		.production-search {
 			display:block;
 		}
- 		.production-search.release form {
+ 		.production-search.release form,
+ 		 .production-search.product form,
+ 		 .production-search.production form,
+ 		  .production-search.order form,
+ 		  .production-search.product form
+ 		 {
        display:grid; grid-template-columns : 100%; grid-gap:10px;
        }
        
        
-       .production-search.product form {
-       display:grid; grid-template-columns : 100%; grid-gap:10px;
-       }
+      
+       
+  
        
         .pruduction_form_button{
         	display:flex;
@@ -11845,6 +11892,32 @@ body {
         
        
        
+         
+       /*
+       release
+       */
+       .chart-form button{
+       	margin-left:20px;
+       }
+   		
+       	
+       /*
+       chart Arrow
+       */
+       
+       	.arrow::before{
+				  content: '▼';
+				  color: black;
+				  float:left;
+				  font-size: 18px;
+				  cursor:pointer;
+				  height : 100%;
+			}
+			
+			.arrow.active::before{
+				content : '▲';
+				font-size:18px;
+			}
 
  
         
