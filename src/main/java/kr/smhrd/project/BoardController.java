@@ -24,7 +24,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Controller
 public class BoardController extends HttpServlet {
-	
+
 	@Inject
 	private BoardMapper mapper;
 	
