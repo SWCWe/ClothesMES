@@ -21,10 +21,12 @@ public class ReleaseController {
 	
 	@Inject // Autowired 대신 호환이 잘 되는 Inject를 쓰는 추세
 	private ReleaseMapper mapper;
-
+	
+	
 	// 페이지 로드할 때 DB에서 데이터 가져오기
 	@RequestMapping("/release.do")
 	public void release(Model model) {
+		
 		// 출고정보 가져오기
 		List<ReleaseVO> list = mapper.releaseList();
 		model.addAttribute("list", list);

@@ -3,6 +3,8 @@ package kr.smhrd.project;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mysql.cj.Session;
 
 import kr.smhrd.entity.ConnectList;
 import kr.smhrd.entity.OrderVO;
@@ -160,15 +163,33 @@ public class OrderController {
 	
 	// rack 위치 알림
 	@RequestMapping("/findRack.do")
-	public @ResponseBody List<String> findRack(int order_seq) {
+	public @ResponseBody List<String> findRack(int order_seq, Model model) {
 		List<String> rackList = orderMapper.findRack(order_seq);
+		model.addAttribute("list", rackList);
+		
+		
+		System.out.println(rackList);
+		
 		return rackList;
 	}
 	
 	@RequestMapping("/sendRack.do")
-	public @ResponseBody void sendRack(OrderVO orderVO) {
+	public @ResponseBody void sendRack(List<String> rack, Model model) {
 		
+	
+	
 	}
+	
+	
+	// 랙 페이지 이동
+			@RequestMapping("/rack.do")
+			public @ResponseBody String rack() {
+				
+				
+				return "rack";
+			}
+	
+	
 	
 // 주문 상세내역 페이지
 //	@RequestMapping("/order_view.do")

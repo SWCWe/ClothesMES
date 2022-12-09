@@ -464,7 +464,7 @@
 			function sendRack(data) {
 				console.log(data)
 				$.ajax({
-					url : "sendRack.do",
+					url : "rack.do",
 					method : "POST",
 					data : data,
 					success : console.log("위치 알림 성공"),
