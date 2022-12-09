@@ -28,10 +28,23 @@ public class OrderVO {
 	
 	// 주소
 	private String od_address;
+
+	// 출고 상태
+	private int od_status;
+
 	
 	// 기간 검색 기능
 	private String start_r_date;  // 시작 일자
 	private String end_r_date;    // 끝 일자
+	
+	// 한 주문에서 주문한 제품 개수
+	private int all_cnt;
+	
+	// 제품 이름
+	private String prod_name;
+	
+	// 제품 위치
+	private String prod_rack;
 		
 	
 }

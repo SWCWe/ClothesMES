@@ -48,7 +48,7 @@
                                	
                             		<!-- 리셋 폼 -->
                             		<div class="pruduction_form_button d-flex justify-content-end">
-                            				<button type="reset" onclick="productLoad()" class="btn btn-light">
+                            				<button type="reset" onclick="productLoad()" class="btn btn-lg btn-light">
                             				<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  </button>
                             				
@@ -61,7 +61,7 @@
 	                            				<input id="end_r_date" type = "date" class =" form-control" name = "end_r_date">
 	                            			</div>
                             	
-                            			<div class="emp_search_form">
+                            			<div class="prod_code_search-form ">
                             			<select class="form-select" name="prod_code" >
                             				<option selected disabled> 제품코드 </option>
                             				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
@@ -70,7 +70,7 @@
                             			</select>
                             			</div>
                             			
-                            			<div class="prod_code_search-form">
+                            			<div class="date-search-form">
 	                            			<input type ="text" id ="search"class="form-control" placeholder = "제품이름"/>
                             			</div>
                             			
@@ -84,7 +84,7 @@
                             			</div>
                             			
                             			<div class="pruduction_form_button">
-                            				<button type="button" onclick="ProductSearch()" class="btn btn-light"> 🔍 </button>
+                            				<button type="button" onclick="ProductSearch()" class="btn btn-light btn-lg"> <i class="fa-solid fa-magnifying-glass"></i>  </button>
                             				
                             			</div>
                             			

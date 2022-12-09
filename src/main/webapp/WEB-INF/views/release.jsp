@@ -238,7 +238,7 @@
                                         				<option selected disabled> 제품 코드 </option>
                                         			</select>
                                         		</td>
-                                        		
+                                        		 
                                         		<td style="width:12.5%;">
                      									<input type="date" name="r_date">
                                         		</td>

@@ -2,25 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.smhrd.mapper.OrderMapper">
     
+
+    <!-- 주문 번호로 그룹화하고, 제품 코드 count -->
     <select id="orderList" resultType="kr.smhrd.entity.OrderVO">
-        select m.od_seq, r.order_seq , m.prod_code, m.od_cnt, r.order_date, r.cus_id, m.od_address
+        select r.order_seq, count(m.prod_code) all_cnt, r.order_date, r.cus_id, sum(m.od_status) od_status
         from t_order r, t_order_detail m
         where m.order_seq  = r.order_seq
+        and m.od_status = 0
+        group by m.order_seq
     </select>
-    
-    
+
+
     <!-- 검색 내용 가져오기(조건 부분 쿼리 통째로 삽입) -->
     <select id="searchOrderList" parameterType="String" resultType="kr.smhrd.entity.OrderVO">
-        select m.od_seq, r.order_seq , m.prod_code, m.od_cnt, r.order_date, r.cus_id  
+        select m.order_seq, count(m.prod_code) all_cnt, r.order_date, r.cus_id, sum(m.od_status) od_status
         from t_order r, t_order_detail m
         where m.order_seq  = r.order_seq
         ${orderQuery}
+        group by m.order_seq        
     </select>
+    
     <select id="idSearch" resultType="kr.smhrd.entity.OrderVO">
-       select m.od_seq, r.order_seq , m.prod_code, m.od_cnt, r.order_date, r.cus_id  
+        select r.order_seq , count(m.prod_code) all_cnt, r.order_date, r.cus_id, sum(m.od_status) od_status  
         from t_order r, t_order_detail m
-        where m.order_seq  = r.order_seq and r.cus_id like concat('%',#{search},'%')
-        
+        where m.order_seq  = r.order_seq
+        and r.cus_id like concat('%',#{search},'%')
+        group by m.order_seq
+    </select>
+    
+    <!-- 주문 상세 제품 목록 가져오기 -->
+    <select id="detailList" parameterType="Integer" resultType="kr.smhrd.entity.OrderVO">
+        select m.prod_code, p.prod_name, m.od_cnt, r.order_seq, r.order_date, r.cus_id, m.od_status
+        from t_order_detail m, t_product p, t_order r
+        where r.order_seq = m.order_seq
+        and m.prod_code = p.prod_code
+        and m.order_seq = #{order_seq}
+    </select>
+    
+    <!-- 출고 상태 업데이트 -->
+    <update id="statusUpdate" parameterType="Integer">
+        update t_order_detail
+        set od_status = 1
+        where order_seq = #{order_seq}
+    </update>
+    
+    <!-- rack 위치 알림 -->
+    <select id="findRack" parameterType="Integer" resultType="String">
+        select p.prod_rack
+        from t_product p, t_order_detail m
+        where p.prod_code = m.prod_code
+        and m.order_seq = #{order_seq}
     </select>
     
 </mapper>
