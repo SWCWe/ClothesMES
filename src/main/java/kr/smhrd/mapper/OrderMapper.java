@@ -25,6 +25,8 @@ public interface OrderMapper {
 	public int statusUpdate(int order_seq);
 
 	public List<String> findRack(int order_seq);
+
+	public void releaseInsert(OrderVO orderVO);
 	
 	
 }

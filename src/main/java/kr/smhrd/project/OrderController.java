@@ -1,14 +1,24 @@
 package kr.smhrd.project;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import kr.smhrd.entity.ConnectList;
 import kr.smhrd.entity.OrderVO;
 import kr.smhrd.entity.ProductVO;
 import kr.smhrd.entity.ReleaseVO;
@@ -99,6 +109,53 @@ public class OrderController {
 	public @ResponseBody int statusUpdate(int order_seq) {
 		orderMapper.statusUpdate(order_seq);
 		return order_seq;
+	}
+	
+	// 출고 테이블에 삽입할 데이터 가져오기
+	@RequestMapping("/releaseInsertList.do")
+	public @ResponseBody String releaseInsertList(int order_seq) {
+		System.out.println("releaseInsertList " + order_seq);
+		List<OrderVO> releaseInsertList = orderMapper.detailList(order_seq);
+		
+		// JSON으로 변환
+		Gson gson = new Gson();
+		JsonArray jArray = new JsonArray();
+		
+		Iterator<OrderVO> it = releaseInsertList.iterator(); // list의 반복자를 얻어,,?
+		while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
+			OrderVO orderVO = it.next();
+			JsonObject object = new JsonObject();
+			String prod_code = orderVO.getProd_code(); // 각각의 변수에 임시로 넣어두었다가
+			int od_cnt = orderVO.getOd_cnt();
+			int seq = orderVO.getOrder_seq();
+			
+			object.addProperty("prod_code", prod_code);     // jsonobject에 addproperty 메소드를 통해 추가하고
+			object.addProperty("od_cnt", od_cnt);
+			object.addProperty("order_seq", seq);			
+			jArray.add(object);                        // 완성된 jsonobject를 jsonarray에 추가
+		}
+		
+		String list = gson.toJson(jArray);
+		return list;
+	}
+	
+	// 출고 테이블에 데이터 삽입
+	@RequestMapping(value = "/releaseInsert.do", method = RequestMethod.POST)
+	public @ResponseBody int releaseInsert(@RequestParam String data) {
+		// @RequestParam List<OrderVO> data
+		// List<OrderVO> 	
+		//System.out.println("확인 " + list.get(0).getProd_code());
+		System.out.println("끼끼끼끼ㅣ끼ㅣ끼00");
+		System.out.println(data);
+		//System.out.println(data.size());
+		
+		// 데이터를 하나씩 꺼내서 삽입
+//		for (int i = 0; i < data.size(); i++) {
+//			orderMapper.releaseInsert(data.get(i));			
+//		}
+//		int order_seq = data.get(0).getOrder_seq();
+		//return order_seq;
+		return 0;
 	}
 	
 	// rack 위치 알림

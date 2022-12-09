@@ -32,7 +32,7 @@
     
     <!-- 주문 상세 제품 목록 가져오기 -->
     <select id="detailList" parameterType="Integer" resultType="kr.smhrd.entity.OrderVO">
-        select m.prod_code, p.prod_name, m.od_cnt, r.order_seq, r.order_date, r.cus_id, m.od_status
+        select m.prod_code, p.prod_name, m.od_cnt, r.order_seq, r.order_date, r.cus_id, m.od_status, m.od_address
         from t_order_detail m, t_product p, t_order r
         where r.order_seq = m.order_seq
         and m.prod_code = p.prod_code
@@ -45,6 +45,17 @@
         set od_status = 1
         where order_seq = #{order_seq}
     </update>
+    
+    <!-- 출고 테이블에 값 insert -->
+    <insert id="releaseInsert" parameterType="kr.smhrd.entity.OrderVO">
+        insert into t_release(prod_code, r_cnt, order_seq, emp_no, prod_rack)
+        values (#{prod_code}, #{od_cnt}, #{order_seq}, 214,
+        		<!-- 제품 코드에 따른 제품 보관 장소를 저장해야 하므로 -->
+        		(select distinct p.prod_rack
+        		 from t_product p, t_order_detail d
+        		 where p.prod_code = d.prod_code
+        		 and d.prod_code = #{prod_code}))
+    </insert>
     
     <!-- rack 위치 알림 -->
     <select id="findRack" parameterType="Integer" resultType="String">

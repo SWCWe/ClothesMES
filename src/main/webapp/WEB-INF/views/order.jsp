@@ -103,7 +103,7 @@
                                             <th style="width:12%">주문 개수</th>
                                             <th style="width:12%">주문 상세</th>
                                             <th style="width:12%">출고 상태</th>
-                                            <th style="width:10%"> 삭제 </th>
+                                         <!--    <th style="width:10%"> 삭제 </th> -->
                                             <th style="width:2%"></th>
                                         </tr>
                                     </thead>
@@ -120,6 +120,7 @@
                                     <tbody id="list">
                         				
                         				<c:forEach items = "${list}" var = "prod" varStatus = 'i'>
+                        				<input type="hidden" name="od_address" value="${prod.od_address}">
 	                                        <tr>
 	                                            <td style="width:10%;">${prod.order_seq}</td>
 	                                            <td style="width:20%;">${prod.order_date}</td>
@@ -128,7 +129,7 @@
 	                                            <td style="width:12%;"><button type="button" onclick="orderDetailLoad(${prod.order_seq})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#orderModal">확인</button></td>
 	                                            <c:if test="${prod.od_status == 0}"><td style="width:12%;">주문 접수</td></c:if>
 	                                            <c:if test="${prod.od_status > 0}"><td style="width:12%;">출고 완료</td></c:if>
-	                                            <td style="width:10%;"><button type="button" onclick="" class="btn btn-secondary btn-sm">X</button></td>
+	                                          <!--   <td style="width:10%;"><button type="button" onclick="" class="btn btn-secondary btn-sm">X</button></td> -->
 	                                        </tr>
                                     	</c:forEach>
                         				
@@ -275,35 +276,11 @@
 					}else {
 						html += "<td style='width:12%;'>출고 완료</td>";
 					}
-					html += "<td style='width:10%;'><button type='button' onclick='' class='btn btn-secondary btn-sm'>X</button></td>"
 					html += "</tr>";
 				}
 				// id가 "releaseList"인 <tbody>안의 html 교체
 				$('#list').html(html);
 			}
-			
-			
-		
-			/* 주문 정보 추가 기능          만들어야됨 아직 안만듬 */
-			
-			// form에서 전송한 데이터를 받아 DB에 삽입하는 함수
-			/* function orderInsert() {
-				// form에서 전송한 데이터를 json 형태로 저장
-				var frmData = $("releaseInsert").serialize();
-				
-				// ajax를 통해 insertRelease.do라는 곳으로 입력한 데이터를 보내 insert하고
-				// ReleaseList로 data 보냄
-				$.ajax({
-					url : "insertRelease.do",
-					type : "POST",
-					data : frmData,
-					dataType : "JSON",
-					success : releaseLoad,
-					error : function(e){
-						console.log(e);
-					}
-				});
-			} */
 			
 			// 현재 DB에 저장된 데이터를 json 형태로 가져오는 함수?
 			function orderLoad() {
@@ -351,6 +328,10 @@
 				/* 주문인 */
 				html += "<div class='list-group-item list-group-item-action'>"
 				html += "<span class='point'>주문인: " + data[0].cus_id + "</span>"
+				html += "</div>"
+				/* 배송지 */
+				html += "<div class='list-group-item list-group-item-action'>"
+				html += "<span class='point'>배송지: " + data[0].od_address + "</span>"
 				html += "</div>"
 				/* 출고 상태 */
 				html += "<div class='list-group-item list-group-item-action'>"
@@ -411,11 +392,46 @@
 					url : "statusUpdate.do",
 					method : "POST",
 					data : frmData,
-					success : orderDetailLoad,
+					success : releaseInsertList,
 					error : function(e){
 						console.log(e);
 					}
 				});
+			}
+			
+			// 출고 상태 update 후 출고 테이블에 삽입할 데이터 가져오기
+			function releaseInsertList(order_seq){
+				console.log(order_seq); // 있음
+				$.ajax({
+					url : "releaseInsertList.do",
+					method : "POST",
+					data : {"order_seq" : order_seq},
+					dataType : "JSON",
+					success : releaseInsert,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
+			
+			// 가져온 데이터 출고 테이블에 삽입
+			function releaseInsert(data){
+				console.log(data);
+				setTimeout(function() {
+					// Code here
+					
+					$.ajax({
+						url : "releaseInsert.do",
+						method : "POST",
+						data : {"data" : JSON.stringify(data)},
+						success : orderDetailLoad,
+						error : function(e){
+							console.log(e);
+						}
+					});
+					
+				}, 1000);
+				
 			}
 			
 			// releaseCkModal 없애기

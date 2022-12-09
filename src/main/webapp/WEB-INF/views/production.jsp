@@ -425,7 +425,7 @@
 				// ajax를 통해 insertmanufacture.do라는 곳으로 입력한 데이터를 보내 insert하고
 				// prodList로 data 보냄
 				$.ajax({
-					url : "insertmanufacture.do",
+					url : "insertmanufacture.do", 
 					type : "POST",
 					data : frmData,
 					success : prodload,
