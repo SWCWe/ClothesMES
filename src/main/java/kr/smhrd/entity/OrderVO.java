@@ -26,6 +26,8 @@ public class OrderVO {
 	// 주문 수량
 	private int od_cnt;
 	
+	// 주소
+	private String od_address;
 	
 	// 기간 검색 기능
 	private String start_r_date;  // 시작 일자

@@ -24,7 +24,8 @@ select count(*) from t_member where emp_no = '138'
 
 where emp_no='138' and pw='123'
 
-select * from t_member
+delete * from t_order_detail
+
 select count(*),emp_no,pw from t_member 
        where emp_no ='111' and pw = '111'
 

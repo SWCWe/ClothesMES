@@ -126,8 +126,9 @@
                                         	
                                         	<th style="width:10%">주문 번호</th>
                                             <th  style="width:20%">주문 날짜</th>
-                                            <th style="width:20%">주문 아이디</th>
-                                            <th style="width:20%">제품 코드</th>
+                                            <th style="width:10%">주문 아이디</th>
+                                            <th style="width:20%">배송지</th>
+                                            <th style="width:10%">제품 코드</th>
                                             <th style="width:20%">제품 수량</th>
                                             <th style="width:10%"> 삭제 </th>
                                             <th style="width:1%"></th>
@@ -156,8 +157,9 @@
 	                                         
 	                                            <td style="width:10%;">${prod.order_seq}</td>
 	                                            <td style="width:20%;">${prod.order_date}</td>
-	                                            <td style="width:20%;">${prod.cus_id}</td>
-	                                            <td style="width:20%;">${prod.prod_code}</td>
+	                                            <td style="width:10%;">${prod.cus_id}</td>
+	                                            <td style="width:20%;">${prod.od_address}</td>
+	                                            <td style="width:10%;">${prod.prod_code}</td>
 	                                            <td style="width:20%;">${prod.od_cnt}</td>
 	                                            <td style="width:10%;"><button type="button" onclick="" class="btn btn-secondary btn-sm">X</button></td>
 	                                 			
