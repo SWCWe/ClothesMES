@@ -376,6 +376,7 @@
 			function releaseSearch() {
 				// form에서 전송한 데이터를 json 형태로 저장
 				var frmData = $("#releaseSearch").serialize();
+				console.log(frmData)
 
 				// ajax를 통해 searchRelease.do라는 곳으로 입력한 데이터를 보내 select하고
 				// releaseList로 data 보냄
@@ -493,11 +494,11 @@
 		</script>
 			
 			
-			<script type="text/javascript">
+		<!--	<script type="text/javascript">
 			function d-con(){
 				console.log('hi');
 			}
-			</script>
+			</script>  -->
 							
 		<!-- release.js와 연결 -->
 		<!-- <script src="${path}/resources/js/release.js"></script> -->
