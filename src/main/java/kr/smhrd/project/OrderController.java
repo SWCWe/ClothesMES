@@ -1,5 +1,6 @@
 package kr.smhrd.project;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,7 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
 import com.mysql.cj.Session;
+
+import com.google.gson.reflect.TypeToken;
+
 
 import kr.smhrd.entity.ConnectList;
 import kr.smhrd.entity.OrderVO;
@@ -145,20 +150,17 @@ public class OrderController {
 	// 출고 테이블에 데이터 삽입
 	@RequestMapping(value = "/releaseInsert.do", method = RequestMethod.POST)
 	public @ResponseBody int releaseInsert(@RequestParam String data) {
-		// @RequestParam List<OrderVO> data
-		// List<OrderVO> 	
-		//System.out.println("확인 " + list.get(0).getProd_code());
-		System.out.println("끼끼끼끼ㅣ끼ㅣ끼00");
-		System.out.println(data);
-		//System.out.println(data.size());
+		// GSON을 이용해 다시 바꾸기
+		Gson gson = new Gson();
+		List<OrderVO> list = gson.fromJson(data.toString(), new TypeToken<ArrayList<OrderVO>>(){}.getType());
+		System.out.println(list);
 		
 		// 데이터를 하나씩 꺼내서 삽입
-//		for (int i = 0; i < data.size(); i++) {
-//			orderMapper.releaseInsert(data.get(i));			
-//		}
-//		int order_seq = data.get(0).getOrder_seq();
-		//return order_seq;
-		return 0;
+		for (int i = 0; i < list.size(); i++) {
+			orderMapper.releaseInsert(list.get(i));			
+		}
+		int order_seq = list.get(0).getOrder_seq();
+		return order_seq;
 	}
 	
 	// rack 위치 알림
@@ -180,6 +182,7 @@ public class OrderController {
 	
 	}
 	
+
 	
 	// 랙 페이지 이동
 			@RequestMapping("/rack.do")
