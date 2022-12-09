@@ -29,6 +29,12 @@ public class BoardController extends HttpServlet {
 	private BoardMapper mapper;
 	
 	
+	@RequestMapping("/Test1.do")
+	public String Test1() {
+		return "Test1";
+	}
+	
+	
 	@RequestMapping("/notice.do")
 	public String notice() {
 		return "notice";

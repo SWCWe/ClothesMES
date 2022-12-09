@@ -2,8 +2,8 @@ package kr.smhrd.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
+import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
