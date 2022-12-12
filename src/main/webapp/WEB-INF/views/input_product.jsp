@@ -87,13 +87,18 @@ pageEncoding="UTF-8"%>
 		
         <div class="drop-zone">
         <div class="submit-input d-flex justify-content-center" style="width:225px;">
-            <input type="file" name = 'img' id="file" multiple="multiple">
+            <input type="file" name = 'img' id="img" multiple="multiple">
         </div>
             <div class="mt-2 text-primary">또는 파일을 여기로 드래그하세요. <i class="fa-solid fa-upload"></i></div>
             <div class="drop-submit d-flex justify-content-center">
+            <button type='submit' class='btn btn-success mt-3'> 제출 </button>
         </div>
         </div>
     </form>
+    
+ 
+    
+    
 </div>
 </session>
 	
@@ -118,7 +123,7 @@ pageEncoding="UTF-8"%>
                 for(var i = 0, len = files.length; i < len; i++) {
                     dropZone.innerHTML += "<p>" + files[i].name + "</p>"
                 }
-                dropZone.innerHTML += " <button type='submit' class='btn btn-success mt-3'> 제출 </button> "
+                
             }
             var selectFile = function(files) {
                 // input file 영역에 드랍된 파일들로 대체
