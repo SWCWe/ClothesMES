@@ -221,11 +221,11 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">내이름은 예지 '팀장' 이조</div>
+                            <div class="text-muted">CPRMS</div>
                             <div>
-                                <a href="#">내이름은 철원</a>
+                                <a href="#">made by</a>
                                 &middot;
-                                <a href="#">'부팀장'이조</a>
+                                <a href="#">쫑쫑이</a>
                             </div>
                         </div>
                     </div>

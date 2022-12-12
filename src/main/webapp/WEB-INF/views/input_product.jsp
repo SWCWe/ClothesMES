@@ -11,15 +11,12 @@ pageEncoding="UTF-8"%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <style>
-
-
 	@font-face {
     font-family: 'LINESeedKR-Bd';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'LINESeedKR-Rg';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2');
@@ -39,12 +36,10 @@ pageEncoding="UTF-8"%>
         justify-content: center;
         position:relative;
         overflow: hidden;
-       
     }
     h1{
     font-family: 'LINESeedKR-Bd';
     }
-
     .drop-zone-dragenter, .drop-zone-dragover {
         border: 5px solid blue;
         width:80%;
@@ -57,11 +52,9 @@ pageEncoding="UTF-8"%>
         display:flex;
         justify-content: center;
     }
-
     .dragenter {
         width:100%;
     }
-
     .drop-container{
         display: flex;
         justify-content:center;
@@ -72,56 +65,42 @@ pageEncoding="UTF-8"%>
         border : 3px dotted black;
         overflow:hidden;
     }
-
     #drop-session {
         display:flex;
         justify-content: center;
     }
-    
     .text-primary:hover{
     	opacity:0.5;
     }
-
-
 </style>
 </head>
-
-<body> 
-
+<body>
 	<div class="all_con mb-5" style ="transform:translateY(15%)">
-
 	<div class="title" style="display:flex; justify-content:center;">
-			<h1> 제품코드와 정확도판별 AI 
-			</h1>
+			<h1> 제품코드와 정확도판별 AI</h1>
 	</div>
-
       <session id="drop-session">
-     
         <form ></form>
-    <div class="drop-contWainer bg-light">
+    <div class="drop-container bg-light">
     <form action="http://127.0.0.1:5000/predict" method="POST" enctype="multipart/form-data">
-        
-      
 		
-        <div class="drop-zone">
-        <div class="submit-input d-flex justify-content-center" style="width:225px;"> 
-            <input type="file" name = 'img' id="file" multiple="multiple">
+        <div class="drop-zone" style="position:relative">
+        <div class="submit-input d-flex justify-content-center" style="width:225px;">
+            <input type="file" name = 'img' id="img" multiple="multiple">
         </div>
             <div class="mt-2 text-primary">또는 파일을 여기로 드래그하세요. <i class="fa-solid fa-upload"></i></div>
             <div class="drop-submit d-flex justify-content-center">
-           
+            
         </div>
+        	
         </div>
-        
-        
+        <button type='submit' style='position:absolute; top:450px; left:50%;' class='btn btn-success mt-3'> 제출 </button>
     </form>
-
 </div>
 </session>
 	
 	</div>
   <script>
-
         (function() {
             var $file = document.getElementById("file")
             var dropZone = document.querySelector(".drop-zone")
@@ -187,6 +166,5 @@ pageEncoding="UTF-8"%>
             })
         })();
     </script>
-
 </body>
 </html>
