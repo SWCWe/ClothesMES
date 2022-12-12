@@ -23,7 +23,18 @@
         <!-- Chart.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	
-	
+		<!-- <style type="text/css">
+			.modal{
+				position:absolute;
+				width:100%;
+				height:100%;
+				background:rgba(0, 0, 0, 0, 8);
+				top:0;
+				left:0;
+				display:none;
+			}
+		</style>
+	 -->
     </head>
     
     <body class="sb-nav-fixed">
@@ -48,6 +59,9 @@
     	
     	// 차트에 필요한 데이터
     	String chartDatas = (String) request.getAttribute("chartDatas");
+    	
+    	// 모달에 필요한 시퀀스를 저장할 변수
+    	int r_seq = -1;
     %>
     
  <%@ include file="nav-top.jsp" %>
@@ -66,16 +80,19 @@
                         <div class="card mb-4">
                             <div class="card-header arrow" onclick="chartShow()" style="height:45px; line-height:25px;">
                                 <p style="margin-left:30px;">
-	                              제품 출고 현황
+	                              	제품 출고 현황
                                 </p>
                             </div>
                             <!-- 차트 들어올 부분 -->
                             <div id="releaseChartArea" class="card-body" style="display:none;">
                             	<form>
-                            		<input type="text" name="cnt" id="cnt">
-                            		<button type="button" onclick="releaseTB('top')" class="btn btn-light" name="top" value="top">상위</button>
-	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-light" name="bottom" value="bottom">하위</button>
-	                            	<button type="reset" onclick="loadChartData()" class="btn btn-light" name="return" value="return">되돌리기</button>
+                            		<div class="chart-form d-flex justify-content-center mt-3">
+                            		<input type="text" class="form-control" name="cnt" id="cnt" style="width:300px;">
+                            		<button type="button" onclick="releaseTB('top')" class="btn btn-lg btn-light" name="top" value="top">상위</button>
+	                            	<button type="button" onclick="releaseTB('bottom')" class="btn btn-lg btn-light" name="bottom" value="bottom">하위</button>
+	                            	<button type="reset" onclick="loadChartData(); d-con()" class="btn btn-lg btn-light" name="return" value="return">되돌리기</button>
+                            		</div>
+                            		
                             	</form>
                             	<div style="padding:1%;">
                             		<canvas id="releaseChart" style="overflow-x:scroll; width: 600px; height: 150px;"></canvas>
@@ -165,13 +182,17 @@
                                     </thead>
                                  </table>
                                  
-                                <form id="deleteRelease" method="post">
+                                 <form id="deleteRelease" method="post">
 	                                 <div style="overflow-y:scroll; width:100%; height:300px; text-align:center;">
+	                                 
+	                                 
 		           						<table class="table table-borderless table-striped table-hover" >
 		                                   	<!-- 출고 목록 보기 기능 -->
 		                                    <tbody id="releaseList">
+		                                    
+		                                    
 		                                    	<c:forEach items="${list}" var="release" varStatus="i">
-
+													<input type="hidden" name="r_seq" value="${release.r_seq}">
 			                                    	<tr>
 			                                    		<td style="width:10%;">${release.r_seq}</td>
 			                                    		<td style="width:10%;">${release.order_seq}</td>
@@ -180,7 +201,13 @@
 			                                    		<td style="width:10%;">${release.r_cnt}</td>
 			                                    		<td style="width:12.5%;">${release.name}</td>
 			                                    		<td style="width:12.5%;">${release.prod_rack}</td>
-			                                    		<td style="width:5%;"><button onclick="deleteRelease(${release.r_seq})" class="btn btn-secondary btn-sm">X</button></td>
+			                                    		<td style="width:5%;">
+			                                    			<button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">X</button>
+			                                    		</td> 
+			                                    		
+			                                    		<!-- <td style="width:5%;">
+			                                    			<button id="modalBtn" type="button">X</button>
+			                                    		</td> -->
 			                                    	</tr>
 
 		                                    	</c:forEach>
@@ -211,7 +238,7 @@
                                         				<option selected disabled> 제품 코드 </option>
                                         			</select>
                                         		</td>
-                                        		
+                                        		 
                                         		<td style="width:12.5%;">
                      									<input type="date" name="r_date">
                                         		</td>
@@ -255,9 +282,51 @@
             </div>
         </div>
         
+        <!-- Modal -->
+        
+        <div class='modal'>
+        	<div class='modal_content'>
+        		삭제하시겠습니까?
+        	</div>
+        </div>
+        
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		         	정말로 삭제하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" onclick="deleteRelease();" class="btn btn-primary">삭제</button>
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+		     
+		      </div>
+		    </div>
+		  </div>
+		</div> 
+        
  	
 
 		<script type="text/javascript">
+		
+		/* 출고 데이터 삭제 기능 */
+			function deleteRelease() {
+				var frmData = $("#deleteRelease").serialize();
+				$('#exampleModal').modal('hide');
+				$.ajax({
+					url : "deleteRelease.do",
+					type : "POST",
+					data : frmData,
+					success : releaseLoad,
+					error : function(e){
+						console.log(e);
+					}
+				});
+			}
 		
 			/* 차트 관련 기능 */
 			
@@ -393,6 +462,7 @@
 			function releaseList(data) {
 				var html = "";
 				for (var i = 0; i < data.length; i++) {
+					html += "<input type='hidden' name='r_seq' value=" + data[i].r_seq + ">";
 					html += "<tr>";
 					html += "<td style='width:10%;'>" + data[i].r_seq + "</td>";	
 					html += "<td style='width:10%;'>" + data[i].order_seq + "</td>";	
@@ -401,9 +471,10 @@
 					html += "<td style='width:10%;'>" + data[i].r_cnt + "</td>";	
 					html += "<td style='width:12.5%;'>" + data[i].name + "</td>";	
 					html += "<td style='width:12.5%;'>" + data[i].prod_rack + "</td>";
-					html += "<td style='width:5%;'><button type='button' onclick='deleteRelease(" + data[i].r_seq + ")' class='btn btn-secondary btn-sm'>X</button></td>"
+					html += "<td style='width:5%;'><button type='button' class='btn btn-secondary btn-sm' data-bs-toggle='modal' data-bs-target='#exampleModal'>X</button></td>"
 					html += "</tr>";
 				}
+            	
 				// id가 "releaseList"인 <tbody>안의 html 교체
 				$('#releaseList').html(html);
 				
@@ -441,19 +512,7 @@
 				});
 			}
 			
-			/* 출고 데이터 삭제 기능 */
-			function deleteRelease(r_seq) {
-				
-				$.ajax({
-					url : "deleteRelease.do",
-					type : "POST",
-					data : {"r_seq" : r_seq},
-					success : releaseLoad,
-					error : function(e){
-						console.log(e);
-					}
-				});
-			}
+			
 			
 			/* 추가 폼 관련 함수 */
 			// 추가 폼에서 주문 순번에 따라 제품 코드를 다르게 보여주는 함수
@@ -483,11 +542,26 @@
 				$('#prod_codeCategory').html(html);
 			}
 			
-		
+			/* 모달 띄우기 */
 			
+		/* 	function showModal(data) {
+				var 
+			}
+			
+			$(function(){
+				$("#modalBtn").click(function(){
+					$(".modal").fadeIn();
+				});
+				$(".modal_content").click(function(){
+					$(".modal").fadeOut();
+				});
+			}); */
 			
 
+
 		</script>
+			
+			
 			
 							
 		<!-- release.js와 연결 -->

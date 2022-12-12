@@ -1,20 +1,25 @@
 package kr.smhrd.project;
+import java.util.Iterator;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import kr.smhrd.entity.ProductionVO;
 import kr.smhrd.mapper.ProductionMapper;
 @Controller
 public class ProductionController {
+	
 	@Inject
 	private ProductionMapper mapper;
 	
 	// 생산관리 페이지 DB에서 데이터 가져오기
 	@RequestMapping("/production.do")
-	public String prodList(Model model){
+	public void prodList(Model model){
 		
 		// ProductionVO 에 있는 값들 리스트로 가져오기
 		List<ProductionVO> list = mapper.prodList();
@@ -28,9 +33,28 @@ public class ProductionController {
 		// 생산 담당자 이름 중복없이 가져오기
 		// productionVO list로 담당 사원 이름 가져오면 DB에 있는 사원 이름 중복제거 안되고 전체로 나온다
 		List<String> nameList = mapper.NameList();
-		model.addAttribute("nameList", nameList);		
+		model.addAttribute("nameList", nameList);
 		
-		return "production";
+		// 차트에 사용할 데이터 가져오기
+		List<ProductionVO> chartData = mapper.manufactureChartData();
+			// 차트에 사용할 수 있는 데이터로 변환하는 과정
+			Gson gson = new Gson();                        // json으로 가공하기 위해 gson 객체 생성
+			JsonArray jArray = new JsonArray();            // json 형태로 여러개의 데이터를 담기 위해 jsonarray 객체 생성
+				
+			Iterator<ProductionVO> it = chartData.iterator(); // list의 반복자를 얻어,,?
+			while (it.hasNext()) {                         // 리스트에 담긴 하나하나의 VO가 갖는 prod_code와 cnt를 추출해
+				ProductionVO chartVO = it.next();
+				JsonObject object = new JsonObject();
+				String prod_code = chartVO.getProd_code(); // 각각의 변수에 임시로 넣어두었다가					int r_cnt = chartVO.getR_cnt();
+				int m_cnt = chartVO.getM_cnt();
+				
+				object.addProperty("Code", prod_code);     // jsonobject에 addproperty 메소드를 통해 추가하고
+				object.addProperty("Count", m_cnt);
+				jArray.add(object);                        // 완성된 jsonobject를 jsonarray에 추가
+			}
+			
+		String chartDatas = gson.toJson(jArray);
+		model.addAttribute("chartDatas", chartDatas);
 	}
 	
 	// 생산 정보 불러오기 기능(비동기)

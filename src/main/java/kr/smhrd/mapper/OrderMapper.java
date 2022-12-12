@@ -19,6 +19,14 @@ public interface OrderMapper {
 	public List<OrderVO> searchOrderList(String orderQuery);
 
 	public List<OrderVO> idSearch(String order);
+
+	public List<OrderVO> detailList(int order_seq);
+
+	public int statusUpdate(int order_seq);
+
+	public List<String> findRack(int order_seq);
+
+	public void releaseInsert(OrderVO orderVO);
 	
 	
 }

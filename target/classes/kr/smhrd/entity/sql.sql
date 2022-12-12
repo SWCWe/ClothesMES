@@ -23,10 +23,18 @@ select count(*) from t_member where emp_no = '138'
 
 where emp_no='138' and pw='123'
 
-select * from t_member
+delete * from t_order_detail
+
 select count(*),emp_no,pw from t_member 
        where emp_no ='111' and pw = '111'
 
  INSERT INTO t_member (emp_no, pw, name, position, dept, emp_joindate)
 		VALUES ('111', '111', '루키', '사원', '생산', NOW());
 
+select m.order_seq, count(m.prod_code) all_cnt, r.order_date, r.cus_id, sum(m.od_status) od_status
+        from t_order r, t_order_detail m
+        where m.order_seq  = r.order_seq
+        and od_status >= 0
+        group by m.order_seq
+        
+        
