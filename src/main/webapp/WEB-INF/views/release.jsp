@@ -113,7 +113,7 @@
 	                            			
 	                            			<!-- 리셋 버튼 -->
 	                            			<div class="pruduction_form_button d-flex justify-content-end">
-	                            				<button type="reset" onclick="releaseLoad()" class="btn btn-light">
+	                            				<button type="reset" onclick="releaseLoad()" class="btn btn-light btn-lg">
                             						<i class="fa-solid fa-arrow-rotate-left"></i>
                             				  	</button>
 	                            			</div>
@@ -159,7 +159,7 @@
 	                            			
 	                            			<!-- 검색 버튼 -->
 	                            			<div class="pruduction_form_button">
-	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light"> 🔍 </button>
+	                            				<button type="button" onclick="releaseSearch()" class="btn btn-light btn-lg"> <i class="fa-solid fa-magnifying-glass"></i></button>
 	                            			</div>
 	                            			
 	                            		</form>

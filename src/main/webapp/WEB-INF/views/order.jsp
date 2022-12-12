@@ -125,7 +125,7 @@
 	                                            <td style="width:20%;">${prod.order_date}</td>
 	                                            <td style="width:20%;">${prod.cus_id}</td>
 	                                            <td style="width:12%;">${prod.all_cnt}</td>
-	                                            <td style="width:12%;"><button type="button" onclick="orderDetailLoad(${prod.order_seq})" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#orderModal">확인</button></td>
+	                                            <td style="width:12%;"><button type="button" onclick="orderDetailLoad(${prod.order_seq})" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orderModal">확인</button></td>
 	                                            <c:if test="${prod.od_status == 0}"><td style="width:12%;">주문 접수</td></c:if>
 	                                            <c:if test="${prod.od_status > 0}"><td style="width:12%;">출고 완료</td></c:if>
 	                                            <td style="width:10%;"><button type="button" onclick="" class="btn btn-secondary btn-sm">X</button></td>
@@ -191,7 +191,7 @@
 		      		
 		      		<div id="" class="modal-body">출고하시겠습니까?</div>
 		      		<div class="modal-footer">
-		      			<button type='button' class='btn btn-secondary' data-bs-dismiss='modal' onclick='rCompletion()'>출고 완료</button>	
+		      			<button type='button' class='btn btn-lg btn-secondary' data-bs-dismiss='modal' onclick='rCompletion()'>출고 완료</button>	
 		      			<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>닫기</button>	
 		      		</div>
 		    	</div>
@@ -342,22 +342,26 @@
 				var html = "";
 				/* 주문 번호 */
 				html += "<div class='list-group-item list-group-item-action'>"
-				html += "<span class='point successNameChk'>주문 번호: " + data[0].order_seq + "</span>"
+				html += "<div class ='row'>"
+				html += "<div class='col col-lg-3'> <span class='point successNameChk'>주문 번호: </span></div><div class='col col-lg-9'><b> " + data[0].order_seq + " </b></div></div>"
 				html += "</div>"
 				/* 접수 날짜 */
+				
 				html += "<div class='list-group-item list-group-item-action'>"
-				html += "<span class='point successIdChk'>접수 날짜: " + data[0].order_date + "</span>"
+				html += "<div class ='row'>"
+				html += "<div class='col col-lg-3 col-sm-6'><span class='point successIdChk'>접수 날짜: </span></div><div class='col col-lg-9 col-sm-6'><b>" + data[0].order_date + "</b></div></div>"
 				html += "</div>"
 				/* 주문인 */
 				html += "<div class='list-group-item list-group-item-action'>"
-				html += "<span class='point'>주문인: " + data[0].cus_id + "</span>"
+				html += "<div class ='row'>"
+				html += "<div class='col col-lg-3 col-sm-6'><span class='point'>주문인: </span></div><div class='col col-lg-9 col-sm-6'><b>" + data[0].cus_id + "</b></div></div>"
 				html += "</div>"
 				/* 출고 상태 */
 				html += "<div class='list-group-item list-group-item-action'>"
 				if (data[0].od_status === 0) {
-					html += "<span class='point'>출고 상태: 주문 접수</span>"
+					html += "<div class='row'><div class='col col-lg-3 col-sm-6'><span class='point'>출고 상태: </span></div><div class='col col-lg-9 col-sm-6'><b> 주문 접수 </b> </div></div>"
 				} else {
-					html += "<span class='point'>출고 상태: 출고 완료</span>"
+					html += "<div class='row'><div class='col col-lg-3 col-sm-6'><span class='point'>출고 상태: </span></div><div class='col col-lg-9 col-sm-6'><b> 출고 완료 </b> </div></div>"
 				}
 				html += "</div>"
 				/* 제품 목록 */
@@ -381,20 +385,22 @@
 					html += "</tr>";
 				}
 				html += "</tbody></table></div>"
-				html += "<div class='modal-footer'>"
-				html += "<button type='button' onclick='findRack(" + data[0].order_seq + ")' class='btn btn-primary'>제품 위치</button>"
+				html += "<div class='modal-footer' style = 'display:flex; justify-content:space-between;'>"
+				html += "<div class='buttonTwo'>"
+				html += "<button type='button' onclick='findRack(" + data[0].order_seq + ")' class='btn btn-primary' style='margin-right:10px;'>제품 위치</button>"
 				// 출고가 되었으면 출고 완료 버튼이, 출고가 안 되었으면 출고 준비 버튼이 보이도록
 				if (data[0].od_status === 0){
 					html += "<input type='hidden' name='order_seq' value=" + data[0].order_seq + ">"
-					html += "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#releaseCkModal'>출고 준비</button>"
+					html += "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#releaseCkModal'>출고 준비</button></div>"
 				} else if (data[0].od_status > 0){
-					html += "<button type='button' class='btn btn-secondary btn-sm'>출고 완료</button>"					
+					html += "<button type='button' class='btn btn-secondary'>출고 완료</button></div>"					
 				} else {
 					console.log("error");
 					console.log(data[0].od_status);
 				}
+				html += "<div class='buttonThree'>"
 				html += "<button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>닫기</button>"
-				html += "</div></form>"
+				html += "</div></div></form>"
 				
 				// id가 "orderDetailList"인 <div>안의 html 교체
 				$('#orderDetailList').html(html);
