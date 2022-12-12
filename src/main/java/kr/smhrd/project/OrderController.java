@@ -165,32 +165,30 @@ public class OrderController {
 	
 	// rack 위치 알림
 	@RequestMapping("/findRack.do")
-	public @ResponseBody List<String> findRack(int order_seq, Model model) {
+	public @ResponseBody List<String> findRack(int order_seq, HttpSession session) {
 		List<String> rackList = orderMapper.findRack(order_seq);
-		model.addAttribute("list", rackList);
 		
+		
+		session.setAttribute("racks",rackList);
 		
 		System.out.println(rackList);
 		
 		return rackList;
 	}
-	
-	@RequestMapping("/sendRack.do")
-	public @ResponseBody void sendRack(List<String> rack, Model model) {
-		
-	
-	
-	}
+//	
+//	@RequestMapping("/sendRack.do")
+//	public @ResponseBody void sendRack(List<String> rack, Model model) {
+//		
+//	
+//	
+//	}
 	
 
 	
-	// 랙 페이지 이동
-			@RequestMapping("/rack.do")
-			public @ResponseBody String rack() {
-				
-				
-				return "rack";
-			}
+	@RequestMapping("/rack.do")
+	public String rack1() {
+		return "rack";
+	}
 	
 	
 	
