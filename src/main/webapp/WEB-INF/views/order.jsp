@@ -453,26 +453,18 @@
 					method : "POST",
 					data : {"order_seq" : order_seq},
 					dataType : "JSON",
-					success : sendRack,
+					success :sendRack,
 					error : function(e){
 						console.log(e);
 					}
 				});
 			}
 			
-			// 출고 위치 데이터 보내기
+ 			// 출고 위치 데이터 보내기
 			function sendRack(data) {
-				console.log(data)
-				$.ajax({
-					url : "rack.do",
-					method : "POST",
-					data : data,
-					success : console.log("위치 알림 성공"),
-					error : function(e){
-						console.log(e);
-					}
-				});
-			}
+				 location.href="rack.do";
+				};
+			 
 		
 		</script>
 		
