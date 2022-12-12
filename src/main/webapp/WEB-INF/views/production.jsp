@@ -85,9 +85,9 @@
                             <div class="card-header">
                             	 <!-- 출고 현황 차트 -->
 		                        <div class="card mb-4">
-		                            <div class="card-header" onclick="chartShow()" style="height:45px;">
+		                            <div class="card-header arrow" onclick="chartShow()" style="height:45px;">
 		                                <p>
-			                                <i class="fas fa-chart-area me-1"></i>제품 생산 현황
+			                                	제품 생산 현황
 		                                </p>
 		                            </div>
 		                            
@@ -99,12 +99,19 @@
 			                    	</div>
 		                        </div>
 			                </div>
-                         
+                            
                             <div class="card-body">         
                             	<!-- 검색 폼 -->
-	                            <div class="production-search mt-2 mb-4" style="display:flex; justify-content:center;">
-	                            		<form id="manufactureSearch" method = "post" style="display:grid; grid-template-columns : 23% 23% 23% 23% 8%; grid-gap:10px; ">
+                            	
+	                            <div class="production-search production mt-2 mb-4" style="display:flex; justify-content:center;">
+	                            		<form id="manufactureSearch" method = "post">
 	                            			
+	                            				<!-- 리셋버튼 -->
+                            		<div class="pruduction_form_button d-flex justify-content-end">
+                           				<button type="reset" onclick="orderLoad()" class="btn btn-lg btn-light">
+                           				<i class="fa-solid fa-arrow-rotate-left"></i>
+                           				</button>
+                           			</div>
 	                            			<div class="date-search-form">
 	                            				<input id="start_r_date" type = "date" class =" form-control" name = "start_r_date">
 	                            			</div>
@@ -142,9 +149,8 @@
 	                            			
 	                            			<div class="pruduction_form_button">
 	                            				<!-- 검색 버튼 -->
-	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light"> 🔍 </button>
-	                            				<!-- 검색 부분 초기화 / 생산관리 테이블 초기화 버튼 -->
-		                            			<button type="reset"  onclick="prodload()" class="btn btn-dark">🔍 </button>
+	                            				<button type="button" onclick="manufactureSearch()" class="btn btn-light btn-lg"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+	                            				
 	                            			</div>
 	                            		</form>
 	                            	</div>
@@ -177,7 +183,7 @@
 												<td style="width:19%;">${manufacture.prod_m_date}</td>
 												<td style="width:16%;">${manufacture.m_cnt}</td>
 												<td style="width:16.6%;">${manufacture.name}(${manufacture.emp_no})</td>
-												<td style="width:5%;"><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger btn-sm">x</button></td>
+												<td style="width:5%;"><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-secondary btn-sm">X</button></td>
 											</tr>	
 										</c:forEach>
                                  		</tbody>
@@ -439,6 +445,7 @@
 		
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="${path}/resources/js/scripts.js"></script>
+        <script src="${path}/resources/js/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="${path}/resources/js/datatables-simple-demo.js"></script>
     </body>

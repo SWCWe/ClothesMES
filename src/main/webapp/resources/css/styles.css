@@ -11784,6 +11784,25 @@ h1{
     	font-size:20px;
     }
     
+    .date-search-form select{
+    	height:100%;
+    	font-size: 20px;
+    }
+    
+    .order_seq_search-form select{
+    	height:100%;
+    	font-size: 20px;
+    }
+    
+    .emp_search_form select{
+    	height:100%;
+    	font-size: 20px;
+    }
+    
+    .prod_code_search-form input {
+    height:100%;
+    	font-size:20px;
+    }
     .prod_code_search-form select{
     	height:100%;
     	font-size:20px;
@@ -11860,8 +11879,12 @@ h1{
        display:grid; grid-template-columns : 100%; grid-gap:10px;
        }
        
-       
+    
       
+      .production-search.production form{
+
+      	width:100%;
+      }
        
   
        
