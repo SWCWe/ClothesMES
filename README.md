@@ -3,7 +3,7 @@ README 샘플 수정중...
 
 
 # 프로젝트명
-> 간략한 프로젝트 소개 문구를 작성합니다.
+> AI 이미지 분류를 통한 검수 출하 시스템
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
