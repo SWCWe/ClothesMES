@@ -13,6 +13,4 @@ public interface loginMapper {
 
 	MemberVO loginCheck(MemberVO memberVO);
 
-	
-
 }

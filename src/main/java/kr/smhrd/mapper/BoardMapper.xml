@@ -4,7 +4,7 @@
     
     <insert id="put_product" parameterType="String">
         insert into t_manufacture(prod_code, m_cnt, emp_no)
-        values(#{prod_code}, 1, "230")
+        values(#{prod_code}, 1, "736")
     </insert>
     
 </mapper>

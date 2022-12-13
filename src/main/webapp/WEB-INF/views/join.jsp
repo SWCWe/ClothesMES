@@ -151,8 +151,8 @@
                                 <div class="joinbutton" style="display:flex; justify-content:center">
 
                                     
-                                    <input type="submit" id = "button1" class="btn btn-primary mt-3" style = "font-size:30px" value="등록하기">
-                                    <input type="submit" id = "button2" class="btn btn-primary mt-3" style = "font-size:30px; margin-left:10px;" value="다시쓰기">
+                                    <input type="submit" id = "button1" class="btn btn-primary mt-3" onclick="location.href='login.do'" style = "font-size:30px" value="등록하기">
+                                    <input type="button" id = "button2" class="btn btn-primary mt-3" style = "font-size:30px; margin-left:10px;" value="다시쓰기">
                                 </div>
                             </div>
                             
@@ -232,7 +232,7 @@ $("input:checkbox").click(checkedChange);
    //최종 틍록하기 버튼 클릭시 각 부분별 입력값 맞는지 확인
    $("#button1").click(function(){
 	    if($("#agreement1").prop("checked") && $("#agreement2").prop("checked") && $("#nameDoubleChk").val() == "true" && $("#pwDoubleChk").val() == "true"){
-	    	alert($('#sm_id').val()+"님 환영합니다. 선택해주셔서 감사합니다 :)");
+	    	alert($('#name').val()+"님 환영합니다. 선택해주셔서 감사합니다 :)");
    			Register();
 	    }else{
 	    	alert("회원가입을 완료할 수 없습니다. 다시한번 확인해주십시오.");
@@ -277,13 +277,22 @@ $("input:checkbox").click(checkedChange);
 					url : "joinRegister.do",
 					type : "POST",
 					data : frmData,
-					success : location.replace(link_url),
+					//success : location.replace(link_url),
+					success : function(link_url, textStatus) {
+						if (data.redirect) {
+				            window.location.href = data.redirect;
+				        }
+					},
+					
 					error : function(e){
 						console.log(e);
 					}
 				});
 			}
    
+   function loginGo() {
+	   location.href="production.do";
+   }
 	
    
    

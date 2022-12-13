@@ -233,12 +233,12 @@
                 				for (var i = 0; i < data.length; i++) {
                 					html += "<tr>";
                 					html += "";
-                					html += "<td>" + data[i].prod_code + "</td>";	
-                					html += "<td>" + data[i].prod_name + "</td>";	
-                					html += "<td>" + data[i].prod_cnt + "</td>";	
-                					html += "<td>" + data[i].prod_m_date + "</td>";	
-                					html += "<td>" + data[i].prod_rack + "</td>";	
-                					html += "<td><button type='button' class='btn btn-danger btn-sm'>X</button></td>";
+                					html += "<td style='width:20%'>" + data[i].prod_code + "</td>";	
+                					html += "<td style='width:20%'>" + data[i].prod_name + "</td>";	
+                					html += "<td style='width:20%'>" + data[i].prod_cnt + "</td>";	
+                					html += "<td style='width:20%'>" + data[i].prod_m_date + "</td>";	
+                					html += "<td style='width:10%'>" + data[i].prod_rack + "</td>";	
+                					html += "<td style='width:10%'><button type='button' class='btn btn-secondary btn-sm'>X</button></td>";
                 					
                 					html += "</tr>";
                 				}

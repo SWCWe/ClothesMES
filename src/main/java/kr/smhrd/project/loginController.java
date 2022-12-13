@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.entity.MemberVO;
-import kr.smhrd.entity.ReleaseVO;
 import kr.smhrd.mapper.loginMapper;
 
 @Controller
@@ -52,14 +51,15 @@ public class loginController {
 //	}
 //	
 	
+	
+	
 	@RequestMapping("/loginCheck.do")
 	public String loginCheck(MemberVO vo, HttpSession session) {
 		
 		MemberVO mvo = mapper.loginCheck(vo);
 		session.setAttribute("vo", mvo);
 		
-		System.out.println("로그인 아이디: "+ mvo.getEmp_no());
-		return "index";
+		return "redirect:/production.do";
 	}
 	
 	@RequestMapping("/logout.do")
@@ -68,7 +68,7 @@ public class loginController {
 		session.removeAttribute("vo");
 		
 		
-		return "index";
+		return "login";
 	}
 	
 	

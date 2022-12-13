@@ -79,7 +79,7 @@
             <div id="layoutSidenav_content" class="mt-2">
             	<main>
                 	<div class="container-fluid px-4">
-                		<h1 class="mt-4">생산관리 💫 <i class="fa-brands fa-waze fa-beat" style="color:black;"></i></h1>
+                		<h1 class="mt-4">생산관리 💫</h1>
                         <div class="card mb-4">
                         
                             <div class="card-header">
@@ -241,18 +241,21 @@
         		
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-dialog modal-dialog-centered modal-sm">	
 		    	<div class="modal-content">
-		    			         
-		     	<div class="modal-header">
-					게시물을 정말 삭제하시겠습니까?
-		     	</div>
+		 			<div class="modal-header">
+			        	<h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+			        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      	</div>
+   	
+			     	<div class="modal-body">
+						삭제하시겠습니까?
+			     	</div>
 			 	
-			 	<div class="modal-footer">
-		     		<button type="button" class="btn btn-primary" onclick="deleteprod()">삭제하기</button>
-		      		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
-			 	</div>
-			      
+				 	<div class="modal-footer">
+			     		<button type="button" class="btn btn-primary" onclick="deleteprod()">삭제하기</button>
+			      		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
+				 	</div>
 				</div>
 			</div>
 		</div>
@@ -388,7 +391,7 @@
 					html += "<td style='width:19%;'>" + data[i].prod_m_date + "</td>";	
 					html += "<td style='width:16%;'>" + data[i].m_cnt + "</td>";	
 					html += "<td style='width:16.6%;'>" + data[i].name + "(" + data[i].emp_no + ")" + "</td>";
-					html += "<td style='width:5%;'><button type='button' data-bs-toggle='modal' data-bs-target='#exampleModal' class='btn btn-danger btn-sm'>x</button></td>"
+					html += "<td style='width:5%;'><button type='button' data-bs-toggle='modal' data-bs-target='#exampleModal' class='btn btn-secondary btn-sm'>x</button></td>"
 					html += "</tr>";
 				}
 				// id가 "prodList"인 <tbody>안의 html 교체

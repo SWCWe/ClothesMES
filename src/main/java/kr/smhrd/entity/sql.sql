@@ -1,6 +1,9 @@
 
 select * from t_product
 delete from t_manufacture where emp_no=230
+delete from t_member where emp_no=727
+
+insert into t_member
 
 select * from t_product 
 where date(prod_m_date) between '2022-07-01 00:00:00' and '2022-11-02 23:59:59'
